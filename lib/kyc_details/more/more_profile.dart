@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/generate_voucher/uploads.dart';
@@ -34,6 +33,7 @@ class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -78,7 +78,7 @@ class _MoreScreenState extends State<MoreScreen> {
                         color: const Color(0XFFFDE48B),
                         image: const DecorationImage(
                           image: (AssetImage(
-                            AppImages.manimages,
+                            AppImages.maleimages,
                           )),
                         ),
                       ),
@@ -91,10 +91,9 @@ class _MoreScreenState extends State<MoreScreen> {
                       children: [
                         Row(
                           children: [
-                            Text(
-                              "Peace Adedokun",
-                              style: AppTextStyles.font20,
-                            ),
+                            Text("Peace Adedokun",
+                                style: AppTextStyles.font20
+                                    .copyWith(fontWeight: FontWeight.w500)),
                           ],
                         ),
                         const SizedBox(
@@ -148,7 +147,7 @@ class _MoreScreenState extends State<MoreScreen> {
                       },
                       child: Text(
                         'Manual Funding',
-                        style: AppTextStyles.font14.copyWith(
+                        style: AppTextStyles.fonts14.copyWith(
                           color: const Color(0XFF333333),
                         ),
                       ),
@@ -177,7 +176,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return PaymentGateway();
+                    return const PaymentGateway();
                   }));
                 },
                 child: const ProfileWidget(
@@ -187,7 +186,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return PaymentPlan();
+                    return const PaymentPlan();
                   }));
                 },
                 child: const ProfileWidget(
@@ -211,7 +210,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return SendSMS();
+                    return const SendSMS();
                   }));
                 },
                 child: const ProfileWidget(
@@ -221,7 +220,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return SendEmail();
+                    return const SendEmail();
                   }));
                 },
                 child: const ProfileWidget(
@@ -236,12 +235,12 @@ class _MoreScreenState extends State<MoreScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return CreateEmail();
+                          return const CreateEmail();
                         }));
                       },
                       child: Text(
                         'Create Email',
-                        style: AppTextStyles.font14.copyWith(
+                        style: AppTextStyles.fonts14.copyWith(
                           color: const Color(0XFF333333),
                         ),
                       ),
@@ -270,7 +269,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return SetupDefault();
+                    return const SetupDefault();
                   }));
                 },
                 child: const ProfileWidget(
@@ -280,7 +279,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return ViewPromoOption();
+                    return const ViewPromoOption();
                   }));
                 },
                 child: const ProfileWidget(
@@ -295,12 +294,12 @@ class _MoreScreenState extends State<MoreScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return ManageSpecialPromo();
+                          return const ManageSpecialPromo();
                         }));
                       },
                       child: Text(
                         'Manage Special Promo',
-                        style: AppTextStyles.font14.copyWith(
+                        style: AppTextStyles.fonts14.copyWith(
                           color: const Color(0XFF333333),
                         ),
                       ),
@@ -329,7 +328,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return TopUpHistory();
+                    return const TopUpHistory();
                   }));
                 },
                 child: const ProfileWidget(
@@ -345,7 +344,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return Transaction();
+                    return const Transaction();
                   }));
                 },
                 child: const ProfileWidget(
@@ -390,7 +389,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return ServiceRouting();
+                    return const ServiceRouting();
                   }));
                 },
                 child: const ProfileWidget(
@@ -400,7 +399,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return MainServices();
+                    return const MainServices();
                   }));
                 },
                 child: const ProfileWidget(
@@ -410,7 +409,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return SubService();
+                    return const SubService();
                   }));
                 },
                 child: const ProfileWidget(
@@ -420,7 +419,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return AvailableService();
+                    return const AvailableService();
                   }));
                 },
                 child: const ProfileWidget(
@@ -432,7 +431,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return SupportedVendors();
+                      return const SupportedVendors();
                     }));
                   },
                   child: Row(
@@ -440,7 +439,7 @@ class _MoreScreenState extends State<MoreScreen> {
                     children: [
                       Text(
                         'Supported Vendors',
-                        style: AppTextStyles.font14.copyWith(
+                        style: AppTextStyles.fonts14.copyWith(
                           color: const Color(0XFF333333),
                         ),
                       ),
@@ -469,7 +468,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return UpLoadPin();
+                    return const UpLoadPin();
                   }));
                 },
                 child: const ProfileWidget(
@@ -479,7 +478,7 @@ class _MoreScreenState extends State<MoreScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return Uploads();
+                    return const Uploads();
                   }));
                 },
                 child: const ProfileWidget(
@@ -515,7 +514,7 @@ class ProfileWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTextStyles.font14.copyWith(
+                style: AppTextStyles.fonts14.copyWith(
                   color: const Color(0XFF333333),
                 ),
               ),
@@ -530,7 +529,7 @@ class ProfileWidget extends StatelessWidget {
           ),
           const Divider(
             height: 4,
-            color: AppColors.grey,
+            color: Color.fromARGB(255, 231, 234, 237),
           ),
           const SizedBox(
             height: 16,

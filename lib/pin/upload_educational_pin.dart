@@ -64,7 +64,7 @@ class _UploadEducationalPinState extends State<UploadEducationalPin> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -102,7 +102,7 @@ class _UploadEducationalPinState extends State<UploadEducationalPin> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Row(
@@ -111,18 +111,18 @@ class _UploadEducationalPinState extends State<UploadEducationalPin> {
                       'Pins',
                       style: AppTextStyles.font14,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 240,
                     ),
                     Text(
                       'Upload file',
                       style: AppTextStyles.font14.copyWith(
-                        color: Color(0xff892BE0),
+                        color: const Color(0xff892BE0),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -132,7 +132,7 @@ class _UploadEducationalPinState extends State<UploadEducationalPin> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       width: 1,
-                      color: Color(0xffCBD5E1),
+                      color: const Color(0xffCBD5E1),
                     ),
                   ),
                   child: Padding(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superjara/api/api.dart';
 
 import 'package:superjara/const/app_colors.dart';
@@ -23,6 +22,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -109,6 +109,7 @@ class _SettingsState extends State<Settings> {
                                               child: Text(
                                                 'Are you sure you want to grant this user manager access?',
                                                 style: AppTextStyles.font14,
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                             const SizedBox(
@@ -155,7 +156,7 @@ class _SettingsState extends State<Settings> {
                                                     ),
                                                     child: Center(
                                                         child: Text(
-                                                      'Cancel',
+                                                      'Confirm',
                                                       style: AppTextStyles
                                                           .font16
                                                           .copyWith(
@@ -175,14 +176,14 @@ class _SettingsState extends State<Settings> {
                         },
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       const Divider(
                         height: 4,
                         color: AppColors.grey,
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       SwitchItems(
                         text: 'Revoke ATM Access',
@@ -224,6 +225,7 @@ class _SettingsState extends State<Settings> {
                                               child: Text(
                                                 'Are you sure you want to revoke ATM Access?',
                                                 style: AppTextStyles.font14,
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                             const SizedBox(
@@ -270,7 +272,7 @@ class _SettingsState extends State<Settings> {
                                                     ),
                                                     child: Center(
                                                       child: Text(
-                                                        'Cancel',
+                                                        'Confirm',
                                                         style: AppTextStyles
                                                             .font16
                                                             .copyWith(
@@ -291,14 +293,14 @@ class _SettingsState extends State<Settings> {
                         },
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       const Divider(
                         height: 4,
                         color: AppColors.grey,
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       SwitchItems(
                         text: 'Revoke Platform Access',
@@ -339,6 +341,7 @@ class _SettingsState extends State<Settings> {
                                               child: Text(
                                                 'Are you sure you want to revoke platform Access?',
                                                 style: AppTextStyles.font14,
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                             const SizedBox(
@@ -385,7 +388,7 @@ class _SettingsState extends State<Settings> {
                                                     ),
                                                     child: Center(
                                                         child: Text(
-                                                      'Cancel',
+                                                      'Confirm',
                                                       style: AppTextStyles
                                                           .font16
                                                           .copyWith(
@@ -405,14 +408,14 @@ class _SettingsState extends State<Settings> {
                         },
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       const Divider(
                         height: 4,
                         color: AppColors.grey,
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -431,7 +434,10 @@ class _SettingsState extends State<Settings> {
                               ),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios)
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -457,7 +463,10 @@ class _SettingsState extends State<Settings> {
                               color: const Color(0XFF333333),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios)
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -479,7 +488,10 @@ class _SettingsState extends State<Settings> {
                               color: const Color(0XFF333333),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -501,7 +513,10 @@ class _SettingsState extends State<Settings> {
                               color: const Color(0XFF333333),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -523,7 +538,10 @@ class _SettingsState extends State<Settings> {
                               color: const Color(0XFF333333),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios)
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -553,7 +571,10 @@ class _SettingsState extends State<Settings> {
                               ),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios),
+                          const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 15,
+                          ),
                         ],
                       ),
                       const SizedBox(

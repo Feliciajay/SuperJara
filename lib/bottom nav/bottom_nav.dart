@@ -32,6 +32,7 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: AppColors.black,
@@ -81,7 +82,7 @@ class _BottomNavState extends State<BottomNav> {
               ),
             ),
           ],
-          backgroundColor: const Color(0xffEDEDED)),
+          backgroundColor: const Color(0xffffffff)),
     );
   }
 }

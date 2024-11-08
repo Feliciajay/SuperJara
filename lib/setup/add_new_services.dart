@@ -55,7 +55,7 @@ class _AddNewServicesState extends State<AddNewServices> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
@@ -261,12 +261,12 @@ class _AddNewServicesState extends State<AddNewServices> {
                               enabledBorder: InputBorder.none),
                         ),
                       ),
-                      Icon(Icons.drive_folder_upload)
+                      const Icon(Icons.drive_folder_upload)
                     ],
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               Padding(

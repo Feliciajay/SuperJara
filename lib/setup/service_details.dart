@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/setup/available_service.dart';
+//import 'package:superjara/setup/available_service.dart';
 
 class ServicesDetails extends StatefulWidget {
   const ServicesDetails({super.key});
@@ -55,7 +55,7 @@ class _ServicesDetailsState extends State<ServicesDetails> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
@@ -261,12 +261,12 @@ class _ServicesDetailsState extends State<ServicesDetails> {
                               enabledBorder: InputBorder.none),
                         ),
                       ),
-                      Icon(Icons.drive_folder_upload)
+                      const Icon(Icons.drive_folder_upload)
                     ],
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               Padding(
@@ -598,7 +598,7 @@ class _ServicesDetailsState extends State<ServicesDetails> {
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Color.fromARGB(255, 135, 135, 205),
+                  color: const Color.fromARGB(255, 135, 135, 205),
                 ),
                 child: Center(
                   child: Text(

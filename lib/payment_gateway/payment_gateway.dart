@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/payment_gateway/payment_gateway_details.dart';
 
@@ -14,6 +13,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -109,10 +109,10 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         style: AppTextStyles.font14,
                                       ),
                                       const SizedBox(
-                                        width: 170,
+                                        width: 160,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -123,7 +123,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                           style: AppTextStyles.font12.copyWith(
                                               color: const Color(0xff475569))),
                                       const SizedBox(
-                                        width: 210,
+                                        width: 200,
                                       ),
                                       Text(
                                         'Successful',
@@ -141,7 +141,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -157,58 +157,10 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         style: AppTextStyles.font14,
                                       ),
                                       const SizedBox(
-                                        width: 170,
+                                        width: 160,
                                       ),
                                       Text(
-                                        "₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('ipay.com.ng',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 210,
-                                      ),
-                                      Text(
-                                        'Successful',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFF219653)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Divider(
-                            height: 2,
-                            color: Color(0xff999999),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Monnify',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 200,
-                                      ),
-                                      Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -237,7 +189,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -256,7 +208,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         width: 200,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -285,7 +237,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -304,7 +256,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         width: 200,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -333,7 +285,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -352,7 +304,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         width: 200,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -381,7 +333,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -400,7 +352,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         width: 200,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],
@@ -429,7 +381,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                           ),
                           const Divider(
                             height: 2,
-                            color: Color(0xff999999),
+                            color: Color.fromARGB(255, 230, 228, 228),
                           ),
                           const SizedBox(
                             height: 24,
@@ -448,7 +400,55 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                                         width: 200,
                                       ),
                                       Text(
-                                        "₦35,000.00",
+                                        "N35,000.00",
+                                        style: AppTextStyles.font14,
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text('ipay.com.ng',
+                                          style: AppTextStyles.font12.copyWith(
+                                              color: const Color(0xff475569))),
+                                      const SizedBox(
+                                        width: 200,
+                                      ),
+                                      Text(
+                                        'Successful',
+                                        style: AppTextStyles.font12.copyWith(
+                                            color: const Color(0XFF219653)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Divider(
+                            height: 2,
+                            color: Color.fromARGB(255, 230, 228, 228),
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Monnify',
+                                        style: AppTextStyles.font14,
+                                      ),
+                                      const SizedBox(
+                                        width: 200,
+                                      ),
+                                      Text(
+                                        "N35,000.00",
                                         style: AppTextStyles.font14,
                                       ),
                                     ],

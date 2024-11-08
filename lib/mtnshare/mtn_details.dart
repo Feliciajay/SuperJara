@@ -22,6 +22,7 @@ class _MTNDetailsState extends State<MTNDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -104,7 +105,7 @@ class _MTNDetailsState extends State<MTNDetails> {
                             ),
                           ),
                           const SizedBox(
-                            width: 48,
+                            width: 38,
                           ),
                           Text(
                             'Transaction history',
@@ -152,12 +153,12 @@ class _MTNDetailsState extends State<MTNDetails> {
                                   onTap: () {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (_) {
-                                      return LoadBundle();
+                                      return const LoadBundle();
                                     }));
                                   },
                                   child: Text(
                                     "Load Bundle",
-                                    style: AppTextStyles.font12.copyWith(
+                                    style: AppTextStyles.fonts14.copyWith(
                                         color: const Color(0xff333333)),
                                   ),
                                 ),
@@ -179,11 +180,11 @@ class _MTNDetailsState extends State<MTNDetails> {
                                   size: 12,
                                 ),
                                 const SizedBox(
-                                  width: 10,
+                                  width: 5,
                                 ),
                                 Text(
                                   "Load 1TB Bundle",
-                                  style: AppTextStyles.font12
+                                  style: AppTextStyles.fonts14
                                       .copyWith(color: const Color(0xff333333)),
                                 )
                               ],
@@ -217,7 +218,8 @@ class _MTNDetailsState extends State<MTNDetails> {
                               width: 150,
                             ),
                             Text("Gbemi Connect 2",
-                                style: AppTextStyles.font16),
+                                style: AppTextStyles.fonts14
+                                    .copyWith(color: const Color(0xff000000))),
                           ],
                         ),
                         const SizedBox(
@@ -231,7 +233,7 @@ class _MTNDetailsState extends State<MTNDetails> {
                             const SizedBox(
                               width: 160,
                             ),
-                            Text("93395853348", style: AppTextStyles.font16),
+                            Text("93395853348", style: AppTextStyles.fonts14),
                           ],
                         ),
                         const SizedBox(
@@ -268,10 +270,10 @@ class _MTNDetailsState extends State<MTNDetails> {
                                 style: AppTextStyles.font14
                                     .copyWith(fontWeight: FontWeight.w400)),
                             const SizedBox(
-                              width: 120,
+                              width: 110,
                             ),
                             Text("Apr 18th, 20:59",
-                                style: AppTextStyles.font16),
+                                style: AppTextStyles.fonts14),
                           ],
                         ),
                         const SizedBox(
@@ -283,10 +285,10 @@ class _MTNDetailsState extends State<MTNDetails> {
                                 style: AppTextStyles.font14
                                     .copyWith(fontWeight: FontWeight.w400)),
                             const SizedBox(
-                              width: 120,
+                              width: 110,
                             ),
                             Text("Apr 18th, 20:59",
-                                style: AppTextStyles.font16),
+                                style: AppTextStyles.fonts14),
                           ],
                         ),
                       ],
@@ -312,7 +314,7 @@ class _MTNDetailsState extends State<MTNDetails> {
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (_) {
-                              return SimCards();
+                              return const SimCards();
                             }));
                           },
                           child: Text(
@@ -352,7 +354,7 @@ class _MTNDetailsState extends State<MTNDetails> {
                                       ),
                                       Text(
                                         textAlign: TextAlign.center,
-                                        'Are you sure you want toremove sim number?',
+                                        'Are you sure you want to remove sim number?',
                                         style: AppTextStyles.font16,
                                       ),
                                       const SizedBox(

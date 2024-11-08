@@ -18,7 +18,7 @@ class _TopUpHistoryState extends State<TopUpHistory> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 38,
               ),
               Padding(
@@ -78,7 +78,7 @@ class _TopUpHistoryState extends State<TopUpHistory> {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (_) {
-                                return TopUpDetails();
+                                return const TopUpDetails();
                               }));
                             },
                             child: Text(

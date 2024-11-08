@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
-class HomeContainer extends StatelessWidget {
+class HomeContainer extends StatefulWidget {
+  final String text;
   const HomeContainer({
+    required this.text,
     super.key,
   });
 
+  @override
+  State<HomeContainer> createState() => _HomeContainerState();
+}
+
+class _HomeContainerState extends State<HomeContainer> {
+  String _selectedOption = '';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,44 +36,40 @@ class HomeContainer extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Members",
-                      style: AppTextStyles.font14,
-                    ),
-                    SizedBox(
-                      height: 34,
-                      width: 54,
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 8,
-                            width: 8,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.darkgrey),
+                    Row(
+                      children: [
+                        Text(
+                          widget.text,
+                          style: AppTextStyles.font14,
+                        ),
+                        const SizedBox(
+                          width: 220,
+                        ),
+                        PopupMenuButton<String>(
+                          onSelected: (String result) {
+                            setState(() {
+                              _selectedOption = result;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.more_horiz,
+                            color: Color(0xff0d224d),
+                            size: 30,
                           ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Container(
-                            height: 8,
-                            width: 8,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.darkgrey),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Container(
-                            height: 8,
-                            width: 8,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.darkgrey),
-                          ),
-                        ],
-                      ),
+                          itemBuilder: (BuildContext context) =>
+                              <PopupMenuEntry<String>>[
+                            const PopupMenuItem<String>(
+                              value: '',
+                              child: Text('Today'),
+                            ),
+                            const PopupMenuItem<String>(
+                              value: '',
+                              child: Text('All Time'),
+                            ),
+                          ],
+                        ),
+                        Text(' $_selectedOption'),
+                      ],
                     ),
                   ],
                 ),

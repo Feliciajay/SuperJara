@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/change_plan_users/change_password.dart';
+
 import 'package:superjara/mtnshare/mtn_details.dart';
 import 'package:superjara/mtnshare/mtn_share_transaction.dart';
 
@@ -17,6 +17,7 @@ class _MtnShareState extends State<MtnShare> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -207,7 +208,7 @@ class _MtnShareState extends State<MtnShare> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) {
-                            return MTNDetails();
+                            return const MTNDetails();
                           }));
                         },
                         child: Text(
@@ -217,7 +218,7 @@ class _MtnShareState extends State<MtnShare> {
                         ),
                       ),
                       const SizedBox(
-                        width: 190,
+                        width: 180,
                       ),
                       const Icon(
                         Icons.arrow_forward_ios,
@@ -244,7 +245,7 @@ class _MtnShareState extends State<MtnShare> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) {
-                            return MTNShareTransaction();
+                            return const MTNShareTransaction();
                           }));
                         },
                         child: Text(

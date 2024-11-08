@@ -31,15 +31,23 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Text("All Categories"),
-                    Icon(Icons.arrow_drop_down),
-                    SizedBox(
-                      width: 121,
+                    Text(
+                      "All Categories",
+                      style: AppTextStyles.font14
+                          .copyWith(fontWeight: FontWeight.w400),
                     ),
-                    Text("All Status"),
-                    Icon(Icons.arrow_drop_down),
+                    const Icon(Icons.arrow_drop_down),
+                    const SizedBox(
+                      width: 100,
+                    ),
+                    Text(
+                      "All Status",
+                      style: AppTextStyles.font14
+                          .copyWith(fontWeight: FontWeight.w400),
+                    ),
+                    const Icon(Icons.arrow_drop_down),
                   ],
                 ),
                 const SizedBox(
@@ -47,27 +55,32 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 17,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Text("May"),
-                    Icon(Icons.arrow_drop_down),
+                    Text(
+                      "May",
+                      style: AppTextStyles.font16.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0XFF1A1A1A)),
+                    ),
+                    const Icon(Icons.arrow_drop_down),
                   ],
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                TransactionWidget(),
+                const TransactionWidget(),
                 const SizedBox(
                   height: 15,
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 24,
@@ -81,7 +94,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                         ('assets/icons/telephone.png'),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 5),
                     Column(
                       children: [
                         Row(
@@ -91,17 +104,17 @@ class _TransactionComponentState extends State<TransactionComponent> {
                               style: AppTextStyles.font14,
                             ),
                             const SizedBox(
-                              width: 90,
+                              width: 80,
                             ),
                             Text(
-                              "+₦35,000.00",
+                              "+N35,000.00",
                               style: AppTextStyles.font14,
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Text('Apr 18th, 20:59',
+                            Text(' Apr 18th, 20:59',
                                 style: AppTextStyles.font12
                                     .copyWith(color: const Color(0xff475569))),
                             const SizedBox(
@@ -123,7 +136,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 24,
@@ -137,7 +150,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                         ('assets/icons/telephone.png'),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 5),
                     Column(
                       children: [
                         Row(
@@ -147,10 +160,10 @@ class _TransactionComponentState extends State<TransactionComponent> {
                               style: AppTextStyles.font14,
                             ),
                             const SizedBox(
-                              width: 90,
+                              width: 80,
                             ),
                             Text(
-                              "+₦35,000.00",
+                              "+N35,000.00",
                               style: AppTextStyles.font14,
                             ),
                           ],
@@ -179,7 +192,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 24,
@@ -193,7 +206,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                         ('assets/icons/telephone.png'),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 5),
                     Column(
                       children: [
                         Row(
@@ -217,7 +230,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                                 style: AppTextStyles.font12
                                     .copyWith(color: const Color(0xff475569))),
                             const SizedBox(
-                              width: 118,
+                              width: 110,
                             ),
                             Text(
                               'Successful',
@@ -235,7 +248,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 24,
@@ -249,7 +262,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                         ('assets/icons/telephone.png'),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 5),
                     Column(
                       children: [
                         Row(
@@ -259,10 +272,10 @@ class _TransactionComponentState extends State<TransactionComponent> {
                               style: AppTextStyles.font14,
                             ),
                             const SizedBox(
-                              width: 90,
+                              width: 80,
                             ),
                             Text(
-                              "+₦35,000.00",
+                              "+N35,000.00",
                               style: AppTextStyles.font14,
                             ),
                           ],
@@ -273,7 +286,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                                 style: AppTextStyles.font12
                                     .copyWith(color: const Color(0xff475569))),
                             const SizedBox(
-                              width: 118,
+                              width: 135,
                             ),
                             Text(
                               'Pending',
@@ -291,12 +304,12 @@ class _TransactionComponentState extends State<TransactionComponent> {
                 ),
                 const Divider(
                   height: 2,
-                  color: Color(0xff999999),
+                  color: Color.fromARGB(255, 225, 223, 223),
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                TransactionWidget()
+                const TransactionWidget()
               ],
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
@@ -27,7 +27,7 @@ class DoneKYC extends StatelessWidget {
                         color: const Color(0XFFFDE48B),
                         image: const DecorationImage(
                           image: (AssetImage(
-                            AppImages.manimages,
+                            AppImages.maleimages,
                           )),
                         ),
                       ),
@@ -44,7 +44,7 @@ class DoneKYC extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (_) {
-                                  return DoneDetails();
+                                  return const DoneDetails();
                                 }));
                               },
                               child: Text(
@@ -53,44 +53,45 @@ class DoneKYC extends StatelessWidget {
                                     .copyWith(color: AppColors.black),
                               ),
                             ),
-                            const SizedBox(
-                              width: 5,
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Max precious11",
+                              style: AppTextStyles.font12,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 17),
-                              child: Container(
-                                height: 24,
-                                width: 70,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: AppColors.lightgreen),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: 4,
-                                      width: 4,
-                                      decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: AppColors.lemon),
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Done",
-                                      style: AppTextStyles.font12
-                                          .copyWith(color: AppColors.lemon),
-                                    ),
-                                  ],
-                                ),
+                            const SizedBox(
+                              width: 100,
+                            ),
+                            Container(
+                              height: 24,
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.lightgreen),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 4,
+                                    width: 4,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lemon),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "Done",
+                                    style: AppTextStyles.font12
+                                        .copyWith(color: AppColors.lemon),
+                                  ),
+                                ],
                               ),
                             )
                           ],
-                        ),
-                        Text(
-                          "Max precious11",
-                          style: AppTextStyles.font12,
                         ),
                       ],
                     ),

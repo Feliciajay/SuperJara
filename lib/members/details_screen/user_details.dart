@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_images.dart';
+import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/details_screen/details_component.dart';
 import 'package:superjara/members/details_screen/transactions_component.dart';
 import 'package:superjara/members/details_screen/wallet_component.dart';
@@ -27,6 +28,7 @@ class _UserDetailsState extends State<UserDetails>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -47,12 +49,9 @@ class _UserDetailsState extends State<UserDetails>
                   const SizedBox(
                     width: 130,
                   ),
-                  const Text(
+                  Text(
                     "Details",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: AppTextStyles.font18,
                   ),
                 ],
               ),
@@ -68,7 +67,7 @@ class _UserDetailsState extends State<UserDetails>
                     color: const Color(0XFFFDE48B),
                     image: const DecorationImage(
                       image: (AssetImage(
-                        AppImages.manimages,
+                        AppImages.maleimages,
                       )),
                     ),
                   ),
@@ -80,31 +79,25 @@ class _UserDetailsState extends State<UserDetails>
                   children: [
                     Column(
                       children: [
-                        const Text(
+                        Text(
                           "Maxprecursorltd@gmail.com",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0XFF000000)),
+                          style: AppTextStyles.font16,
                         ),
                         const SizedBox(
                           height: 2,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 135),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 155),
                           child: Text(
                             "Max precious11",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
+                            style: AppTextStyles.fonts12,
                           ),
                         ),
                         const SizedBox(
                           height: 2,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 185),
+                          padding: const EdgeInsets.only(right: 195),
                           child: Row(
                             children: [
                               Container(
@@ -117,14 +110,10 @@ class _UserDetailsState extends State<UserDetails>
                               const SizedBox(
                                 width: 4,
                               ),
-                              const Text(
-                                "Active",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff27AE60),
-                                ),
-                              ),
+                              Text("Active",
+                                  style: AppTextStyles.fonts12.copyWith(
+                                    color: const Color(0xff27AE60),
+                                  )),
                             ],
                           ),
                         ),
@@ -154,11 +143,18 @@ class _UserDetailsState extends State<UserDetails>
                         borderRadius: BorderRadius.circular(23),
                         border: Border.all(width: 1, color: Colors.grey),
                       ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.settings),
-                          Text(
+                          Image.asset(
+                            'assets/icons/setting.png',
+                            width: 18,
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          const Text(
                             "User Settings",
                             style: TextStyle(
                                 fontSize: 14,
@@ -179,14 +175,18 @@ class _UserDetailsState extends State<UserDetails>
                       borderRadius: BorderRadius.circular(23),
                       border: Border.all(width: 1, color: Colors.grey),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.circle_rounded,
-                          color: Colors.red,
+                        Image.asset(
+                          'assets/icons/minus.png',
+                          width: 18,
+                          height: 18,
                         ),
-                        Text(
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
                           "Deactivate",
                           style: TextStyle(
                               fontSize: 14,

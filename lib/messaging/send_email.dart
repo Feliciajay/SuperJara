@@ -23,6 +23,7 @@ class _SendEmailState extends State<SendEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -157,7 +158,7 @@ class _SendEmailState extends State<SendEmail> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -165,9 +166,10 @@ class _SendEmailState extends State<SendEmail> {
                   height: 239,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffCBD5E1))),
+                      border:
+                          Border.all(width: 1, color: const Color(0xffCBD5E1))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 49,
                 ),
                 Container(

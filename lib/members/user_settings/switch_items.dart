@@ -27,7 +27,13 @@ class SwitchItems extends StatelessWidget {
                 style: AppTextStyles.font14.copyWith(
                   color: const Color(0XFF333333),
                 )),
-            Switch(value: val, onChanged: onChangeMethod1),
+            Transform.scale(
+              scale: 0.45,
+              child: Switch(
+                value: val,
+                onChanged: onChangeMethod1,
+              ),
+            ),
           ],
         ),
       ],

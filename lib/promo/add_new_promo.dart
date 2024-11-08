@@ -53,7 +53,7 @@ class _AddNewPromoState extends State<AddNewPromo> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Padding(
@@ -99,7 +99,7 @@ class _AddNewPromoState extends State<AddNewPromo> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -134,7 +134,7 @@ class _AddNewPromoState extends State<AddNewPromo> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -172,12 +172,12 @@ class _AddNewPromoState extends State<AddNewPromo> {
                                 enabledBorder: InputBorder.none),
                           ),
                         ),
-                        Icon(Icons.calendar_today)
+                        const Icon(Icons.calendar_today)
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Container(
@@ -191,7 +191,7 @@ class _AddNewPromoState extends State<AddNewPromo> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return EditNewPromo();
+                          return const EditNewPromo();
                         }));
                       },
                       child: Text(

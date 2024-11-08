@@ -72,7 +72,7 @@ class _ManageSpecialPromoState extends State<ManageSpecialPromo> {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (_) {
-                                  return AddNewPromo();
+                                  return const AddNewPromo();
                                 }));
                               },
                               child: Text(

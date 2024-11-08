@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/home/home_page.dart';
 import 'package:superjara/members/manager_section.dart';
@@ -28,6 +27,7 @@ class _MemberScreenState extends State<MemberScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -50,12 +50,10 @@ class _MemberScreenState extends State<MemberScreen>
                     const SizedBox(
                       width: 130,
                     ),
-                    const Text(
+                    Text(
                       "Users",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: AppTextStyles.font18
+                          .copyWith(color: const Color(0xff000000)),
                     ),
                   ],
                 ),
@@ -65,17 +63,19 @@ class _MemberScreenState extends State<MemberScreen>
                 TabBar(
                   controller: _tabController,
                   dividerHeight: 1,
+                  labelColor: Colors.black,
+                  unselectedLabelColor:
+                      const Color.fromARGB(255, 154, 156, 159),
+                  indicator: const UnderlineTabIndicator(
+                    borderSide: BorderSide(
+                      width: 3.0,
+                      color: Color(0xff7B1085),
+                    ),
+                    insets: EdgeInsets.symmetric(horizontal: 115),
+                  ),
                   tabs: [
-                    Text(
-                      "Members",
-                      style:
-                          AppTextStyles.font12.copyWith(color: AppColors.grey),
-                    ),
-                    Text(
-                      "Managers",
-                      style:
-                          AppTextStyles.font12.copyWith(color: AppColors.grey),
-                    ),
+                    Text("Members", style: AppTextStyles.fonts14),
+                    Text("Managers", style: AppTextStyles.fonts14),
                   ],
                 ),
                 const SizedBox(

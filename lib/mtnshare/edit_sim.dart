@@ -14,6 +14,7 @@ class _EditSimState extends State<EditSim> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -35,14 +36,16 @@ class _EditSimState extends State<EditSim> {
                     const SizedBox(
                       width: 110,
                     ),
-                    Text("Edit Sim", style: AppTextStyles.font18),
+                    Text("Edit Sim",
+                        style: AppTextStyles.font18
+                            .copyWith(color: const Color(0xff000000))),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 41,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 310),
+                  padding: const EdgeInsets.only(right: 300),
                   child: Text(
                     "Name",
                     style: AppTextStyles.font14
@@ -66,16 +69,19 @@ class _EditSimState extends State<EditSim> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: ' Gbemi Connect 2',
-                        helperStyle: AppTextStyles.font14),
+                      border: InputBorder.none,
+                      hintText: ' Gbemi Connect 2',
+                      helperStyle: AppTextStyles.font14.copyWith(
+                        color: const Color(0xff475569),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 250),
+                  padding: const EdgeInsets.only(right: 235),
                   child: Text(
                     "Phone Number",
                     style: AppTextStyles.font14
@@ -104,7 +110,7 @@ class _EditSimState extends State<EditSim> {
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
                 Container(

@@ -13,6 +13,7 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -101,44 +102,36 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                               Icon(Icons.arrow_drop_down)
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 29,
                           ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 200,
-                                      ),
-                                      Text(
-                                        'Successful',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFF219653)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Text(
+                                '07035327869',
+                                style: AppTextStyles.font14,
+                              ),
+                              const SizedBox(
+                                width: 160,
+                              ),
+                              Text(
+                                "+₦35,000.00",
+                                style: AppTextStyles.font14,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('Apr 18th, 20:59',
+                                  style: AppTextStyles.font12.copyWith(
+                                      color: const Color(0xff475569))),
+                              const SizedBox(
+                                width: 190,
+                              ),
+                              Text(
+                                'Successful',
+                                style: AppTextStyles.font12
+                                    .copyWith(color: const Color(0XFF219653)),
                               ),
                             ],
                           ),
@@ -163,7 +156,7 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                                         style: AppTextStyles.font14,
                                       ),
                                       const SizedBox(
-                                        width: 170,
+                                        width: 160,
                                       ),
                                       Text(
                                         "+₦35,000.00",
@@ -177,7 +170,7 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                                           style: AppTextStyles.font12.copyWith(
                                               color: const Color(0xff475569))),
                                       const SizedBox(
-                                        width: 220,
+                                        width: 210,
                                       ),
                                       Text(
                                         'Failed',
@@ -202,6 +195,46 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                           ),
                           Row(
                             children: [
+                              Text(
+                                '07035327869',
+                                style: AppTextStyles.font14,
+                              ),
+                              const SizedBox(
+                                width: 160,
+                              ),
+                              Text(
+                                "+₦35,000.00",
+                                style: AppTextStyles.font14,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('Apr 18th, 20:59',
+                                  style: AppTextStyles.font12.copyWith(
+                                      color: const Color(0xff475569))),
+                              const SizedBox(
+                                width: 200,
+                              ),
+                              Text(
+                                'Pending',
+                                style: AppTextStyles.font12
+                                    .copyWith(color: const Color(0XFF949621)),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Divider(
+                            height: 2,
+                            color: Color(0xff999999),
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            children: [
                               Column(
                                 children: [
                                   Row(
@@ -211,7 +244,7 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                                         style: AppTextStyles.font14,
                                       ),
                                       const SizedBox(
-                                        width: 170,
+                                        width: 160,
                                       ),
                                       Text(
                                         "+₦35,000.00",
@@ -225,7 +258,95 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                                           style: AppTextStyles.font12.copyWith(
                                               color: const Color(0xff475569))),
                                       const SizedBox(
-                                        width: 210,
+                                        width: 190,
+                                      ),
+                                      Text(
+                                        'Successful',
+                                        style: AppTextStyles.font12.copyWith(
+                                            color: const Color(0XFF219653)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Divider(
+                            height: 2,
+                            color: Color(0xff999999),
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '07035327869',
+                                style: AppTextStyles.font14,
+                              ),
+                              const SizedBox(
+                                width: 160,
+                              ),
+                              Text(
+                                "+₦35,000.00",
+                                style: AppTextStyles.font14,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('Apr 18th, 20:59',
+                                  style: AppTextStyles.font12.copyWith(
+                                      color: const Color(0xff475569))),
+                              const SizedBox(
+                                width: 210,
+                              ),
+                              Text(
+                                'Failed',
+                                style: AppTextStyles.font12
+                                    .copyWith(color: const Color(0XFFFF0000)),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Divider(
+                            height: 2,
+                            color: Color(0xff999999),
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '07035327869',
+                                        style: AppTextStyles.font14,
+                                      ),
+                                      const SizedBox(
+                                        width: 160,
+                                      ),
+                                      Text(
+                                        "+₦35,000.00",
+                                        style: AppTextStyles.font14,
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text('Apr 18th, 20:59',
+                                          style: AppTextStyles.font12.copyWith(
+                                              color: const Color(0xff475569))),
+                                      const SizedBox(
+                                        width: 200,
                                       ),
                                       Text(
                                         'Pending',
@@ -250,39 +371,31 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                           ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 200,
-                                      ),
-                                      Text(
-                                        'Successful',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFF219653)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Text(
+                                '07035327869',
+                                style: AppTextStyles.font14,
+                              ),
+                              const SizedBox(
+                                width: 160,
+                              ),
+                              Text(
+                                "+₦35,000.00",
+                                style: AppTextStyles.font14,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('Apr 18th, 20:59',
+                                  style: AppTextStyles.font12.copyWith(
+                                      color: const Color(0xff475569))),
+                              const SizedBox(
+                                width: 190,
+                              ),
+                              Text(
+                                'Successful',
+                                style: AppTextStyles.font12
+                                    .copyWith(color: const Color(0XFF219653)),
                               ),
                             ],
                           ),
@@ -298,183 +411,31 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                           ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 220,
-                                      ),
-                                      Text(
-                                        'Failed',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFFFF0000)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Text(
+                                '07035327869',
+                                style: AppTextStyles.font14,
+                              ),
+                              const SizedBox(
+                                width: 160,
+                              ),
+                              Text(
+                                "+₦35,000.00",
+                                style: AppTextStyles.font14,
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Divider(
-                            height: 2,
-                            color: Color(0xff999999),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 210,
-                                      ),
-                                      Text(
-                                        'Pending',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFF949621)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Text('Apr 18th, 20:59',
+                                  style: AppTextStyles.font12.copyWith(
+                                      color: const Color(0xff475569))),
+                              const SizedBox(
+                                width: 200,
                               ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Divider(
-                            height: 2,
-                            color: Color(0xff999999),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 200,
-                                      ),
-                                      Text(
-                                        'Successful',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFF219653)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Divider(
-                            height: 2,
-                            color: Color(0xff999999),
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '07035327869',
-                                        style: AppTextStyles.font14,
-                                      ),
-                                      const SizedBox(
-                                        width: 170,
-                                      ),
-                                      Text(
-                                        "+₦35,000.00",
-                                        style: AppTextStyles.font14,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('Apr 18th, 20:59',
-                                          style: AppTextStyles.font12.copyWith(
-                                              color: const Color(0xff475569))),
-                                      const SizedBox(
-                                        width: 210,
-                                      ),
-                                      Text(
-                                        'Failed',
-                                        style: AppTextStyles.font12.copyWith(
-                                            color: const Color(0XFFFF0000)),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Text(
+                                'Failed',
+                                style: AppTextStyles.font12
+                                    .copyWith(color: const Color(0XFFFF0000)),
                               ),
                             ],
                           ),

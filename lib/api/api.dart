@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superjara/api/add_api.dart';
 import 'package:superjara/api/api_details.dart';
 import 'package:superjara/const/app_textsyle.dart';
@@ -64,6 +63,7 @@ class _APIState extends State<API> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

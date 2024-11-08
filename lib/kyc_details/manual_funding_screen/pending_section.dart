@@ -44,7 +44,7 @@ class PendingSection extends StatelessWidget {
                               width: 70,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color.fromARGB(255, 240, 205, 135),
+                                color: const Color.fromARGB(255, 240, 205, 135),
                               ),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +63,7 @@ class PendingSection extends StatelessWidget {
                                       onTap: () {
                                         Navigator.push(context,
                                             MaterialPageRoute(builder: (_) {
-                                          return ManualPendingDetails();
+                                          return const ManualPendingDetails();
                                         }));
                                       },
                                       child: Text(
@@ -82,7 +82,7 @@ class PendingSection extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 230, 228, 228),
               )
             ],
           );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
+import 'package:superjara/const/app_textsyle.dart';
 
 import 'package:superjara/members/details_screen/details_account.dart';
 
@@ -13,168 +14,183 @@ class DetailsComponent extends StatefulWidget {
 class _DetailsComponentState extends State<DetailsComponent> {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "PERSONAL DETAILS",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            SizedBox(
+            Text("PERSONAL DETAILS",
+                style: AppTextStyles.font14.copyWith(
+                    color: const Color(0XFF333333),
+                    fontWeight: FontWeight.w300)),
+            const SizedBox(
               height: 20,
             ),
-            Details(),
-            SizedBox(
+            const Details(),
+            const SizedBox(
               height: 40,
             ),
-            Text(
-              "CONTACT DETAILS",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            SizedBox(
+            Text("CONTACT DETAILS",
+                style: AppTextStyles.font14.copyWith(
+                    color: const Color(0XFF333333),
+                    fontWeight: FontWeight.w300)),
+            const SizedBox(
               height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Email Address",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: AppColors.black,
-                  ),
-                ),
+                Text("Email Address",
+                    style: AppTextStyles.fonts12.copyWith(
+                        color: const Color(0XFF000000),
+                        fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text(
-                      "adedokunpeace@gmail.com",
+                    Text("adedokunpeace@gmail.com",
+                        style: AppTextStyles.fonts12.copyWith(
+                            color: const Color(0XFF000000),
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(
+                      width: 5,
                     ),
-                    Icon(Icons.arrow_forward_ios)
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    )
                   ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Divider(
+            const Divider(
               height: 4,
               color: AppColors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Phone Number",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0XFF333333),
-                  ),
-                ),
+                Text("Phone Number",
+                    style: AppTextStyles.font14.copyWith(
+                        color: const Color(0XFF000000),
+                        fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text(
-                      "08169784022",
+                    Text("08169784022",
+                        style: AppTextStyles.font14.copyWith(
+                            color: const Color(0XFF000000),
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(
+                      width: 5,
                     ),
-                    Icon(Icons.arrow_forward_ios)
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    )
                   ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Text(
-              "ADDRESS INFO",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            SizedBox(
+            Text("ADDRESS INFO",
+                style: AppTextStyles.font14.copyWith(
+                    color: const Color(0XFF333333),
+                    fontWeight: FontWeight.w300)),
+            const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Address",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0XFF333333),
-                  ),
-                ),
+                Text("Address",
+                    style: AppTextStyles.font14.copyWith(
+                        color: const Color(0XFF333333),
+                        fontWeight: FontWeight.w300)),
                 Row(
-                  children: [Text("Nil"), Icon(Icons.arrow_forward_ios)],
+                  children: [
+                    Text("Nil",
+                        style: AppTextStyles.font14.copyWith(
+                            color: const Color.fromARGB(255, 194, 192, 192),
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Icon(Icons.arrow_forward_ios, size: 15)
+                  ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Divider(
+            const Divider(
               height: 4,
               color: AppColors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "City",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0XFF333333),
-                  ),
-                ),
+                Text("City",
+                    style: AppTextStyles.font14.copyWith(
+                        color: const Color(0XFF333333),
+                        fontWeight: FontWeight.w400)),
                 Row(
-                  children: [Text("Nil"), Icon(Icons.arrow_forward_ios)],
+                  children: [
+                    Text("Nil",
+                        style: AppTextStyles.font14.copyWith(
+                            color: const Color.fromARGB(255, 194, 192, 192),
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    )
+                  ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Divider(
+            const Divider(
               height: 4,
               color: AppColors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "State",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0XFF333333),
-                  ),
-                ),
+                Text("State",
+                    style: AppTextStyles.font14.copyWith(
+                        color: const Color(0XFF333333),
+                        fontWeight: FontWeight.w400)),
                 Row(
-                  children: [Text("Nil"), Icon(Icons.arrow_forward_ios)],
+                  children: [
+                    Text("Nil",
+                        style: AppTextStyles.font14.copyWith(
+                            color: const Color.fromARGB(255, 194, 192, 192),
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    )
+                  ],
                 ),
               ],
             ),

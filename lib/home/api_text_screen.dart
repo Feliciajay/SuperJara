@@ -6,9 +6,7 @@ class ApiTestScreen extends StatefulWidget {
   const ApiTestScreen({super.key});
 
   @override
-  State<ApiTestScreen> createState() => _ApiTestScreenState(
-    
-  );
+  State<ApiTestScreen> createState() => _ApiTestScreenState();
 }
 
 class _ApiTestScreenState extends State<ApiTestScreen> {
@@ -44,7 +42,7 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
       "login_id": email,
       "password": password
     };
-    print(body);
+    (body);
     var response = await dio.post(
       url1,
       data: body,
@@ -54,7 +52,7 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
       }),
     );
     var responseData = response.data;
-    print(responseData['data']['message']);
+    (responseData['data']['message']);
   }
 
   @override

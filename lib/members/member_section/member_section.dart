@@ -27,6 +27,7 @@ class _MembersSectionState extends State<MembersSection>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -54,7 +55,7 @@ class _MembersSectionState extends State<MembersSection>
                           ),
                           Icon(
                             Icons.search,
-                            size: 20,
+                            size: 15,
                             color: Color(0xff4F4F4F),
                           ),
                           SizedBox(
@@ -63,7 +64,10 @@ class _MembersSectionState extends State<MembersSection>
                           Flexible(
                             child: TextField(
                               decoration: InputDecoration(
-                                  hintText: "Search for Api",
+                                  hintText: "Search for a member",
+                                  hintStyle: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
                                   border: InputBorder.none),
                             ),
                           ),
@@ -77,7 +81,7 @@ class _MembersSectionState extends State<MembersSection>
                 height: 30,
               ),
               Container(
-                height: 585,
+                height: 576,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -110,8 +114,8 @@ class _MembersSectionState extends State<MembersSection>
                               children: [
                                 Text(
                                   "All",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.black),
+                                  style: AppTextStyles.fonts12
+                                      .copyWith(color: const Color(0XFF1A1A1A)),
                                 ),
                                 const SizedBox(
                                   width: 4,
@@ -120,7 +124,7 @@ class _MembersSectionState extends State<MembersSection>
                                   height: 15,
                                   width: 17,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(17),
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
@@ -136,15 +140,15 @@ class _MembersSectionState extends State<MembersSection>
                             height: 31,
                             width: 103,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(17),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   "Active",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.black),
+                                  style: AppTextStyles.fonts12
+                                      .copyWith(color: const Color(0XFF1A1A1A)),
                                 ),
                                 const SizedBox(
                                   width: 4,
@@ -153,7 +157,7 @@ class _MembersSectionState extends State<MembersSection>
                                   height: 15,
                                   width: 17,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(17),
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
@@ -169,15 +173,15 @@ class _MembersSectionState extends State<MembersSection>
                             height: 31,
                             width: 103,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(17),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   "Inactive",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.black),
+                                  style: AppTextStyles.fonts12
+                                      .copyWith(color: const Color(0XFF1A1A1A)),
                                 ),
                                 const SizedBox(
                                   width: 4,
@@ -186,7 +190,7 @@ class _MembersSectionState extends State<MembersSection>
                                   height: 15,
                                   width: 17,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(17),
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,

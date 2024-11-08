@@ -42,7 +42,8 @@ class ConfirmedSection extends StatelessWidget {
                               width: 70,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Color.fromARGB(255, 157, 228, 186)),
+                                  color:
+                                      const Color.fromARGB(255, 157, 228, 186)),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -71,7 +72,7 @@ class ConfirmedSection extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 230, 228, 228),
               )
             ],
           );

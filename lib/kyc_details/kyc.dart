@@ -23,6 +23,7 @@ class _KYCState extends State<KYC> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,7 +83,7 @@ class _KYCState extends State<KYC> with SingleTickerProviderStateMixin {
                       Flexible(
                         child: TextField(
                           decoration: InputDecoration(
-                              hintText: "Search for Api",
+                              hintText: "Search for a user",
                               border: InputBorder.none),
                         ),
                       ),
@@ -113,10 +114,11 @@ class _KYCState extends State<KYC> with SingleTickerProviderStateMixin {
                           labelPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
                           indicatorColor: Colors.transparent,
-                          indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color(0xffB0B0D5),
-                          ),
+                          indicator: null,
+                          //  BoxDecoration(
+                          //   borderRadius: BorderRadius.circular(10),
+                          //   color: const Color(0xffB0B0D5),
+                          // ),
                           tabs: [
                             Container(
                               decoration: BoxDecoration(

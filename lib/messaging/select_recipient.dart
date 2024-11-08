@@ -15,6 +15,7 @@ class _SelectRecipientState extends State<SelectRecipient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -84,7 +85,7 @@ class _SelectRecipientState extends State<SelectRecipient> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Padding(
@@ -95,7 +96,7 @@ class _SelectRecipientState extends State<SelectRecipient> {
                         'Select All',
                         style: AppTextStyles.font14,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 252,
                       ),
                       Container(
@@ -109,7 +110,7 @@ class _SelectRecipientState extends State<SelectRecipient> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 17,
                 ),
                 Column(
@@ -128,7 +129,7 @@ class _SelectRecipientState extends State<SelectRecipient> {
                                   color: const Color(0XFFFDE48B),
                                   image: const DecorationImage(
                                     image: (AssetImage(
-                                      AppImages.manimages,
+                                      AppImages.maleimages,
                                     )),
                                   ),
                                 ),

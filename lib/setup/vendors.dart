@@ -159,7 +159,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -187,7 +187,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -221,7 +221,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -249,7 +249,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -283,7 +283,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -311,7 +311,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -345,7 +345,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -373,7 +373,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -407,7 +407,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -435,7 +435,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -469,7 +469,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(
@@ -497,7 +497,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               const Divider(
@@ -531,7 +531,7 @@ class _SupportedVendorsState extends State<SupportedVendors> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 220,
                                   ),
                                   PopupMenuButton(

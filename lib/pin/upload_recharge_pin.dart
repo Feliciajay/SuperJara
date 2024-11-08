@@ -70,7 +70,7 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -108,7 +108,7 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -118,7 +118,7 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -156,7 +156,7 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Row(
@@ -165,18 +165,18 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                       'Pins',
                       style: AppTextStyles.font14,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 246,
                     ),
                     Text(
                       'Upload file',
                       style: AppTextStyles.font14.copyWith(
-                        color: Color(0xff892BE0),
+                        color: const Color(0xff892BE0),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -186,7 +186,7 @@ class _UploadRechargePinState extends State<UploadRechargePin> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       width: 1,
-                      color: Color(0xffCBD5E1),
+                      color: const Color(0xffCBD5E1),
                     ),
                   ),
                   child: Padding(

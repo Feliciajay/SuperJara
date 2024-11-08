@@ -16,6 +16,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -100,7 +101,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -144,7 +145,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
                 Container(

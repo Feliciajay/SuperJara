@@ -62,7 +62,7 @@ class _UpLoadPinState extends State<UpLoadPin> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return UploadEducationalPin();
+                          return const UploadEducationalPin();
                         }));
                       },
                       child: Row(
@@ -98,7 +98,7 @@ class _UpLoadPinState extends State<UpLoadPin> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return UploadRechargePin();
+                          return const UploadRechargePin();
                         }));
                       },
                       child: Row(
@@ -134,7 +134,7 @@ class _UpLoadPinState extends State<UpLoadPin> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return UploadDataPin();
+                          return const UploadDataPin();
                         }));
                       },
                       child: Row(

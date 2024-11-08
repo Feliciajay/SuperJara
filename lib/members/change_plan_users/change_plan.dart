@@ -32,6 +32,7 @@ class _ChangePlanState extends State<ChangePlan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -158,7 +159,7 @@ class _ChangePlanState extends State<ChangePlan> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               Container(
@@ -166,19 +167,19 @@ class _ChangePlanState extends State<ChangePlan> {
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Color(0XFF000078),
+                  color: const Color(0XFF000078),
                 ),
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) {
-                        return PaymentGateway();
+                        return const PaymentGateway();
                       }));
                     },
                     child: Text(
                       "Change Plan",
                       style: AppTextStyles.font16
-                          .copyWith(color: Color(0xffFFFFFF)),
+                          .copyWith(color: const Color(0xffFFFFFF)),
                     ),
                   ),
                 ),

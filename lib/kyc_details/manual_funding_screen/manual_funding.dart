@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/confirmed_section.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/denied_section.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/pending_section.dart';
@@ -26,6 +24,7 @@ class _ManualFundingScreenState extends State<ManualFundingScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

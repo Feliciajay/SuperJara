@@ -159,7 +159,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,
@@ -246,7 +246,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,
@@ -333,7 +333,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,
@@ -420,7 +420,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,
@@ -507,7 +507,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,
@@ -594,7 +594,7 @@ class _ServiceRoutingState extends State<ServiceRouting> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 165,
                   height: 52,

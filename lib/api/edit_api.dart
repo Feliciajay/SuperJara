@@ -19,6 +19,7 @@ class _EditApiState extends State<EditApi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -47,7 +48,7 @@ class _EditApiState extends State<EditApi> {
                   height: 41,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 280),
+                  padding: const EdgeInsets.only(right: 270),
                   child: Text(
                     "Api Name",
                     style: AppTextStyles.font14
@@ -72,7 +73,7 @@ class _EditApiState extends State<EditApi> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: ' Gbemi Connect 2',
+                        hintText: '',
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
@@ -95,7 +96,8 @@ class _EditApiState extends State<EditApi> {
                   height: 52,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffCBD5E1))),
+                      border:
+                          Border.all(width: 1, color: const Color(0xffCBD5E1))),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: selectedItem,
@@ -122,7 +124,7 @@ class _EditApiState extends State<EditApi> {
                   height: 32,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 300),
+                  padding: const EdgeInsets.only(right: 290),
                   child: Text(
                     "Api Key",
                     style: AppTextStyles.font14

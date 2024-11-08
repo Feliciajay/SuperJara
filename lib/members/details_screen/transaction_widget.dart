@@ -18,21 +18,25 @@ class TransactionWidget extends StatelessWidget {
             ('assets/icons/telephone.png'),
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(
+          width: 5,
+        ),
         Column(
           children: [
             Row(
               children: [
                 Text(
                   'Transfer from Akinwa...',
-                  style: AppTextStyles.font14,
+                  style: AppTextStyles.font14
+                      .copyWith(fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
-                  width: 30,
+                  width: 20,
                 ),
                 Text(
-                  "+₦35,000.00",
-                  style: AppTextStyles.font14,
+                  "+N35,000.00",
+                  style: AppTextStyles.font14
+                      .copyWith(fontWeight: FontWeight.w500),
                 ),
               ],
             ),

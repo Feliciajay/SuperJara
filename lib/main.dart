@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:superjara/bottom%20nav/bottom_nav.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:superjara/splash_screen/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNav(),
+      home: // BottomNav
+          SplashScreen(),
     );
   }
 }

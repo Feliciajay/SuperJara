@@ -72,7 +72,7 @@ class DeniedSection extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 230, 228, 228),
               )
             ],
           );

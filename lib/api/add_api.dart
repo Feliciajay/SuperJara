@@ -19,6 +19,7 @@ class _AddApiState extends State<AddApi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,7 +44,7 @@ class _AddApiState extends State<AddApi> {
                     Text("Add Api", style: AppTextStyles.font18),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 41,
                 ),
                 Padding(
@@ -76,7 +77,7 @@ class _AddApiState extends State<AddApi> {
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -95,7 +96,8 @@ class _AddApiState extends State<AddApi> {
                   height: 52,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffCBD5E1))),
+                      border:
+                          Border.all(width: 1, color: const Color(0xffCBD5E1))),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: selectedItem,
@@ -118,7 +120,7 @@ class _AddApiState extends State<AddApi> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
                 Container(

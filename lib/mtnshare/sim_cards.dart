@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:superjara/const/app_colors.dart';
+
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/mtnshare/edit_sim.dart';
 import 'package:superjara/mtnshare/mtn_details.dart';
@@ -55,266 +54,272 @@ class _SimCardsState extends State<SimCards> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xfff7f7f7),
         body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context, (_) {
-                          return const MTNDetails();
-                        });
-                      },
-                      child: const Icon(Icons.arrow_back)),
                   const SizedBox(
-                    width: 110,
+                    height: 20,
                   ),
-                  const Text(
-                    "Sim Cards",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                  Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context, (_) {
+                              return const MTNDetails();
+                            });
+                          },
+                          child: const Icon(Icons.arrow_back)),
+                      const SizedBox(
+                        width: 110,
+                      ),
+                      const Text(
+                        "Sim Cards",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 85,
+                      ),
+                      PopupMenuButton(
+                        itemBuilder: ((context) => [
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          height: 287,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(30),
+                                              topRight: Radius.circular(30),
+                                            ),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 42,
+                                              ),
+                                              Text(
+                                                'Set Daily Quota',
+                                                style: AppTextStyles.fonts14,
+                                              ),
+                                              const SizedBox(
+                                                height: 39,
+                                              ),
+                                              Text(
+                                                textAlign: TextAlign.justify,
+                                                'Daily Quota In volume of transaction',
+                                                style: AppTextStyles.font14
+                                                    .copyWith(
+                                                  color:
+                                                      const Color(0xff475569),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 8,
+                                              ),
+                                              Container(
+                                                width: 350,
+                                                height: 52,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  border: Border.all(
+                                                    width: 1,
+                                                    color:
+                                                        const Color(0xffCBD5E1),
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 8,
+                                              ),
+                                              Container(
+                                                width: 348,
+                                                height: 48,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color:
+                                                      const Color(0xff000078),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    'Set',
+                                                    style: AppTextStyles.font16
+                                                        .copyWith(
+                                                      color: const Color(
+                                                          0xffffffff),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                },
+                                value: 'Set Daily Quota Count',
+                                child: const Text('Set Daily Quota Count'),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'Reset Vending Activity',
+                                child: Text('Reset Vending Activity'),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'load Bundle For Others',
+                                child: Text('load Bundle For Others'),
+                              ),
+                            ]),
+                        onSelected: (value) {
+                          ('Selected:$value');
+                        },
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 38,
+                  ),
+                  Container(
+                    height: 42,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color(
+                        0XFFEBEBEB,
+                      ),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintStyle: AppTextStyles.font14,
+                        border: InputBorder.none,
+                        hintText: ' Search for a sim',
+                      ),
                     ),
                   ),
                   const SizedBox(
-                    width: 85,
+                    height: 28,
                   ),
-                  PopupMenuButton(
-                    itemBuilder: ((context) => [
-                          PopupMenuItem<String>(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      height: 287,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(30),
-                                          topRight: Radius.circular(30),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 42,
-                                          ),
-                                          Text(
-                                            'Set Daily Quota',
-                                            style: AppTextStyles.font14,
-                                          ),
-                                          SizedBox(
-                                            height: 39,
-                                          ),
-                                          Text(
-                                            'Daily Quota In volume of transaction',
-                                            style:
-                                                AppTextStyles.font14.copyWith(
-                                              color: Color(0xff475569),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Container(
-                                            width: 350,
-                                            height: 52,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
-                                                width: 1,
-                                                color: Color(0xffCBD5E1),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Container(
-                                            width: 348,
-                                            height: 48,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: Color(0xff000078),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Set',
-                                                style: AppTextStyles.font16
-                                                    .copyWith(
-                                                  color: Color(0xffffffff),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  });
-                            },
-                            value: 'Set Daily Quota Count',
-                            child: const Text('Set Daily Quota Count'),
-                          ),
-                          const PopupMenuItem<String>(
-                            value: 'Reset Vending Activity',
-                            child: Text('Reset Vending Activity'),
-                          ),
-                          const PopupMenuItem<String>(
-                            value: 'load Bundle For Others',
-                            child: Text('load Bundle For Others'),
-                          ),
-                        ]),
-                    onSelected: (value) {
-                      ('Selected:$value');
-                    },
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 38,
-              ),
-              Container(
-                height: 42,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(
-                    0XFFEBEBEB,
-                  ),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefix: const Icon(Icons.search),
-                    hintStyle: AppTextStyles.font14,
-                    border: InputBorder.none,
-                    hintText: ' Search for a sim',
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 28,
-              ),
-              Container(
-                height: 750,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xffFFFFFF),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 17, left: 14),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Row(
+                  Container(
+                    height: 750,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color(0xffFFFFFF),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 17, left: 14),
+                      child: SingleChildScrollView(
+                        child: Column(
                           children: [
-                            const Icon(
-                              Icons.add_circle,
-                              color: Color(0xff000078),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.add_circle,
+                                  color: Color(0xff000078),
+                                ),
+                                const SizedBox(
+                                  width: 1,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) {
+                                      return const EditSim();
+                                    }));
+                                  },
+                                  child: Text(
+                                    'Add Sim',
+                                    style: AppTextStyles.font14.copyWith(
+                                      color: const Color(0xff000078),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
-                              width: 1,
+                              height: 17,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (_) {
-                                  return EditSim();
-                                }));
-                              },
-                              child: Text(
-                                'Add Sim',
-                                style: AppTextStyles.font14.copyWith(
-                                  color: const Color(0xff000078),
-                                ),
-                              ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val2,
+                              onChangeMethod1: onChangeFunction2,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val3,
+                              onChangeMethod1: onChangeFunction3,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val2,
+                              onChangeMethod1: onChangeFunction2,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val3,
+                              onChangeMethod1: onChangeFunction3,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val2,
+                              onChangeMethod1: onChangeFunction2,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val3,
+                              onChangeMethod1: onChangeFunction3,
+                            ),
+                            const Divider(
+                              height: 13,
+                              color: Color.fromARGB(255, 222, 225, 228),
+                            ),
+                            SwitchItems(
+                              text: 'Gbemi Connect 2',
+                              val: val3,
+                              onChangeMethod1: onChangeFunction3,
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 17,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val2,
-                          onChangeMethod1: onChangeFunction2,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val3,
-                          onChangeMethod1: onChangeFunction3,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val2,
-                          onChangeMethod1: onChangeFunction2,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val3,
-                          onChangeMethod1: onChangeFunction3,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val2,
-                          onChangeMethod1: onChangeFunction2,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val3,
-                          onChangeMethod1: onChangeFunction3,
-                        ),
-                        const Divider(
-                          height: 4,
-                          color: AppColors.grey,
-                        ),
-                        SwitchItems(
-                          text: 'Gbemi Connect 2',
-                          val: val3,
-                          onChangeMethod1: onChangeFunction3,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }
 
@@ -336,75 +341,97 @@ class SwitchItems extends StatefulWidget {
 class _SwitchItemsState extends State<SwitchItems> {
   bool isSelected = false;
   bool isSwitched = false;
+  bool _isObscure = false;
+  toggleTextVisibility() {
+    setState(() {
+      _isObscure = !_isObscure;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  widget.text,
-                  style: AppTextStyles.font14.copyWith(
-                    color: const Color(0XFF333333),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 15,
-                  width: 15,
-                  padding: const EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 1,
-                      color: const Color(0xff2A9504),
+    return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 13,
+              ),
+              Row(
+                children: [
+                  Text(
+                    widget.text,
+                    style: AppTextStyles.fonts14.copyWith(
+                      color: const Color(0XFF000000),
                     ),
                   ),
-                  child: Container(
-                    height: 9,
-                    width: 9,
-                    decoration: const BoxDecoration(
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 15,
+                    width: 15,
+                    padding: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xff2A9504),
+                      border: Border.all(
+                        width: 1,
+                        color: const Color(0xff2A9504),
+                      ),
+                    ),
+                    child: Container(
+                      height: 9,
+                      width: 9,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xff2A9504),
+                      ),
                     ),
                   ),
+                ],
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Text(
+                _isObscure ? '***********' : '93395853348',
+                style: AppTextStyles.font14,
+              ),
+              const SizedBox(
+                height: 13,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () => toggleTextVisibility(),
+                child: Icon(
+                  _isObscure ? Icons.visibility_off : Icons.visibility,
+                  size: 20,
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                const Text('93395853348'),
-                const SizedBox(
-                  width: 150,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Transform.scale(
+                scale: 0.60,
+                child: Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitched = value;
+                    });
+                  },
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: Icon(Icons.visibility),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Switch(
-                    value: isSwitched,
-                    onChanged: (value) {
-                      setState(() {
-                        isSwitched = value;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ],
-    );
+              ),
+            ],
+          ),
+        ],
+      ),
+    ]);
   }
 }

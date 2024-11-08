@@ -24,6 +24,7 @@ class _SendSMSState extends State<SendSMS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -158,7 +159,7 @@ class _SendSMSState extends State<SendSMS> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -166,9 +167,10 @@ class _SendSMSState extends State<SendSMS> {
                   height: 239,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffCBD5E1))),
+                      border:
+                          Border.all(width: 1, color: const Color(0xffCBD5E1))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 49,
                 ),
                 Container(
@@ -182,7 +184,7 @@ class _SendSMSState extends State<SendSMS> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return SelectRecipient();
+                          return const SelectRecipient();
                         }));
                       },
                       child: Text(

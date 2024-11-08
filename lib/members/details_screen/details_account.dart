@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
+import 'package:superjara/const/app_textsyle.dart';
 
 class Details extends StatelessWidget {
   const Details({
@@ -8,105 +9,90 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "First Name",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            Text("Peace"),
+            Text("First Name", style: AppTextStyles.font14),
+            Text("Peace",
+                style:
+                    AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        Divider(
+        const Divider(
           height: 4,
           color: AppColors.grey,
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Last Name",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            Text("Adedokun"),
+            Text("Last Name", style: AppTextStyles.font14),
+            Text("Adedokun",
+                style:
+                    AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        Divider(
+        const Divider(
           height: 4,
           color: AppColors.grey,
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Username",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
-            Text("Peace_11"),
+            Text("Username", style: AppTextStyles.font14),
+            Text("Peace_11",
+                style:
+                    AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        Divider(
+        const Divider(
           height: 4,
           color: AppColors.grey,
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Date Of Birth",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: Color(0XFF333333),
-              ),
-            ),
+            Text("Date Of Birth", style: AppTextStyles.font14),
             Row(
               children: [
-                Text(
-                  "Nil",
+                Text("Nil",
+                    style: AppTextStyles.font14.copyWith(
+                        color: const Color.fromARGB(255, 194, 192, 192),
+                        fontWeight: FontWeight.w500)),
+                const SizedBox(
+                  width: 5,
                 ),
-                Icon(Icons.arrow_forward_ios)
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                )
               ],
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
-        Divider(
+        const Divider(
           height: 4,
           color: AppColors.grey,
         ),

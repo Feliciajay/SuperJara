@@ -51,7 +51,7 @@ class _EditNewPromoState extends State<EditNewPromo> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Padding(
@@ -123,7 +123,7 @@ class _EditNewPromoState extends State<EditNewPromo> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -133,7 +133,7 @@ class _EditNewPromoState extends State<EditNewPromo> {
                     style: AppTextStyles.font14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Container(
@@ -168,7 +168,7 @@ class _EditNewPromoState extends State<EditNewPromo> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -206,12 +206,12 @@ class _EditNewPromoState extends State<EditNewPromo> {
                                 enabledBorder: InputBorder.none),
                           ),
                         ),
-                        Icon(Icons.calendar_today)
+                        const Icon(Icons.calendar_today)
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
@@ -249,12 +249,12 @@ class _EditNewPromoState extends State<EditNewPromo> {
                                 enabledBorder: InputBorder.none),
                           ),
                         ),
-                        Icon(Icons.calendar_today)
+                        const Icon(Icons.calendar_today)
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 58,
                 ),
                 Row(
@@ -275,7 +275,7 @@ class _EditNewPromoState extends State<EditNewPromo> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 9,
                     ),
                     Container(

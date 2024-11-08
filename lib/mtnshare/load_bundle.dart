@@ -20,6 +20,7 @@ class _LoadBundleState extends State<LoadBundle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -41,14 +42,16 @@ class _LoadBundleState extends State<LoadBundle> {
                     const SizedBox(
                       width: 110,
                     ),
-                    Text("Load Bundle", style: AppTextStyles.font18),
+                    Text("Load Bundle",
+                        style: AppTextStyles.font18
+                            .copyWith(color: const Color(0xff000000))),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 41,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 250),
+                  padding: const EdgeInsets.only(right: 240),
                   child: Text(
                     "Phone Number",
                     style: AppTextStyles.font14
@@ -77,11 +80,11 @@ class _LoadBundleState extends State<LoadBundle> {
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 270),
+                  padding: const EdgeInsets.only(right: 250),
                   child: Text(
                     "Data Bundle",
                     style: AppTextStyles.font14
@@ -96,7 +99,8 @@ class _LoadBundleState extends State<LoadBundle> {
                   height: 52,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffCBD5E1))),
+                      border:
+                          Border.all(width: 1, color: const Color(0xffCBD5E1))),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: selectedItem,
@@ -119,7 +123,7 @@ class _LoadBundleState extends State<LoadBundle> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 64,
                 ),
                 Container(

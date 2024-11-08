@@ -15,6 +15,7 @@ class _PaymentDetailsState extends State<PaymentDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -356,7 +357,7 @@ class _PaymentDetailsState extends State<PaymentDetails> {
                                                     'Delete Plan',
                                                     style: AppTextStyles.font18,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 16,
                                                   ),
                                                   Text(
@@ -364,7 +365,7 @@ class _PaymentDetailsState extends State<PaymentDetails> {
                                                     'Are you sure you want to delete this plan?',
                                                     style: AppTextStyles.font16,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 31,
                                                   ),
                                                   Row(

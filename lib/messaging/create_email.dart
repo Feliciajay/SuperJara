@@ -13,6 +13,7 @@ class _CreateEmailState extends State<CreateEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Column(
           children: [
@@ -27,9 +28,9 @@ class _CreateEmailState extends State<CreateEmail> {
                       return const MoreScreen();
                     });
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const Icon(Icons.arrow_back),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Icon(Icons.arrow_back),
                   ),
                 ),
                 const SizedBox(

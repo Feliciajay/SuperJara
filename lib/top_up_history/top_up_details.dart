@@ -136,7 +136,7 @@ class _TopUpDetailsState extends State<TopUpDetails> {
                       width: 100,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 142, 212, 171)),
+                          color: const Color.fromARGB(255, 142, 212, 171)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -183,7 +183,7 @@ class _TopUpDetailsState extends State<TopUpDetails> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
@@ -271,7 +271,7 @@ class _TopUpDetailsState extends State<TopUpDetails> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(

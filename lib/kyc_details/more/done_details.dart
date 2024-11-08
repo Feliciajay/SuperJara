@@ -14,6 +14,7 @@ class _DoneDetailsState extends State<DoneDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -51,12 +52,13 @@ class _DoneDetailsState extends State<DoneDetails> {
                     const SizedBox(
                       width: 219,
                     ),
-                    const Flexible(
+                    Flexible(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Peace',
-                          hintStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          hintStyle: AppTextStyles.fonts14.copyWith(
+                            color: const Color(0xff000000),
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
@@ -83,12 +85,13 @@ class _DoneDetailsState extends State<DoneDetails> {
                     const SizedBox(
                       width: 202,
                     ),
-                    const Flexible(
+                    Flexible(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Adedokun',
-                          hintStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          hintStyle: AppTextStyles.fonts14.copyWith(
+                            color: const Color(0xff000000),
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
@@ -166,12 +169,13 @@ class _DoneDetailsState extends State<DoneDetails> {
                     const SizedBox(
                       width: 157,
                     ),
-                    const Flexible(
+                    Flexible(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: '08169784012',
-                          hintStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          hintStyle: AppTextStyles.fonts14.copyWith(
+                            color: const Color(0xff000000),
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
@@ -198,12 +202,13 @@ class _DoneDetailsState extends State<DoneDetails> {
                     const SizedBox(
                       width: 219,
                     ),
-                    const Flexible(
+                    Flexible(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'BVN',
-                          hintStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          hintStyle: AppTextStyles.fonts14.copyWith(
+                            color: const Color(0xff000000),
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
@@ -230,12 +235,13 @@ class _DoneDetailsState extends State<DoneDetails> {
                     const SizedBox(
                       width: 162,
                     ),
-                    const Flexible(
+                    Flexible(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: '00800899000',
-                          hintStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          hintStyle: AppTextStyles.fonts14.copyWith(
+                            color: const Color(0xff000000),
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),

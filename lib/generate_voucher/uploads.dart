@@ -61,7 +61,7 @@ class _UploadsState extends State<Uploads> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return WalletVouchers();
+                          return const WalletVouchers();
                         }));
                       },
                       child: Row(
@@ -97,7 +97,7 @@ class _UploadsState extends State<Uploads> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return DataVouchers();
+                          return const DataVouchers();
                         }));
                       },
                       child: Row(

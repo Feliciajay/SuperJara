@@ -71,7 +71,7 @@ class _AddVendorState extends State<AddVendor> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Padding(
@@ -107,7 +107,7 @@ class _AddVendorState extends State<AddVendor> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 28,
               ),
               Padding(
@@ -143,7 +143,7 @@ class _AddVendorState extends State<AddVendor> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 28,
               ),
               Padding(
@@ -179,7 +179,7 @@ class _AddVendorState extends State<AddVendor> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 28,
               ),
               Padding(

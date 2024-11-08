@@ -26,6 +26,7 @@ class _ManagersSectionState extends State<ManagersSection>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -53,7 +54,9 @@ class _ManagersSectionState extends State<ManagersSection>
                     Flexible(
                       child: TextField(
                         decoration: InputDecoration(
-                            hintText: "Search for Api",
+                            hintText: "Search for a user",
+                            hintStyle: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400),
                             border: InputBorder.none),
                       ),
                     ),

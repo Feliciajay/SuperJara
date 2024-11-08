@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/kyc_details/more/more_profile.dart';
 
