@@ -45,6 +45,10 @@ dependencies:
   retrofit: ^4.4.1
   flutter_riverpod: ^2.6.1
   equatable: ^2.0.5
+  utils_plus: ^0.0.5
+  url_launcher: ^6.3.1
+  flutter_screenutil: ^5.9.3
+  win32: ^5.2.0
 
 dev_dependencies:
   flutter_test:
