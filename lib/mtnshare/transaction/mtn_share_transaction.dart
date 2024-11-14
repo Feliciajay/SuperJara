@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/mtnshare/mtn_share.dart';
+import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
+import 'package:superjara/mtnshare/transaction/data/notifier/count_transaction_notifier.dart';
 
-class MTNShareTransaction extends StatefulWidget {
+class MTNShareTransaction extends ConsumerStatefulWidget {
   const MTNShareTransaction({super.key});
 
   @override
-  State<MTNShareTransaction> createState() => _MTNShareTransactionState();
+  ConsumerState<MTNShareTransaction> createState() =>
+      _MTNShareTransactionState();
 }
 
-class _MTNShareTransactionState extends State<MTNShareTransaction> {
+class _MTNShareTransactionState extends ConsumerState<MTNShareTransaction> {
   @override
   Widget build(BuildContext context) {
+    final countTransactionData = ref.watch(countTransactionNotifierProvider
+        .select((v) => v.getCountTransaction.data?.data));
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -129,7 +135,7 @@ class _MTNShareTransactionState extends State<MTNShareTransaction> {
                                 width: 190,
                               ),
                               Text(
-                                'Successful',
+                                'heappay',
                                 style: AppTextStyles.font12
                                     .copyWith(color: const Color(0XFF219653)),
                               ),

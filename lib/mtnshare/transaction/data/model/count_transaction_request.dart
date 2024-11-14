@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'count_member_request.g.dart';
+part 'count_transaction_request.g.dart';
 
 @JsonSerializable(createFactory: false)
-class CountMemberRequest implements EquatableMixin {
-  const CountMemberRequest({
+class CountTransactionRequest implements EquatableMixin {
+  const CountTransactionRequest({
     required this.process,
     required this.action,
     required this.apiKey,
@@ -17,7 +17,7 @@ class CountMemberRequest implements EquatableMixin {
   @JsonKey(defaultValue: "api_key")
   final String apiKey;
 
-  Map<String, dynamic> toJson() => _$CountMemberRequestToJson(this);
+  Map<String, dynamic> toJson() => _$CountTransactionRequestToJson(this);
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override

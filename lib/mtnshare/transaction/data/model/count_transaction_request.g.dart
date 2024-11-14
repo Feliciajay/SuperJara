@@ -1,14 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'count_member_request.dart';
+part of 'count_transaction_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$CountMemberRequestToJson(CountMemberRequest instance) =>
+Map<String, dynamic> _$CountTransactionRequestToJson(
+        CountTransactionRequest instance) =>
     <String, dynamic>{
       'process': instance.process,
       'action': instance.action,
-      'api_key': instance.apiKey,
+      'apiKey': instance.apiKey,
     };

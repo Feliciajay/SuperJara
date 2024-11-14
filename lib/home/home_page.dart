@@ -1,23 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:superjara/home/data/model/count_member_response.dart';
 
-import 'package:superjara/const/app_colors.dart';
-import 'package:superjara/const/app_images.dart';
-import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/const/home_container.dart';
+import 'package:superjara/home/home_container.dart';
+import 'package:superjara/home/notifier/count_member_notifier.dart';
+import 'package:superjara/home/widgets/home_page_header.dart';
+import 'package:superjara/home/widgets/status_widget.dart';
+import 'package:superjara/members/managers_section/data/notifier/count_manager_notifier.dart';
+import 'package:superjara/utils/enums.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({
     super.key,
   });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  String _selectedOption = '';
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  CountMemberData? countMemberData;
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.watch(countMemberNotifierProvider.notifier).countMember();
+      await ref.watch(countManagerNotifierProvider.notifier).countManager();
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final countMemberState = ref.watch(countMemberNotifierProvider);
+    final data = countMemberState.countMemberResponse?.data;
+
+    final countManagerState = ref.watch(countManagerNotifierProvider);
+
+    final managerData = countManagerState.getCountManager?.data;
+    final memberDataLoading = countMemberState.countMemberState.isLoading;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -29,346 +54,98 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 51,
                 ),
-                Column(
-                  children: [
-                    Row(children: [
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(137),
-                          color: const Color(0XFFFDE48B),
-                          image: const DecorationImage(
-                            image: (AssetImage(
-                              AppImages.maleimages,
-                            )),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 23,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Hello peace",
-                            style: AppTextStyles.font14,
-                          ),
-                          const SizedBox(
-                            height: 2,
-                          ),
-                          Text("Set up your VTU business",
-                              style: AppTextStyles.font12
-                                  .copyWith(color: const Color(0xff000000))),
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 75,
-                      ),
-                      SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: Image.asset(
-                          'assets/icons/notification.png',
-                        ),
-                      ),
-                    ]),
-                  ],
-                ),
+                const HomePageHeader(),
                 const SizedBox(
                   height: 28,
                 ),
+                Column(
+                  children: [
+                    HomeContainer(
+                      title: 'Members',
+                      value: '${data?.totalMembers}',
+                      // value: '${data?.totalMembers}',
+                      catergoryValues: Row(
+                        children: [
+                          StatusWidget(
+                            isSuccess: true,
+                            number: '${data?.totalActive}',
+                            status: 'Active',
+                          ),
+                          StatusWidget(
+                            isSuccess: false,
+                            number: '${data?.totalInactive}',
+                            status: 'Inactive',
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    HomeContainer(
+                      title: 'Transactions',
+                      value: '${data?.totalMembers}',
+                      // value: '${data?.totalMembers}',
+                      catergoryValues: const Row(
+                        children: [
+                          StatusWidget(
+                            isSuccess: true,
+                            number: '1000',
+                            status: 'Successful',
+                          ),
+                          StatusWidget(
+                            isSuccess: false,
+                            number: '12',
+                            status: 'Pending',
+                          ),
+                          // StatusWidget(
+                          //   isSuccess: false,
+                          //   number: '12',
+                          //   status: 'Failed',
+                          // ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 28),
+                HomeContainer(
+                  title: 'Managers',
+                  value: '${managerData?.totalManagers}',
+                  // value: '${data?.totalMembers}',
+                  catergoryValues: Row(
+                    children: [
+                      StatusWidget(
+                        isSuccess: true,
+                        number: '${managerData?.totalActive}',
+                        status: 'Active',
+                      ),
+                      StatusWidget(
+                        isSuccess: false,
+                        number: '${managerData?.totalInactive}',
+                        status: 'Inactive',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 28),
                 const HomeContainer(
-                  text: 'Members',
-                ),
-                const SizedBox(
-                  height: 28,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 350,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(8),
+                  title: 'Top Sellers',
+                  value: 'Data Bundle',
+                  // value: '${data?.totalMembers}',
+                  catergoryValues: Row(
+                    children: [
+                      StatusWidget(
+                        isSuccess: true,
+                        number: '12',
+                        status: 'Airtime top up',
                       ),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Transactions",
-                                  style: AppTextStyles.font14,
-                                ),
-                                const SizedBox(
-                                  width: 200,
-                                ),
-                                PopupMenuButton<String>(
-                                  onSelected: (String result) {
-                                    setState(() {
-                                      _selectedOption = result;
-                                    });
-                                  },
-                                  child: const Icon(
-                                    Icons.more_horiz,
-                                    color: Color(0xff0d0c224d),
-                                    size: 30,
-                                  ),
-                                  itemBuilder: (BuildContext context) =>
-                                      <PopupMenuEntry<String>>[
-                                    const PopupMenuItem<String>(
-                                      value: '',
-                                      child: Text('Today'),
-                                    ),
-                                    const PopupMenuItem<String>(
-                                      value: '',
-                                      child: Text('All Time'),
-                                    ),
-                                  ],
-                                ),
-                                Text(' $_selectedOption'),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 300),
-                            child: Text(
-                              "24",
-                              style: AppTextStyles.font20,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 16,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: AppColors.lightgreen),
-                                  child: Text(
-                                    "1000",
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyles.font12
-                                        .copyWith(color: AppColors.lemon),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  "Successful",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.grey),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  height: 16,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: AppColors.wine),
-                                  child: Text(
-                                    "12",
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyles.font12
-                                        .copyWith(color: AppColors.red),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  "Pending",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.grey),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  height: 16,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: AppColors.wine),
-                                  child: Text(
-                                    "12",
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyles.font12
-                                        .copyWith(color: AppColors.red),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  "Failed",
-                                  style: AppTextStyles.font12
-                                      .copyWith(color: AppColors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                      StatusWidget(
+                        isSuccess: false,
+                        number: '12',
+                        status: 'Electricity',
                       ),
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    const HomeContainer(
-                      text: 'Managers',
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: 350,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Top Sellers",
-                                      style: AppTextStyles.font14,
-                                    ),
-                                    const SizedBox(
-                                      width: 215,
-                                    ),
-                                    PopupMenuButton<String>(
-                                      onSelected: (String result) {
-                                        setState(() {
-                                          _selectedOption = result;
-                                        });
-                                      },
-                                      child: const Icon(
-                                        Icons.more_horiz,
-                                        color: Color(0xff0d0c224d),
-                                        size: 30,
-                                      ),
-                                      itemBuilder: (BuildContext context) =>
-                                          <PopupMenuEntry<String>>[
-                                        const PopupMenuItem<String>(
-                                          value: '',
-                                          child: Text('Today'),
-                                        ),
-                                        const PopupMenuItem<String>(
-                                          value: '',
-                                          child: Text('All Time'),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(' $_selectedOption'),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 210),
-                                child: Text(
-                                  "Data Bundle",
-                                  style: AppTextStyles.font20,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 16,
-                                      width: 35,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: AppColors.lightgreen),
-                                      child: Text(
-                                        "2",
-                                        textAlign: TextAlign.center,
-                                        style: AppTextStyles.font12
-                                            .copyWith(color: AppColors.lemon),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 4,
-                                    ),
-                                    Text(
-                                      "Airtime top up",
-                                      style: AppTextStyles.font12
-                                          .copyWith(color: AppColors.grey),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Container(
-                                      height: 16,
-                                      width: 35,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: AppColors.wine),
-                                      child: Text(
-                                        "3",
-                                        textAlign: TextAlign.center,
-                                        style: AppTextStyles.font12
-                                            .copyWith(color: AppColors.red),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 4,
-                                    ),
-                                    Text(
-                                      "Electricity",
-                                      style: AppTextStyles.font12
-                                          .copyWith(color: AppColors.grey),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

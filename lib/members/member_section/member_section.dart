@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_colors.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/data/notifier/count_member_notifier.dart';
+
 import 'package:superjara/members/member_section/active_section.dart';
 import 'package:superjara/members/member_section/all_section.dart';
 import 'package:superjara/members/member_section/inactive_section.dart';
@@ -23,12 +23,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
   @override
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // Future.wait([
-      //   ref.read(getUserDetailsNotifierProvider.notifier).getAllUserDetails(),
-      // ]);
-      await ref.read(countMemberNotifierProvider.notifier).countMember();
-    });
+
     super.initState();
   }
 
@@ -40,9 +35,6 @@ class _MembersSectionState extends ConsumerState<MembersSection>
 
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(countMemberNotifierProvider
-        .select((v) => v.getCountNumbers.data?.data));
-
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -145,7 +137,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "${data?.totalMembers}",
+                                    "kfdkjlk",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -178,7 +170,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "${data?.totalActive}",
+                                    "jjrkjr",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -196,7 +188,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "${data?.totalInactive}",
+                                  "Inactive",
                                   style: AppTextStyles.fonts12
                                       .copyWith(color: const Color(0XFF1A1A1A)),
                                 ),
@@ -211,7 +203,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "8",
+                                    "jnjjk",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),

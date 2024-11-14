@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/home/home_page.dart';
-import 'package:superjara/members/manager_section.dart';
+import 'package:superjara/members/managers_section/manager_section.dart';
 
 import 'package:superjara/members/member_section/member_section.dart';
 

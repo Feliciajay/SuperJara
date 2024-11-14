@@ -1,30 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_colors.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
+
 import 'package:superjara/members/member_section/active_section.dart';
 import 'package:superjara/members/member_section/all_section.dart';
 import 'package:superjara/members/member_section/inactive_section.dart';
 
-class ManagersSection extends StatefulWidget {
+class ManagersSection extends ConsumerStatefulWidget {
   const ManagersSection({super.key});
 
   @override
-  State<ManagersSection> createState() => _ManagersSectionState();
+  ConsumerState<ManagersSection> createState() => _ManagersSectionState();
 }
 
-class _ManagersSectionState extends State<ManagersSection>
+class _ManagersSectionState extends ConsumerState<ManagersSection>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Future.wait([
+      //   ref.read(getUserDetailsNotifierProvider.notifier).getAllUserDetails(),
+      // ]);
+      //   await ref.read(countManagerNotifierProvider.notifier).countManager();
+    });
     super.initState();
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // final data = ref.watch(countManagerNotifierProvider
+    //   .select((v) => v.getCountManager.data?.data));
+
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -112,7 +129,8 @@ class _ManagersSectionState extends State<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "4",
+                                    'hhbjfj',
+                                    //  "${data?.totalManagers ?? ''}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -145,7 +163,8 @@ class _ManagersSectionState extends State<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "8",
+                                    'jhdkjgk',
+                                    //    "${data?.totalActive ?? ''}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -178,7 +197,8 @@ class _ManagersSectionState extends State<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "8",
+                                    'dkdgjgvd',
+                                    //  "${data?.totalInactive}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),

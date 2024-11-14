@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:superjara/core/config/exception/logger.dart';
@@ -32,14 +31,16 @@ class HeaderInterCeptor extends Interceptor {
   ) async {
     try {
       // final token = await secureStorage.getUserToken();
+      const token =
+          'LqsRGCmGJlTq3nfu0lk0G72nZ3jIyr7IrtU7kOBxpXk4Q3rWumSHbykTsuS5lqqas5ZMhDc92NEgKWLDTtjfIXW1zbtTlo0BoYgxefNwA8XHPUNdMSnM1mH2Oj5UnCF6';
       // log("This is user accesstoken $token");
 
-      // debugLog('[TOKEN]$token');
-      // if (token.toString().isNotEmpty) {
-      //   options.headers['Authorization'] = 'Bearer $token';
-      //   // options.headers['authorization'] = '$token';
-      //   // options.headers['Cookie'] = 'accessToken=${token.token}';
-      // }
+      debugLog('[TOKEN]$token');
+      if (token.toString().isNotEmpty) {
+        options.headers['Authorization'] = token;
+        // options.headers['authorization'] = '$token';
+        // options.headers['Cookie'] = 'accessToken=${token.token}';
+      }
       //log("This is user token $token");
     } catch (e) {
       debugLog(e);

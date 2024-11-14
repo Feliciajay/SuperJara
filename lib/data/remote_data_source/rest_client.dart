@@ -6,7 +6,12 @@ import 'package:superjara/core/config/env/prod_env.dart';
 import 'package:superjara/core/interceptor/header_interceptor.dart';
 import 'package:superjara/data/local_data_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:superjara/members/data/model/count_member_request.dart';
+import 'package:superjara/home/data/model/count_member_request.dart';
+import 'package:superjara/home/data/model/count_member_response.dart';
+import 'package:superjara/members/managers_section/data/model/count_manager_request.dart';
+import 'package:superjara/members/managers_section/data/model/count_manager_response.dart';
+import 'package:superjara/mtnshare/transaction/data/model/count_transaction_request.dart';
+import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
 
 part 'rest_client.g.dart';
 
@@ -14,16 +19,26 @@ part 'rest_client.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @POST('https://demo.autobiz.app/autobiz_admin.php')
-  Future<dynamic> countMemberRequest(
+  @POST('autobiz_admin.php')
+  Future<CountMemberResponse> countMemberRequest(
     @Body() CountMemberRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<CountManagerResponse> countManagerRequest(
+    @Body() CountManagerRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<CountTransactionResponse> countTransactionRequest(
+    @Body() CountTransactionRequest request,
   );
 }
 
 ProviderFamily<Dio, BaseEnv> _dio = Provider.family<Dio, BaseEnv>(
   (ref, env) {
     final dio = Dio();
-    dio.options.baseUrl = 'https://demo.autobiz.app/autobiz_admin.php';
+    dio.options.baseUrl = 'https://demo.autobiz.app/';
     // dio.options.baseUrl = 'https://abakon.onrender.com/api/users';
 
     dio.options.headers = {
