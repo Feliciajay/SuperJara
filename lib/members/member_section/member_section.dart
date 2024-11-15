@@ -4,10 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_colors.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
+import 'package:superjara/home/notifier/count_member_notifier.dart';
 
-import 'package:superjara/members/member_section/active_section.dart';
 import 'package:superjara/members/member_section/all_section.dart';
 import 'package:superjara/members/member_section/inactive_section.dart';
+import 'package:superjara/members/member_section/member_active_section.dart';
+import 'package:superjara/members/member_section/member_all_active_section.dart';
+import 'package:superjara/members/member_section/member_inactive_section.dart';
+import 'package:superjara/members/user_settings/data/notifier/fetch_users_notifier.dart';
 
 class MembersSection extends ConsumerStatefulWidget {
   const MembersSection({super.key});
@@ -24,6 +28,13 @@ class _MembersSectionState extends ConsumerState<MembersSection>
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
 
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.watch(fetchUserNotifierProvider.notifier).fetchUser();
+      await ref.watch(countMemberNotifierProvider.notifier).countMember();
+      // await ref.watch(countManagerNotifierProvider.notifier).countManager();
+      //  await ref.watch(fetchUserNotifierProvider.notifier).countManager();
+    });
+
     super.initState();
   }
 
@@ -35,6 +46,13 @@ class _MembersSectionState extends ConsumerState<MembersSection>
 
   @override
   Widget build(BuildContext context) {
+    final fetchUserState = ref.watch(fetchUserNotifierProvider);
+    final fetchUserData = fetchUserState.fetchUserResponse?.data;
+    // final fetchUserDataDetail = fetchUserState.fetchUserResponse?.data;
+
+    final countMemberState = ref.watch(countMemberNotifierProvider);
+    final countMemberData = countMemberState.countMemberResponse?.data;
+
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -137,7 +155,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "kfdkjlk",
+                                    "${countMemberData?.totalMembers}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -170,7 +188,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "jjrkjr",
+                                    "${countMemberData?.totalActive}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -203,7 +221,7 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    "jnjjk",
+                                    "${countMemberData?.totalInactive}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
                                   ),
@@ -218,13 +236,21 @@ class _MembersSectionState extends ConsumerState<MembersSection>
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 17),
-                        child: TabBarView(
-                            controller: _tabController,
-                            children: const [
-                              AllSection(),
-                              ActiveSection(),
-                              InactiveSection(),
-                            ]),
+                        child:
+                            TabBarView(controller: _tabController, children: [
+                          //const AllSection(),
+                          MemberAllSection(
+                            status: 'true',
+                            isSuccess: false,
+                            memberData: fetchUserData?.allUsers.data ?? [],
+                          ),
+                          MemberActiveSection(
+                            memberData: fetchUserData?.activeUsers.data ?? [],
+                          ),
+                          MemberInactiveSection(
+                            memberData: fetchUserData?.inactiveUsers.data ?? [],
+                          ),
+                        ]),
                       ),
                     ),
                   ],

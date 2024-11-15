@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/details_screen/details_account.dart';
 
 class LoadBundle extends StatefulWidget {
   const LoadBundle({super.key});
@@ -34,9 +33,9 @@ class _LoadBundleState extends State<LoadBundle> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.pop(context, (_) {
-                            return const Details();
-                          });
+                          // Navigator.pop(context, (_) {
+                          //   return const Details();
+                          // });
                         },
                         child: const Icon(Icons.arrow_back)),
                     const SizedBox(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/details_screen/user_details.dart';
 
 class AllSection extends StatefulWidget {
   const AllSection({super.key});
@@ -48,10 +47,10 @@ class _AllSectionState extends State<AllSection> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) {
-                                      return const UserDetails();
-                                    }));
+                                    // Navigator.push(context,
+                                    //     MaterialPageRoute(builder: (_) {
+                                    //   return const UserDetails();
+                                    // }));
                                   },
                                   child: Text(
                                     "Maxprecursorltd@gmail.com",

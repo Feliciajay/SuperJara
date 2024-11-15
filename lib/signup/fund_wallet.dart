@@ -1,10 +1,5 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
-//import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/details_screen/user_details.dart';
-//import 'package:superjara/members/details_screen/wallet_component.dart';
 
 class FundWallet extends StatefulWidget {
   const FundWallet({super.key});
@@ -62,9 +57,9 @@ class _FundWalletState extends State<FundWallet> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return const UserDetails();
-                  }));
+                  // Navigator.push(context, MaterialPageRoute(builder: (_) {
+                  //   return const UserDetails();
+                  // }));
                 },
                 child: Container(
                   height: 53,

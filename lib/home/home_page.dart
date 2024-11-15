@@ -42,7 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final countManagerState = ref.watch(countManagerNotifierProvider);
 
     final managerData = countManagerState.getCountManager?.data;
-    final memberDataLoading = countMemberState.countMemberState.isLoading;
+    // final memberDataLoading = countMemberState.countMemberState.isLoading;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(

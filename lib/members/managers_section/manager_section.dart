@@ -217,7 +217,10 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
                             controller: _tabController,
                             children: const [
                               AllSection(),
-                              ActiveSection(),
+                              ActiveSection(
+                                length: 5,
+                                email: '',
+                              ),
                               InactiveSection(),
                             ]),
                       ),

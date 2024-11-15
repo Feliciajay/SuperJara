@@ -12,6 +12,8 @@ import 'package:superjara/home/count_transaction/model/count_transaction_request
 import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
 import 'package:superjara/home/data/model/count_member_request.dart';
 import 'package:superjara/home/data/model/count_member_response.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details_request.dart';
 import 'package:superjara/members/user_settings/data/model/fetch_users_request.dart';
 import 'package:superjara/members/user_settings/data/model/fetch_users_response.dart';
 
@@ -39,6 +41,11 @@ abstract class RestClient {
   @POST('autobiz_admin.php')
   Future<FetchUsersResponse> fetchUserRequest(
     @Body() FetchUserRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<FetchUserDetailsResponse> fetchUserDetailsRequest(
+    @Body() FetchUserDetailsRequest request,
   );
 }
 

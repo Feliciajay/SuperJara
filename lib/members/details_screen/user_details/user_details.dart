@@ -1,32 +1,56 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/details_screen/details_component.dart';
 import 'package:superjara/members/details_screen/transactions_component.dart';
+import 'package:superjara/members/details_screen/user_details/data/notifier/fetch_user_details_notifier.dart';
 import 'package:superjara/members/details_screen/wallet_component.dart';
 import 'package:superjara/members/user_settings/settings.dart';
 
-class UserDetails extends StatefulWidget {
-  const UserDetails({super.key});
+class UserDetails extends ConsumerStatefulWidget {
+  const UserDetails({
+    super.key,
+    required this.userId,
+    required this.status,
+  });
+  final int userId;
+  final int status;
 
   @override
-  State<UserDetails> createState() => _UserDetailsState();
+  ConsumerState<UserDetails> createState() => _UserDetailsState();
 }
 
-class _UserDetailsState extends State<UserDetails>
+class _UserDetailsState extends ConsumerState<UserDetails>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref
+          .watch(fetchUserDetailsNotifierProvider.notifier)
+          .fetchUserDetails(userId: widget.userId);
+    });
     super.initState();
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final userDetailsState = ref.watch(fetchUserDetailsNotifierProvider);
+    final userData =
+        userDetailsState.fetchUserDetailsResponse?.data.map((e) => e);
+    final data = userDetailsState.fetchUserDetailsResponse?.data.first;
+    // final email =userData!.map((e) => e.email);
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -41,9 +65,7 @@ class _UserDetailsState extends State<UserDetails>
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Navigator.pop(context, (_) {
-                          return const UserDetails();
-                        });
+                        Navigator.pop(context);
                       },
                       child: const Icon(Icons.arrow_back)),
                   const SizedBox(
@@ -58,7 +80,7 @@ class _UserDetailsState extends State<UserDetails>
               const SizedBox(
                 height: 29,
               ),
-              Row(children: [
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Container(
                   height: 50,
                   width: 50,
@@ -78,10 +100,14 @@ class _UserDetailsState extends State<UserDetails>
                 Column(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Maxprecursorltd@gmail.com",
-                          style: AppTextStyles.font16,
+                        SizedBox(
+                          width: 236,
+                          child: Text(
+                            "${userData?.first.email}",
+                            style: AppTextStyles.font16,
+                          ),
                         ),
                         const SizedBox(
                           height: 2,
@@ -89,7 +115,7 @@ class _UserDetailsState extends State<UserDetails>
                         Padding(
                           padding: const EdgeInsets.only(right: 155),
                           child: Text(
-                            "Max precious11",
+                            "${userData?.first.firstname} ${userData?.first.lastname}",
                             style: AppTextStyles.fonts12,
                           ),
                         ),
@@ -110,7 +136,7 @@ class _UserDetailsState extends State<UserDetails>
                               const SizedBox(
                                 width: 4,
                               ),
-                              Text("Active",
+                              Text(widget.status == 1 ? "Active" : "Inactive",
                                   style: AppTextStyles.fonts12.copyWith(
                                     color: const Color(0xff27AE60),
                                   )),
@@ -272,13 +298,14 @@ class _UserDetailsState extends State<UserDetails>
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 17),
-                        child: TabBarView(
-                            controller: _tabController,
-                            children: const [
-                              DetailsComponent(),
-                              WalletComponent(),
-                              TransactionComponent(),
-                            ]),
+                        child:
+                            TabBarView(controller: _tabController, children: [
+                          DetailsComponent(
+                            data: data!,
+                          ),
+                          const WalletComponent(),
+                          const TransactionComponent(),
+                        ]),
                       ),
                     ),
                   ],

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/details_screen/user_details.dart';
 
 class ActiveSection extends StatelessWidget {
-  const ActiveSection({super.key});
+  const ActiveSection({super.key, required this.length, required this.email});
+  final int length;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: List.generate(
-          8,
+          length,
           (index) {
             return Column(
               children: [
@@ -43,13 +44,13 @@ class ActiveSection extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) {
-                                      return const UserDetails();
-                                    }));
+                                    // Navigator.push(context,
+                                    //     MaterialPageRoute(builder: (_) {
+                                    //   return const UserDetails();
+                                    // }));
                                   },
                                   child: Text(
-                                    "Maxprecursorltd@gmail.com",
+                                    email,
                                     style: AppTextStyles.fonts14
                                         .copyWith(color: AppColors.black),
                                   ),

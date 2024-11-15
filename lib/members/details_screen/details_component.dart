@@ -3,15 +3,12 @@ import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
 import 'package:superjara/members/details_screen/details_account.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
 
-class DetailsComponent extends StatefulWidget {
-  const DetailsComponent({super.key});
+class DetailsComponent extends StatelessWidget {
+  const DetailsComponent({super.key, required this.data});
+  final UserDetailsData data;
 
-  @override
-  State<DetailsComponent> createState() => _DetailsComponentState();
-}
-
-class _DetailsComponentState extends State<DetailsComponent> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,7 +23,9 @@ class _DetailsComponentState extends State<DetailsComponent> {
             const SizedBox(
               height: 20,
             ),
-            const Details(),
+            Details(
+              data: data,
+            ),
             const SizedBox(
               height: 40,
             ),
@@ -46,7 +45,7 @@ class _DetailsComponentState extends State<DetailsComponent> {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text("adedokunpeace@gmail.com",
+                    Text(data.email,
                         style: AppTextStyles.fonts12.copyWith(
                             color: const Color(0XFF000000),
                             fontWeight: FontWeight.w500)),

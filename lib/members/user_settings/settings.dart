@@ -4,7 +4,6 @@ import 'package:superjara/api/api.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/change_plan_users/change_plan.dart';
-import 'package:superjara/members/details_screen/details_account.dart';
 import 'switch_items.dart';
 
 class Settings extends StatefulWidget {
@@ -36,9 +35,9 @@ class _SettingsState extends State<Settings> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.pop(context, (_) {
-                            return const Details();
-                          });
+                          // Navigator.pop(context, (_) {
+                          //   return const Details();
+                          // });
                         },
                         child: const Icon(Icons.arrow_back)),
                     const SizedBox(

@@ -25,13 +25,13 @@ class FetchUserNotifier extends AutoDisposeNotifier<FetchUserState> {
 
       // }
       ) async {
-    state = state.copyWith(fetchUsersState: LoadState.loading);
+    state = state.copyWith(fetchUserState: LoadState.loading);
 
     const data = FetchUserRequest(
       action: 'fetchusers',
       process: 'autobiz_members',
       page: '1',
-      limit: '5',
+      limit: '36',
       search: "",
     );
     try {
@@ -39,13 +39,13 @@ class FetchUserNotifier extends AutoDisposeNotifier<FetchUserState> {
       if (!value.status == true) throw Exception(value.data!.serverMessage);
 
       state = state.copyWith(
-        fetchUsersState: LoadState.idle,
-        fetchUsersResponse: value.data,
+        fetchUserState: LoadState.idle,
+        fetchUserResponse: value.data,
       );
       // onSuccess!();
     } catch (e) {
       // onError(e.toString());
-      state = state.copyWith(fetchUsersState: LoadState.idle);
+      state = state.copyWith(fetchUserState: LoadState.idle);
     }
   }
 }

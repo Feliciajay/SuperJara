@@ -13,15 +13,17 @@ class FetchUserState {
 
   factory FetchUserState.initial() {
     return FetchUserState(
-        fetchUserState: LoadState.idle, fetchUserResponse: null);
+      fetchUserState: LoadState.idle,
+      fetchUserResponse: null,
+    );
   }
   FetchUserState copyWith({
-    LoadState? fetchUsersState,
-    FetchUsersResponse? fetchUsersResponse,
+    LoadState? fetchUserState,
+    FetchUsersResponse? fetchUserResponse,
   }) {
     return FetchUserState(
-      fetchUserState: fetchUsersState ?? fetchUserState,
-      fetchUserResponse: fetchUserResponse ?? fetchUserResponse,
+      fetchUserState: fetchUserState ?? this.fetchUserState,
+      fetchUserResponse: fetchUserResponse ?? this.fetchUserResponse,
     );
   }
 }

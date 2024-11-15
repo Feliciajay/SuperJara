@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
 
 class Details extends StatelessWidget {
   const Details({
     super.key,
+    required this.data,
   });
+
+  final UserDetailsData data;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("First Name", style: AppTextStyles.font14),
-            Text("Peace",
+            Text(data.firstname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -34,7 +38,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Last Name", style: AppTextStyles.font14),
-            Text("Adedokun",
+            Text(data.lastname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -53,7 +57,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Username", style: AppTextStyles.font14),
-            Text("Peace_11",
+            Text(data.lastname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -74,7 +78,7 @@ class Details extends StatelessWidget {
             Text("Date Of Birth", style: AppTextStyles.font14),
             Row(
               children: [
-                Text("Nil",
+                Text(data.dob,
                     style: AppTextStyles.font14.copyWith(
                         color: const Color.fromARGB(255, 194, 192, 192),
                         fontWeight: FontWeight.w500)),

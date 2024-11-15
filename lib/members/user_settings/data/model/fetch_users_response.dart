@@ -64,7 +64,7 @@ class FetchUserData {
 }
 
 class Users {
-  final List<Datum> data;
+  final List<FetchUserDataDetails> data;
   final Pagination pagination;
 
   Users({
@@ -73,7 +73,8 @@ class Users {
   });
 
   factory Users.fromJson(Map<String, dynamic> json) => Users(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<FetchUserDataDetails>.from(
+            json["data"].map((x) => FetchUserDataDetails.fromJson(x))),
         pagination: Pagination.fromJson(json["pagination"]),
       );
 
@@ -83,14 +84,14 @@ class Users {
       };
 }
 
-class Datum {
+class FetchUserDataDetails {
   final int userid;
   final String refId;
   final String email;
   final String username;
   final String accessStatus;
 
-  Datum({
+  FetchUserDataDetails({
     required this.userid,
     required this.refId,
     required this.email,
@@ -98,7 +99,8 @@ class Datum {
     required this.accessStatus,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory FetchUserDataDetails.fromJson(Map<String, dynamic> json) =>
+      FetchUserDataDetails(
         userid: json["userid"],
         refId: json["ref_id"],
         email: json["email"],
