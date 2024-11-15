@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:superjara/members/managers_section/data/model/count_manager_request.dart';
-import 'package:superjara/members/managers_section/data/notifier/count_manager_state.dart';
-import 'package:superjara/members/managers_section/data/repository/count_manager_repository.dart';
+import 'package:superjara/home/count_managers/data/model/count_manager_request.dart';
+import 'package:superjara/home/count_managers/data/notifier/count_manager_state.dart';
+import 'package:superjara/home/count_managers/data/repository/count_manager_repository.dart';
 
 import 'package:superjara/utils/enums.dart';
 

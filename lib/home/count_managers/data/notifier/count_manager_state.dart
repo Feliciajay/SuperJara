@@ -1,4 +1,4 @@
-import 'package:superjara/members/managers_section/data/model/count_manager_response.dart';
+import 'package:superjara/home/count_managers/data/model/count_manager_response.dart';
 
 import 'package:superjara/utils/enums.dart';
 

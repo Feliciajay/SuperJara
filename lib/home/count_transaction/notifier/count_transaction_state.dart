@@ -1,6 +1,6 @@
 import 'package:superjara/core/network_utils/async_response.dart';
 
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
 import 'package:superjara/utils/enums.dart';
 
 class CountTransactionState {

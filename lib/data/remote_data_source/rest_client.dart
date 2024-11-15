@@ -1,17 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'package:superjara/core/config/env/base_env.dart';
 import 'package:superjara/core/config/env/prod_env.dart';
 import 'package:superjara/core/interceptor/header_interceptor.dart';
 import 'package:superjara/data/local_data_storage.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:superjara/home/count_managers/data/model/count_manager_request.dart';
+import 'package:superjara/home/count_managers/data/model/count_manager_response.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_request.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
 import 'package:superjara/home/data/model/count_member_request.dart';
 import 'package:superjara/home/data/model/count_member_response.dart';
-import 'package:superjara/members/managers_section/data/model/count_manager_request.dart';
-import 'package:superjara/members/managers_section/data/model/count_manager_response.dart';
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_request.dart';
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
+import 'package:superjara/members/user_settings/data/model/fetch_users_request.dart';
+import 'package:superjara/members/user_settings/data/model/fetch_users_response.dart';
 
 part 'rest_client.g.dart';
 
@@ -32,6 +34,11 @@ abstract class RestClient {
   @POST('autobiz_admin.php')
   Future<CountTransactionResponse> countTransactionRequest(
     @Body() CountTransactionRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<FetchUsersResponse> fetchUserRequest(
+    @Body() FetchUserRequest request,
   );
 }
 

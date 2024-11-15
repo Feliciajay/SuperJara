@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/config/app_constants.dart';
 
-
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_request.dart';
-import 'package:superjara/mtnshare/transaction/data/notifier/count_transaction_state.dart';
-import 'package:superjara/mtnshare/transaction/data/repository/count_transaction_repository.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_request.dart';
+import 'package:superjara/home/count_transaction/notifier/count_transaction_state.dart';
+import 'package:superjara/home/count_transaction/repository/count_transaction_repository.dart';
 
 import 'package:superjara/utils/enums.dart';
 
-class CountTransactionNotifier extends AutoDisposeNotifier<CountTransactionState> {
+class CountTransactionNotifier
+    extends AutoDisposeNotifier<CountTransactionState> {
   CountTransactionNotifier();
 
   late final CountTransactionRepository _countTransactionRepository;
@@ -47,7 +47,7 @@ class CountTransactionNotifier extends AutoDisposeNotifier<CountTransactionState
   }
 }
 
-final countTransactionNotifierProvider =
-    NotifierProvider.autoDispose<CountTransactionNotifier, CountTransactionState>(
+final countTransactionNotifierProvider = NotifierProvider.autoDispose<
+    CountTransactionNotifier, CountTransactionState>(
   CountTransactionNotifier.new,
 );

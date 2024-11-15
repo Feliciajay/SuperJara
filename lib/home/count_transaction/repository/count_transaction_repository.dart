@@ -4,10 +4,8 @@ import 'package:superjara/core/config/base_response/base_response.dart';
 import 'package:superjara/core/config/exception/app_exception.dart';
 import 'package:superjara/data/remote_data_source/rest_client.dart';
 
-
-
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_request.dart';
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_request.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
 
 class CountTransactionRepository {
   CountTransactionRepository(this._restClient);
@@ -18,7 +16,8 @@ class CountTransactionRepository {
     try {
       final response =
           await _restClient.countTransactionRequest(countTransactionRequest);
-      return BaseResponse<CountTransactionResponse>(status: true, data: response);
+      return BaseResponse<CountTransactionResponse>(
+          status: true, data: response);
     } on DioException catch (e) {
       return AppException.handleError(e);
     }

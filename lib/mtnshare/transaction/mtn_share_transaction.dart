@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/mtnshare/mtn_share.dart';
-import 'package:superjara/mtnshare/transaction/data/model/count_transaction_response.dart';
-import 'package:superjara/mtnshare/transaction/data/notifier/count_transaction_notifier.dart';
+import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
+import 'package:superjara/home/count_transaction/notifier/count_transaction_notifier.dart';
 
 class MTNShareTransaction extends ConsumerStatefulWidget {
   const MTNShareTransaction({super.key});

@@ -6,7 +6,7 @@ import 'package:superjara/home/home_container.dart';
 import 'package:superjara/home/notifier/count_member_notifier.dart';
 import 'package:superjara/home/widgets/home_page_header.dart';
 import 'package:superjara/home/widgets/status_widget.dart';
-import 'package:superjara/members/managers_section/data/notifier/count_manager_notifier.dart';
+import 'package:superjara/home/count_managers/data/notifier/count_manager_notifier.dart';
 import 'package:superjara/utils/enums.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
