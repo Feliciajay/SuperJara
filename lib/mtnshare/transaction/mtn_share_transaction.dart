@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/mtnshare/mtn_share.dart';
-import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
+import 'package:superjara/messaging/mtn_share/mtn_share.dart';
 import 'package:superjara/home/count_transaction/notifier/count_transaction_notifier.dart';
 
 class MTNShareTransaction extends ConsumerStatefulWidget {
@@ -16,7 +15,7 @@ class MTNShareTransaction extends ConsumerStatefulWidget {
 class _MTNShareTransactionState extends ConsumerState<MTNShareTransaction> {
   @override
   Widget build(BuildContext context) {
-    final countTransactionData = ref.watch(countTransactionNotifierProvider
+   final countTransactionData = ref.watch(countTransactionNotifierProvider
         .select((v) => v.getCountTransaction.data?.data));
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),

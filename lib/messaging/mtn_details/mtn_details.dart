@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/mtnshare/load_bundle.dart';
-import 'package:superjara/mtnshare/mtn_share.dart';
-import 'package:superjara/mtnshare/sim_cards.dart';
+import 'package:superjara/mtnshare/load_bundle/load_bundle.dart';
+import 'package:superjara/messaging/mtn_share/mtn_share.dart';
+import 'package:superjara/messaging/sim_cards/sim_cards.dart';
 
 class MTNDetails extends StatefulWidget {
   const MTNDetails({super.key});

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
-import 'package:superjara/mtnshare/mtn_details.dart';
+import 'package:superjara/messaging/mtn_details/mtn_details.dart';
 import 'package:superjara/mtnshare/transaction/mtn_share_transaction.dart';
 
 class MtnShare extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/kyc_details/more/more_profile.dart';
-import 'package:superjara/messaging/select_recipient.dart';
+import 'package:superjara/messaging/select_recepient/select_recipient.dart';
 
 class SendSMS extends StatefulWidget {
   const SendSMS({super.key});

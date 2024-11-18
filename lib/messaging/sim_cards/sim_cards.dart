@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/mtnshare/edit_sim.dart';
-import 'package:superjara/mtnshare/mtn_details.dart';
+import 'package:superjara/mtnshare/edit_sim/edit_sim.dart';
+import 'package:superjara/messaging/mtn_details/mtn_details.dart';
 
 class SimCards extends StatefulWidget {
   const SimCards({super.key});
