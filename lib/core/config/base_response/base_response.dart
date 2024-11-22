@@ -9,7 +9,7 @@ class BaseResponse<T> {
   const BaseResponse({
     required this.status,
     this.data,
-    this.msg,
+    this.serverMessage,
   }) : super();
 
   factory BaseResponse.fromJson(
@@ -23,20 +23,20 @@ class BaseResponse<T> {
     return BaseResponse(
       data: json['data'] as T?,
       status: json['status'] as bool,
-      msg: json['msg'] as String? ?? 'An error occured',
+      serverMessage: json['server_message'] as String? ?? 'An error occured',
     );
   }
   final T? data;
   // @JsonKey(name: 'status')
   final bool status;
-  final String? msg;
+  final String? serverMessage;
 
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$BaseResponseToJson(this, toJsonT);
 
   @override
   String toString() {
-    return '''BaseResponse{status: $status, data: $data, message: $msg, }''';
+    return '''BaseResponse{status: $status, data: $data, message: $serverMessage, }''';
   }
 
   @override
@@ -46,12 +46,12 @@ class BaseResponse<T> {
     return other is BaseResponse<T> &&
         other.status == status &&
         other.data == data &&
-        other.msg == msg;
+        other.serverMessage == serverMessage;
   }
 
   @override
   int get hashCode {
-    return status.hashCode ^ data.hashCode ^ msg.hashCode;
+    return status.hashCode ^ data.hashCode ^ serverMessage.hashCode;
   }
 }
 

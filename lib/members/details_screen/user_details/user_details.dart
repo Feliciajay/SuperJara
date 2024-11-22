@@ -7,7 +7,7 @@ import 'package:superjara/members/details_screen/details_component.dart';
 import 'package:superjara/members/details_screen/transactions_component.dart';
 import 'package:superjara/members/details_screen/user_details/data/notifier/fetch_user_details_notifier.dart';
 import 'package:superjara/members/details_screen/wallet_component.dart';
-import 'package:superjara/members/user_settings/settings.dart';
+import 'package:superjara/members/settings/settings.dart';
 
 class UserDetails extends ConsumerStatefulWidget {
   const UserDetails({
@@ -49,7 +49,7 @@ class _UserDetailsState extends ConsumerState<UserDetails>
     final userDetailsState = ref.watch(fetchUserDetailsNotifierProvider);
     final userData =
         userDetailsState.fetchUserDetailsResponse?.data.map((e) => e);
-    final data = userDetailsState.fetchUserDetailsResponse?.data.first;
+    final data = userDetailsState.fetchUserDetailsResponse?.data;
     // final email =userData!.map((e) => e.email);
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
@@ -159,7 +159,9 @@ class _UserDetailsState extends ConsumerState<UserDetails>
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) {
-                        return const Settings();
+                        return Settings(
+                          userId: userData!.first.userid,
+                        );
                       }));
                     },
                     child: Container(
@@ -300,9 +302,7 @@ class _UserDetailsState extends ConsumerState<UserDetails>
                             horizontal: 12, vertical: 17),
                         child:
                             TabBarView(controller: _tabController, children: [
-                          DetailsComponent(
-                            data: data!,
-                          ),
+                          DetailsComponent(data: data!.first),
                           const WalletComponent(),
                           const TransactionComponent(),
                         ]),

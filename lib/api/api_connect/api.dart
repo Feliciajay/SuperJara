@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/api/add_api.dart';
-import 'package:superjara/api/api_details.dart';
+import 'package:superjara/api/api_connect/data/model/api_response.dart';
+import 'package:superjara/api/api_connect/data/notifier/api_notifier.dart';
+import 'package:superjara/api/details/api_details.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
-class API extends StatefulWidget {
-  const API({super.key});
+class API extends ConsumerStatefulWidget {
+  const API({
+    super.key,
+  });
 
   @override
-  State<API> createState() => _APIState();
+  ConsumerState<API> createState() => _APIState();
 }
 
-class _APIState extends State<API> {
+class _APIState extends ConsumerState<API> {
+  ApiData? apiData;
   bool iyiinstant = false;
   iyiinstantVisibility() {
     setState(() {
@@ -58,10 +64,32 @@ class _APIState extends State<API> {
     setState(() {
       simserver = !simserver;
     });
+
+    @override
+    void initState() {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await ref.watch(apiNotifierProvider.notifier).api();
+      });
+      super.initState();
+    }
+
+    @override
+    void dispose() {
+      super.dispose();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final apiState = ref.watch(apiNotifierProvider);
+    // final apidata = apiState.apiResponse?.data;
+    //  final apidata = apiState.getApi?.data ?? [];
+    final apiData = apiState.getApi?.data ??
+        ApiData(
+            data: [],
+            pagination: Pagination(
+                totalRecords: 0, totalPages: 0, currentPage: 0, limit: 10));
+
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -155,7 +183,7 @@ class _APIState extends State<API> {
                           height: 19,
                         ),
                         ApiWidget(
-                          title: 'Iyiinstant',
+                          title: "",
                           subtitle: 'Iyiinstant',
                           obscure: iyiinstant,
                           iconData: iyiinstant

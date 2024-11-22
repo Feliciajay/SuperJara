@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:superjara/api/api_details.dart';
+import 'package:superjara/api/details/api_details.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
 class EditApi extends StatefulWidget {

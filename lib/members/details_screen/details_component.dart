@@ -11,6 +11,7 @@ class DetailsComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final dataList = data.map((e) => e).toList();
     return SingleChildScrollView(
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -79,7 +80,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text("08169784022",
+                    Text(data.phone,
                         style: AppTextStyles.font14.copyWith(
                             color: const Color(0XFF000000),
                             fontWeight: FontWeight.w500)),
@@ -113,7 +114,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w300)),
                 Row(
                   children: [
-                    Text("Nil",
+                    Text("data",
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),
@@ -144,7 +145,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text("Nil",
+                    Text('data.city',
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),
@@ -178,7 +179,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text("Nil",
+                    Text('data.state',
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:superjara/api/api.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:superjara/api/api_connect/api.dart';
+import 'package:superjara/api/api_connect/data/model/api_response.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
-class AddApi extends StatefulWidget {
+class AddApi extends ConsumerStatefulWidget {
   const AddApi({super.key});
 
   @override
-  State<AddApi> createState() => _AddApiState();
+  ConsumerState<AddApi> createState() => _AddApiState();
 }
 
-class _AddApiState extends State<AddApi> {
+class _AddApiState extends ConsumerState<AddApi> {
   List<String> items = <String>[
     '100GB',
     '400GB',
@@ -73,7 +75,7 @@ class _AddApiState extends State<AddApi> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: ' Gbemi Connect 2',
+                        hintText: "",
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),

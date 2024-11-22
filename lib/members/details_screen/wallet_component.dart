@@ -1,16 +1,21 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 //import 'package:flutter/widgets.dart';
 import 'package:superjara/const/app_textsyle.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
+import 'package:superjara/members/details_screen/user_details/data/notifier/fetch_user_details_notifier.dart';
 
-class WalletComponent extends StatefulWidget {
+class WalletComponent extends ConsumerStatefulWidget {
   const WalletComponent({super.key});
 
   @override
-  State<WalletComponent> createState() => _WalletComponentState();
+  ConsumerState<WalletComponent> createState() => _WalletComponentState();
 }
 
-class _WalletComponentState extends State<WalletComponent> {
+class _WalletComponentState extends ConsumerState<WalletComponent> {
+  late final UserDetailsData data;
+
   bool _isObscure = false;
 
   toggleTextVisibility() {
@@ -29,6 +34,9 @@ class _WalletComponentState extends State<WalletComponent> {
 
   @override
   Widget build(BuildContext context) {
+    final userDetailsState = ref.watch(fetchUserDetailsNotifierProvider);
+
+    final data = userDetailsState.fetchUserDetailsResponse?.data.first;
     return Column(
       children: [
         const SizedBox(
@@ -72,7 +80,7 @@ class _WalletComponentState extends State<WalletComponent> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(_isObscure ? '*******' : "N350,000,000.00",
+                  child: Text(_isObscure ? '*******' : data!.walletBalance,
                       style: AppTextStyles.font24
                           .copyWith(fontWeight: FontWeight.w600)),
                 ),
@@ -152,7 +160,7 @@ class _WalletComponentState extends State<WalletComponent> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(wallet ? '*******' : "N350,000,000.00",
+                  child: Text(wallet ? '*******' : data!.walletBalance,
                       style: AppTextStyles.font24
                           .copyWith(fontWeight: FontWeight.w600)),
                 ),

@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/change_plan_users/change_password.dart';
-import 'package:superjara/members/change_plan_users/change_plan.dart';
+import 'package:superjara/members/change_plan_users/payment_gateway/model/payment_gateway_response.dart';
+import 'package:superjara/members/change_plan_users/payment_gateway/notifier/payment_gateway_notifier.dart';
 
-class PaymentGateway extends StatefulWidget {
-  const PaymentGateway({super.key});
+class PaymentGateway extends ConsumerStatefulWidget {
+  const PaymentGateway({
+    super.key,
+    required this.userId,
+    required this.amount,
+  });
+  final int userId;
+  final int amount;
 
   @override
-  State<PaymentGateway> createState() => _PaymentGatewayState();
+  ConsumerState<PaymentGateway> createState() => _PaymentGatewayState();
 }
 
-class _PaymentGatewayState extends State<PaymentGateway> {
+class _PaymentGatewayState extends ConsumerState<PaymentGateway> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref
+          .read(paymentGatewayNotifierProvider.notifier)
+          .paymentGateway(userId: widget.userId, amount: "3");
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final PaymentGatewayState = ref.watch(paymentGatewayNotifierProvider);
+    // final PaymentGatewayData =
+    //     paymentGatewayState.paymentGatewayResponse?.data.map((e) => e);
+    final PaymentGatewayData = PaymentGatewayState.paymentGatewayResponse?.data;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -28,9 +49,9 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.pop(context, (_) {
-                            return const ChangePlan();
-                          });
+                          // Navigator.pop(context, (_) {
+                          //   return const ChangePlan();
+                          // });
                         },
                         child: const Icon(Icons.arrow_back)),
                     const SizedBox(
@@ -66,7 +87,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                       width: 5,
                     ),
                     Text(
-                      "0.00",
+                      PaymentGatewayResponse.amount,
                       style: AppTextStyles.font14
                           .copyWith(color: const Color(0xff000000)),
                     ),
@@ -90,7 +111,7 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: '   Enter amount limit',
+                        hintText: ' PaymentGatewayData?',
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),
@@ -107,9 +128,9 @@ class _PaymentGatewayState extends State<PaymentGateway> {
                   child: Center(
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return const ChangePassword();
-                        }));
+                        // Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        //   return const ChangeUserPassword();
+                        // }));
                       },
                       child: Text(
                         "Set",

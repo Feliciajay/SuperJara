@@ -5,16 +5,15 @@ import 'package:superjara/members/details_screen/user_details/data/repository/fe
 
 import 'package:superjara/utils/enums.dart';
 
-class FetchUserDetailsNotifier
-    extends AutoDisposeNotifier<FetchUserDetailsState> {
+class FetchUserDetailsNotifier extends AutoDisposeNotifier<ApiState> {
   FetchUserDetailsNotifier();
 
   late final FetchUserDetailsRepository _fetchUserDetailsRepository;
 
   @override
-  FetchUserDetailsState build() {
+  ApiState build() {
     _fetchUserDetailsRepository = ref.read(fetchUserDetailsRepositoryProvider);
-    return FetchUserDetailsState.initial();
+    return ApiState.initial();
   }
 
   Future<void> fetchUserDetails({
@@ -45,7 +44,7 @@ class FetchUserDetailsNotifier
   }
 }
 
-final fetchUserDetailsNotifierProvider = NotifierProvider.autoDispose<
-    FetchUserDetailsNotifier, FetchUserDetailsState>(
+final fetchUserDetailsNotifierProvider =
+    NotifierProvider.autoDispose<FetchUserDetailsNotifier, ApiState>(
   FetchUserDetailsNotifier.new,
 );

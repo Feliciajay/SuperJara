@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_colors.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/members/change_plan_users/payment_gateway.dart';
+import 'package:superjara/members/change_plan_users/payment_gateway/payment_gateway.dart';
+import 'package:superjara/members/change_user_plan/notifier/change_user_plan_notifier.dart';
 
-import 'package:superjara/members/user_settings/settings.dart';
+class ChangePlan extends ConsumerStatefulWidget {
+  const ChangePlan({
+    super.key,
+    required this.userId,
+    required this.bypassPlan,
+    required this.planId,
+  });
 
-class ChangePlan extends StatefulWidget {
-  const ChangePlan({super.key});
+  final int userId;
+  final String bypassPlan;
+  final int planId;
 
   @override
-  State<ChangePlan> createState() => _ChangePlanState();
+  ConsumerState<ChangePlan> createState() => _ChangePlanState();
 }
 
-class _ChangePlanState extends State<ChangePlan> {
+class _ChangePlanState extends ConsumerState<ChangePlan> {
   List<String> availablePlanItems = [
     'Entry Plan',
     'Resellers',
@@ -28,9 +37,22 @@ class _ChangePlanState extends State<ChangePlan> {
     'No',
   ];
   String? bypassPlanSelecteditem;
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.watch(changeUserPlanNotifierProvider.notifier).changeUserPlan(
+          userId: widget.userId, planId: '3', bypassPlan: widget.bypassPlan);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final changeUserPlanState = ref.watch(changeUserPlanNotifierProvider);
+    final changeUserPlanData =
+        changeUserPlanState.changeUserPlanResponse?.data.map((e) => e);
+    final data = changeUserPlanState.changeUserPlanResponse?.data;
+    // final email =userData!.map((e) => e.email);
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -45,9 +67,9 @@ class _ChangePlanState extends State<ChangePlan> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Navigator.pop(context, (_) {
-                          return const Settings();
-                        });
+                        // Navigator.pop(context, (_) {
+                        //   return const Settings();
+                        // });
                       },
                       child: const Icon(Icons.arrow_back)),
                   const SizedBox(
@@ -173,7 +195,10 @@ class _ChangePlanState extends State<ChangePlan> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) {
-                        return const PaymentGateway();
+                        return const PaymentGateway(
+                          userId: 3,
+                          amount: 1000,
+                        );
                       }));
                     },
                     child: Text(

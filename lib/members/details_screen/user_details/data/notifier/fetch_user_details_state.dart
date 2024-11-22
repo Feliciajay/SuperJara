@@ -2,8 +2,8 @@ import 'package:superjara/members/details_screen/user_details/data/model/fetch_u
 
 import 'package:superjara/utils/enums.dart';
 
-class FetchUserDetailsState {
-  FetchUserDetailsState({
+class ApiState {
+  ApiState({
     required this.fetchUserDetailsState,
     required this.fetchUserDetailsResponse,
   });
@@ -11,17 +11,17 @@ class FetchUserDetailsState {
   final LoadState fetchUserDetailsState;
   final FetchUserDetailsResponse? fetchUserDetailsResponse;
 
-  factory FetchUserDetailsState.initial() {
-    return FetchUserDetailsState(
+  factory ApiState.initial() {
+    return ApiState(
       fetchUserDetailsState: LoadState.idle,
       fetchUserDetailsResponse: null,
     );
   }
-  FetchUserDetailsState copyWith({
+  ApiState copyWith({
     LoadState? fetchUserDetailsState,
     FetchUserDetailsResponse? fetchUserDetailsResponse,
   }) {
-    return FetchUserDetailsState(
+    return ApiState(
       fetchUserDetailsState:
           fetchUserDetailsState ?? this.fetchUserDetailsState,
       fetchUserDetailsResponse:

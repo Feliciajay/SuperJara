@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/details_screen/transaction_widget.dart';
+import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
+import 'package:superjara/members/details_screen/user_details/data/notifier/fetch_user_details_notifier.dart';
 
-class TransactionComponent extends StatefulWidget {
+class TransactionComponent extends ConsumerStatefulWidget {
   const TransactionComponent({super.key});
 
   @override
-  State<TransactionComponent> createState() => _TransactionComponentState();
+  ConsumerState<TransactionComponent> createState() =>
+      _TransactionComponentState();
 }
 
-class _TransactionComponentState extends State<TransactionComponent> {
+class _TransactionComponentState extends ConsumerState<TransactionComponent> {
+  late final UserDetailsData data;
   @override
   Widget build(BuildContext context) {
+    final userDetailsState = ref.watch(fetchUserDetailsNotifierProvider);
+
+    final data = userDetailsState.fetchUserDetailsResponse?.data.first;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -121,7 +129,7 @@ class _TransactionComponentState extends State<TransactionComponent> {
                               width: 118,
                             ),
                             Text(
-                              'Successful',
+                              data!.walletBalance,
                               style: AppTextStyles.font12
                                   .copyWith(color: const Color(0XFF219653)),
                             ),
