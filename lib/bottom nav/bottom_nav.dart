@@ -4,7 +4,7 @@ import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/home/home_page.dart';
 import 'package:superjara/members/members_screen.dart';
 import 'package:superjara/kyc_details/more/more_profile.dart';
-import 'package:superjara/mtnshare/mtn_share.dart';
+import 'package:superjara/messaging/mtn_share/mtn_share.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
