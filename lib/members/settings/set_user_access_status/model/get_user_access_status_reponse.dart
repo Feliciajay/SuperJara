@@ -1,6 +1,6 @@
 class GetUserAccessStatusResponse {
   final String? serverMessage;
-  final bool? status;
+  final bool status;
   final int? errorCode;
   final List<dynamic>? data;
   final List<dynamic>? dataResult;
@@ -10,7 +10,7 @@ class GetUserAccessStatusResponse {
 
   GetUserAccessStatusResponse({
     this.serverMessage,
-    this.status,
+    required this.status,
     this.errorCode,
     this.data,
     this.dataResult,

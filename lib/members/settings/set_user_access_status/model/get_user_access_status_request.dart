@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'get_atm_role_request.g.dart';
+part 'get_user_access_status_request.g.dart';
 
 @JsonSerializable(createFactory: false)
 class GetUserAccessStatusRequest implements EquatableMixin {

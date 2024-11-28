@@ -30,10 +30,10 @@ import 'package:superjara/members/settings/set_atm_role/model/get_atm_role_repon
 import 'package:superjara/members/settings/set_atm_role/model/get_atm_role_request.dart';
 import 'package:superjara/members/settings/set_atm_role/model/set_atm_role_request.dart';
 import 'package:superjara/members/settings/set_atm_role/model/set_atm_role_response.dart';
-import 'package:superjara/members/settings/set_user_access_status/model/get_user_access_status.reponse.dart';
-import 'package:superjara/members/settings/set_user_access_status/model/get_user_access_status.request.dart';
-import 'package:superjara/members/settings/set_user_access_status/model/set_user_access_status.reponse.dart';
-import 'package:superjara/members/settings/set_user_access_status/model/set_user_access_status.request.dart';
+import 'package:superjara/members/settings/set_user_access_status/model/get_user_access_status_reponse.dart';
+import 'package:superjara/members/settings/set_user_access_status/model/get_user_access_status_request.dart';
+import 'package:superjara/members/settings/set_user_access_status/model/set_user_access_status_reponse.dart';
+import 'package:superjara/members/settings/set_user_access_status/model/set_user_access_status_request.dart';
 import 'package:superjara/members/user_settings/data/model/fetch_users_request.dart';
 import 'package:superjara/members/user_settings/data/model/fetch_users_response.dart';
 import 'package:superjara/messaging/mtn_share/average_sales/model/average_sales_request.dart';
