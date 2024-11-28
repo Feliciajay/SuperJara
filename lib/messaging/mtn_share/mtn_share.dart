@@ -1,21 +1,47 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
 
 import 'package:superjara/messaging/mtn_details/mtn_details.dart';
+import 'package:superjara/messaging/mtn_share/average_sales/notifier/average_sales_notifier.dart';
+import 'package:superjara/messaging/mtn_share/data/model/total_mtn_sims_response.dart';
+import 'package:superjara/messaging/mtn_share/data/notifier/total_mtn_sims_notifier.dart';
+import 'package:superjara/messaging/mtn_share/today_sales/notifier/today_sales_notifier.dart';
+import 'package:superjara/messaging/mtn_share/total_sims_left/notifier/total_sims_left_notifier.dart';
 import 'package:superjara/mtnshare/transaction/mtn_share_transaction.dart';
 
-class MtnShare extends StatefulWidget {
+class MtnShare extends ConsumerStatefulWidget {
   const MtnShare({super.key});
 
   @override
-  State<MtnShare> createState() => _MtnShareState();
+  ConsumerState<MtnShare> createState() => _MtnShareState();
 }
 
-class _MtnShareState extends State<MtnShare> {
+class _MtnShareState extends ConsumerState<MtnShare> {
+  TotalMtnSimsData? totalMtnSimsData;
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.read(totalMtnSimsNotifierProvider.notifier).totalMtnSims();
+      await ref.read(averageSalesNotifierProvider.notifier).averageSales();
+      await ref.read(totalSimsLeftNotifierProvider.notifier).totalSimsLeft();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final totalMtnSimsState = ref.watch(totalMtnSimsNotifierProvider);
+    final TotalMtnSimsData = totalMtnSimsState.totalMtnSimsResponse?.data;
+
+    final averageSalesState = ref.watch(averageSalesNotifierProvider);
+    final AverageSalesData = averageSalesState.averageSalesResponse?.data;
+
+    final totalSimsLeftState = ref.watch(totalSimsLeftNotifierProvider);
+    final TotalSimsLeftData = totalSimsLeftState.totalSimsLeftResponse?.data;
+
+    final todaySalesState = ref.watch(todaySalesNotifierProvider);
+    final TodaySalesData = todaySalesState.todaySalesResponse?.data;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -72,7 +98,7 @@ class _MtnShareState extends State<MtnShare> {
                               height: 13,
                             ),
                             Text(
-                              '353',
+                              '${TotalMtnSimsData?.response ?? 0}',
                               style: AppTextStyles.font16.copyWith(
                                 color: const Color(0XFF333333),
                               ),
@@ -106,7 +132,7 @@ class _MtnShareState extends State<MtnShare> {
                             const SizedBox(
                               height: 13,
                             ),
-                            Text('21440TB',
+                            Text('${TodaySalesData?.response ?? 0}',
                                 style: AppTextStyles.font16.copyWith(
                                   color: const Color(0XFF333333),
                                 )),
@@ -144,7 +170,7 @@ class _MtnShareState extends State<MtnShare> {
                               height: 13,
                             ),
                             Text(
-                              '60GB',
+                              '${AverageSalesData?.response ?? 0}',
                               style: AppTextStyles.font16.copyWith(
                                 color: const Color(0XFF333333),
                               ),
@@ -179,7 +205,7 @@ class _MtnShareState extends State<MtnShare> {
                               height: 13,
                             ),
                             Text(
-                              '158',
+                              '${TotalSimsLeftData?.response}',
                               style: AppTextStyles.font16.copyWith(
                                 color: const Color(0XFF333333),
                               ),

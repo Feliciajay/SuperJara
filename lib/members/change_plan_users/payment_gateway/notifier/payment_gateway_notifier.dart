@@ -16,19 +16,19 @@ class PaymentGatewayNotifier extends AutoDisposeNotifier<PaymentGatewayState> {
     return PaymentGatewayState.initial();
   }
 
-  Future<void> paymentGateway({required int userId, required String amount
-
-      // void Function(String error) onError,
-      // void Function()? onSuccess,
-      }) async {
+  Future<void> paymentGateway({
+    required PaymentGatewayRequest data,
+    required void Function(String error) onError,
+    required void Function(String message) onSuccess,
+  }) async {
     state = state.copyWith(paymentGatewayState: LoadState.loading);
 
-    final data = PaymentGatewayRequest(
-      action: 'setpaymentlimit',
-      process: 'autobiz_members',
-      user_id: "$userId",
-      amount: "$amount",
-    );
+    // final data = PaymentGatewayRequest(
+    //   action: 'setpaymentlimit',
+    //   process: 'autobiz_members',
+    //   user_id: "$userId",
+    //   amount: "$amount",
+    // );
     try {
       final value = await _paymentGatewayRepository.paymentGateway(data);
       if (!value.status == true) throw Exception(value.data!.serverMessage);
@@ -37,9 +37,9 @@ class PaymentGatewayNotifier extends AutoDisposeNotifier<PaymentGatewayState> {
         paymentGatewayState: LoadState.idle,
         paymentGatewayResponse: value.data,
       );
-      // onSuccess!();
+      onSuccess(value.data!.serverMessage);
     } catch (e) {
-      // onError(e.toString());
+      onError(e.toString());
       state = state.copyWith(paymentGatewayState: LoadState.idle);
     }
   }

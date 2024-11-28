@@ -6,8 +6,6 @@ import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/home/notifier/count_member_notifier.dart';
 
-import 'package:superjara/members/member_section/all_section.dart';
-import 'package:superjara/members/member_section/inactive_section.dart';
 import 'package:superjara/members/member_section/member_active_section.dart';
 import 'package:superjara/members/member_section/member_all_active_section.dart';
 import 'package:superjara/members/member_section/member_inactive_section.dart';

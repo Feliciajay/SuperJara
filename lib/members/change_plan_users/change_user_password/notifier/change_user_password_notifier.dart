@@ -19,22 +19,19 @@ class ChangeUserPasswordNotifier
   }
 
   Future<void> changeUserPassword({
-    required int userId,
-    required String oldPassword,
-    required String newPassword,
-
-    // void Function(String error) onError,
-    // void Function()? onSuccess,
+    required ChangeUserPasswordRequest data,
+    required void Function(String error) onError,
+    required void Function(String message) onSuccess,
   }) async {
     state = state.copyWith(changeUserPasswordState: LoadState.loading);
 
-    final data = ChangeUserPasswordRequest(
-      action: 'changeuserpassword',
-      process: 'autobiz_members',
-      user_id: "$userId",
-      old_password: "$oldPassword",
-      new_password: "$newPassword",
-    );
+    // final data = ChangeUserPasswordRequest(
+    //   action: 'changeuserpassword',
+    //   process: 'autobiz_members',
+    //   user_id: "$userId",
+    //   old_password: "$oldPassword",
+    //   new_password: "$newPassword",
+    // );
     try {
       final value =
           await _changeUserPasswordRepository.changeUserPassword(data);
@@ -44,9 +41,9 @@ class ChangeUserPasswordNotifier
         changeUserPasswordState: LoadState.idle,
         changeUserPasswordResponse: value.data,
       );
-      // onSuccess!();
+      onSuccess(value.data!.serverMessage);
     } catch (e) {
-      // onError(e.toString());
+      onError(e.toString());
       state = state.copyWith(changeUserPasswordState: LoadState.idle);
     }
   }

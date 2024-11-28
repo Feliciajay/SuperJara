@@ -9,7 +9,7 @@ class Details extends StatelessWidget {
     required this.data,
   });
 
-  final UserDetailsData data;
+  final List<UserDetailsData> data;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("First Name", style: AppTextStyles.font14),
-            Text(data.firstname,
+            Text(data.first.firstname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -38,7 +38,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Last Name", style: AppTextStyles.font14),
-            Text(data.lastname,
+            Text(data.first.lastname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -57,7 +57,7 @@ class Details extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Username", style: AppTextStyles.font14),
-            Text(data.lastname,
+            Text(data.first.lastname,
                 style:
                     AppTextStyles.font14.copyWith(fontWeight: FontWeight.w500)),
           ],
@@ -78,7 +78,7 @@ class Details extends StatelessWidget {
             Text("Date Of Birth", style: AppTextStyles.font14),
             Row(
               children: [
-                Text(data.dob,
+                Text(data.first.dob,
                     style: AppTextStyles.font14.copyWith(
                         color: const Color.fromARGB(255, 194, 192, 192),
                         fontWeight: FontWeight.w500)),

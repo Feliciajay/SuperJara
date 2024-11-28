@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_textsyle.dart';
+import 'package:superjara/members/change_plan_users/change_user_password/model/change_user_password_request.dart';
 import 'package:superjara/members/change_plan_users/change_user_password/notifier/change_user_password_notifier.dart';
 import 'package:superjara/members/change_plan_users/payment_gateway/payment_gateway.dart';
 import 'package:superjara/members/change_user_plan/notifier/change_user_plan_notifier.dart';
-import 'package:superjara/mtnshare/mtn_share.dart';
+
 import 'package:superjara/utils/enums.dart';
 
 class ChangeUserPassword extends ConsumerStatefulWidget {
@@ -27,15 +29,18 @@ bool _obscureText = true;
 bool _confirmText = true;
 
 class _ChangeUserPasswordState extends ConsumerState<ChangeUserPassword> {
+  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await ref
-          .watch(changeUserPasswordNotifierProvider.notifier)
-          .changeUserPassword(
-              userId: widget.userId,
-              oldPassword: widget.oldPassword,
-              newPassword: widget.newPassword);
+      // await ref
+      //     .watch(changeUserPasswordNotifierProvider.notifier)
+      //     .changeUserPassword(
+      //         userId: widget.userId,
+      //         oldPassword: widget.oldPassword,
+      //         newPassword: widget.newPassword);
     });
     super.initState();
   }
@@ -118,6 +123,7 @@ class _ChangeUserPasswordState extends ConsumerState<ChangeUserPassword> {
                         ),
                       ),
                       child: TextField(
+                        controller: _controller,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
@@ -162,6 +168,7 @@ class _ChangeUserPasswordState extends ConsumerState<ChangeUserPassword> {
                         ),
                       ),
                       child: TextField(
+                        controller: _passwordcontroller,
                         obscureText: _confirmText,
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
@@ -182,21 +189,18 @@ class _ChangeUserPasswordState extends ConsumerState<ChangeUserPassword> {
                     const SizedBox(
                       height: 64,
                     ),
-                    Container(
-                      height: 48,
-                      width: 350,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0XFF000078),
-                      ),
-                      child: Center(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => const MtnShare()));
-                          },
+                    GestureDetector(
+                      onTap: () {
+                        _changePassword();
+                      },
+                      child: Container(
+                        height: 48,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0XFF000078),
+                        ),
+                        child: Center(
                           child: Text(
                             "Change Password",
                             style: AppTextStyles.font16
@@ -215,11 +219,41 @@ class _ChangeUserPasswordState extends ConsumerState<ChangeUserPassword> {
                       decoration:
                           BoxDecoration(color: Colors.black.withOpacity(0.2)),
                     )
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _changePassword() {
+    ref.read(changeUserPasswordNotifierProvider.notifier).changeUserPassword(
+          data: ChangeUserPasswordRequest(
+            process: 'autobiz_members',
+            action: 'changeuserpassword',
+            user_id: widget.userId.toString(),
+            old_password: _passwordcontroller.text.trim(),
+            new_password: _controller.text.trim(),
+          ),
+          onError: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                error,
+                style: const TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.red,
+            ));
+          },
+          onSuccess: (message) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                message,
+                style: const TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.red,
+            ));
+          },
+        );
   }
 }

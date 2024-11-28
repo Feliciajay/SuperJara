@@ -6,7 +6,9 @@ import 'package:superjara/const/app_colors.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/change_plan_users/change_user_password/change_password.dart';
 import 'package:superjara/members/change_plan_users/payment_gateway/payment_gateway.dart';
+import 'package:superjara/members/change_user_plan/change_plan.dart';
 import 'package:superjara/members/settings/data/model/set_manager_role_request.dart';
+import 'package:superjara/members/settings/data/notifier/get_manager_role_notifier.dart';
 import 'package:superjara/members/settings/data/notifier/set_manager_role_notifier.dart';
 import 'package:superjara/utils/enums.dart';
 import 'switch_items.dart';
@@ -30,40 +32,25 @@ class _SettingsState extends ConsumerState<Settings> {
   bool isRevokePlatformAccess = false;
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {});
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref
+          .watch(getManagerRoleNotifierProvider.notifier)
+          .getManagerRole(userId: widget.userId.toString());
+    });
     super.initState();
-  }
-
-  setManagerRole() {
-    final data = SetManagerRoleRequest(
-        process: 'autobiz_members',
-        action: 'setmanagerrole',
-        userId: widget.userId.toString(),
-        roleStatus: isGrantManagerSwitched == true ? 'yes' : 'no');
-    ref.read(setManagerRoleNotifierProvider.notifier).setManagerRole(
-          data: data,
-          onError: (error) {
-            setState(() {
-              isGrantManagerSwitched = false;
-            });
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(error)));
-          },
-          onSuccess: (message) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(message)));
-          },
-        );
   }
 
   @override
   Widget build(BuildContext context) {
-    final setManagerRoleState = ref.watch(setManagerRoleNotifierProvider);
+    //  final setManagerRoleState = ref.watch(setManagerRoleNotifierProvider);
+    final getManagerRoleState = ref.watch(getManagerRoleNotifierProvider);
     final isLoading = ref.watch(setManagerRoleNotifierProvider
         .select((value) => value.setManagerRoleState.isLoading));
 
     // setManagerRoleState.setManagerRoleState;
-    final SetManagerRoledata = setManagerRoleState.setManagerRoleResponse?.data;
+    // final setManagerRoleData = setManagerRoleState.setManagerRoleResponse?.data;
+    final getManagerRoleData = getManagerRoleState.getManagerRoleResponse;
+
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -114,133 +101,131 @@ class _SettingsState extends ConsumerState<Settings> {
                           const SizedBox(
                             height: 20,
                           ),
+
                           SwitchItems(
                             text: 'Grant Manager Access',
-                            val: isGrantManagerSwitched,
+                            val: getManagerRoleData?.data?.response == 'no'
+                                ? isGrantManagerSwitched = false
+                                : isGrantManagerSwitched = true,
                             onChangeMethod1: (_) {
-                              setState(() {
-                                isGrantManagerSwitched =
-                                    !isGrantManagerSwitched;
-                              });
+                              // isGrantManagerSwitched == false
+                              //     ?
 
-                              isGrantManagerSwitched == true
-                                  ? showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          contentPadding: EdgeInsets.zero,
-                                          content: Container(
-                                            height: 248,
-                                            width: 350,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                color: Colors.white),
-                                            child: Column(
-                                              children: [
-                                                const SizedBox(
-                                                  height: 45,
-                                                ),
-                                                Text(
-                                                  'Grant Manager Access',
-                                                  style: AppTextStyles.font16,
-                                                ),
-                                                const SizedBox(
-                                                  height: 16,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 40),
-                                                  child: Text(
-                                                    'Are you sure you want to grant this user manager access?',
-                                                    style: AppTextStyles.font14,
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 31,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 20),
-                                                  child: Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            isGrantManagerSwitched =
-                                                                false;
-                                                          });
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Container(
-                                                          height: 48,
-                                                          width: 128,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                            color: const Color(
-                                                                0xffEEEFEF),
-                                                          ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'Cancel',
-                                                              style: AppTextStyles
-                                                                  .font16
-                                                                  .copyWith(
-                                                                      color: const Color(
-                                                                          0xff000078)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 18,
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          setManagerRole();
-                                                        },
-                                                        child: Container(
-                                                          height: 48,
-                                                          width: 128,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                            color: const Color(
-                                                                0xff000078),
-                                                          ),
-                                                          child: Center(
-                                                              child: Text(
-                                                            'Confirm',
-                                                            style: AppTextStyles
-                                                                .font16
-                                                                .copyWith(
-                                                                    color: const Color(
-                                                                        0xffEEEFEF)),
-                                                          )),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      contentPadding: EdgeInsets.zero,
+                                      content: Container(
+                                        height: 248,
+                                        width: 350,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Colors.white),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 45,
                                             ),
-                                          ),
-                                        );
-                                      })
-                                  : const SizedBox.shrink();
+                                            Text(
+                                              'Grant Manager Access',
+                                              style: AppTextStyles.font16,
+                                            ),
+                                            const SizedBox(
+                                              height: 16,
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 40),
+                                              child: Text(
+                                                'Are you sure you want to grant this user manager access?',
+                                                style: AppTextStyles.font14,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 31,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
+                                              child: Row(
+                                                children: [
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 48,
+                                                      width: 128,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                        color: const Color(
+                                                            0xffEEEFEF),
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          'Cancel',
+                                                          style: AppTextStyles
+                                                              .font16
+                                                              .copyWith(
+                                                                  color: const Color(
+                                                                      0xff000078)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 18,
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.pop(context);
+                                                      setManagerRole(
+                                                          userRole:
+                                                              isGrantManagerSwitched ==
+                                                                      false
+                                                                  ? 'yes'
+                                                                  : 'no'
+
+                                                          // '${getManagerRoleData?.data?.response}'
+
+                                                          );
+                                                    },
+                                                    child: Container(
+                                                      height: 48,
+                                                      width: 128,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                        color: const Color(
+                                                            0xff000078),
+                                                      ),
+                                                      child: Center(
+                                                          child: Text(
+                                                        'Confirm',
+                                                        style: AppTextStyles
+                                                            .font16
+                                                            .copyWith(
+                                                                color: const Color(
+                                                                    0xffEEEFEF)),
+                                                      )),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                              // : const SizedBox.shrink();
                             },
                           ),
                           const SizedBox(
@@ -497,10 +482,14 @@ class _SettingsState extends ConsumerState<Settings> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  //   Navigator.push(context,
-                                  //     MaterialPageRoute(builder: (_) {
-                                  //   return const ChangePlan();
-                                  // }));
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) {
+                                    return const ChangePlan(
+                                      userId: 1,
+                                      bypassPlan: 'yes',
+                                      planId: 3,
+                                    );
+                                  }));
                                 },
                                 child: Text(
                                   "Change Plan For User",
@@ -602,6 +591,10 @@ class _SettingsState extends ConsumerState<Settings> {
                           const SizedBox(
                             height: 16,
                           ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     Navigator.push(context, MaterialPageRoute(builder: (_){return CreateAccount}))
+                          //   },child:
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -617,6 +610,7 @@ class _SettingsState extends ConsumerState<Settings> {
                               ),
                             ],
                           ),
+
                           const SizedBox(
                             height: 16,
                           ),
@@ -714,5 +708,31 @@ class _SettingsState extends ConsumerState<Settings> {
         ),
       ),
     );
+  }
+
+  setManagerRole({required String userRole}) {
+    final data = SetManagerRoleRequest(
+      process: 'autobiz_members',
+      action: 'setmanagerrole',
+      userId: widget.userId.toString(),
+      roleStatus: userRole,
+    );
+    ref.read(setManagerRoleNotifierProvider.notifier).setManagerRole(
+          data: data,
+          onError: (error) {
+            setState(() {
+              isGrantManagerSwitched = false;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(error)));
+          },
+          onSuccess: (message) {
+            setState(() {
+              isGrantManagerSwitched = !isGrantManagerSwitched;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(message)));
+          },
+        );
   }
 }

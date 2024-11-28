@@ -11,6 +11,6 @@ Map<String, dynamic> _$SetManagerRoleRequestToJson(
     <String, dynamic>{
       'process': instance.process,
       'action': instance.action,
-      'userId': instance.userId,
-      'roleStatus': instance.roleStatus,
+      'user_id': instance.userId,
+      'role_status': instance.roleStatus,
     };

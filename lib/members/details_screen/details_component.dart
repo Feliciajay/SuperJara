@@ -7,7 +7,7 @@ import 'package:superjara/members/details_screen/user_details/data/model/fetch_u
 
 class DetailsComponent extends StatelessWidget {
   const DetailsComponent({super.key, required this.data});
-  final UserDetailsData data;
+  final List<UserDetailsData> data;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text(data.email,
+                    Text(data.first.email,
                         style: AppTextStyles.fonts12.copyWith(
                             color: const Color(0XFF000000),
                             fontWeight: FontWeight.w500)),
@@ -80,7 +80,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text(data.phone,
+                    Text(data.first.phone,
                         style: AppTextStyles.font14.copyWith(
                             color: const Color(0XFF000000),
                             fontWeight: FontWeight.w500)),

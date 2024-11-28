@@ -17,21 +17,12 @@ class ChangeUserPlanNotifier extends AutoDisposeNotifier<ChangeUserPlanState> {
   }
 
   Future<void> changeUserPlan({
-    required int userId,
-    required String planId,
-    required String bypassPlan,
-    // void Function(String error) onError,
-    // void Function()? onSuccess,
+    required ChangeUserPlanRequest data,
+    required void Function(String error) onError,
+    required void Function(String message) onSuccess,
   }) async {
     state = state.copyWith(changeUserPlanState: LoadState.loading);
 
-    final data = ChangeUserPlanRequest(
-      action: 'changeuserplan',
-      process: 'autobiz_members',
-      user_id: "$userId",
-      plan_id: "$planId",
-      bypass_plan: "$bypassPlan",
-    );
     try {
       final value = await _changeUserPlanRepository.changeUserPlan(data);
       if (!value.status == true) throw Exception(value.data!.serverMessage);
@@ -40,9 +31,9 @@ class ChangeUserPlanNotifier extends AutoDisposeNotifier<ChangeUserPlanState> {
         changeUserPlanState: LoadState.idle,
         changeUserPlanResponse: value.data,
       );
-      // onSuccess!();
+      onSuccess(value.data!.serverMessage);
     } catch (e) {
-      // onError(e.toString());
+      onError(e.toString());
       state = state.copyWith(changeUserPlanState: LoadState.idle);
     }
   }
