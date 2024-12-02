@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:superjara/home/count_managers/data/notifier/count_manager_notifier.dart';
 import 'package:superjara/home/count_transaction/notifier/count_transaction_notifier.dart';
 import 'package:superjara/home/data/model/count_member_response.dart';
-
 import 'package:superjara/home/home_container.dart';
 import 'package:superjara/home/notifier/count_member_notifier.dart';
 import 'package:superjara/home/widgets/home_page_header.dart';
 import 'package:superjara/home/widgets/status_widget.dart';
-import 'package:superjara/home/count_managers/data/notifier/count_manager_notifier.dart';
-import 'package:superjara/utils/enums.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({
@@ -45,7 +44,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final countManagerState = ref.watch(countManagerNotifierProvider);
     final managerData = countManagerState.getCountManager?.data;
     final countTransactionState = ref.watch(countTransactionNotifierProvider);
-    final countTransactionData = countTransactionState.getCountTransaction.data;
+    final countTransactionData =
+        countTransactionState.getCountTransaction?.data;
     // final memberDataLoading = countMemberState.countMemberState.isLoading;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
@@ -86,23 +86,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     const SizedBox(height: 28),
                     HomeContainer(
                       title: 'Transactions',
-                      value: '${countTransactionData?.dataResult}',
+                      value: '${countTransactionData?.totalTransactions}',
                       // value: '${data?.totalMembers}',
                       catergoryValues: Row(
                         children: [
                           StatusWidget(
                             isSuccess: true,
-                            number: '${countTransactionData?.dataResult}',
+                            number:
+                                '${countTransactionData?.totalCompletedTransaction}',
                             status: 'Successful',
                           ),
                           StatusWidget(
                             isSuccess: false,
-                            number: '${countTransactionData?.dataResult}',
+                            number:
+                                '${countTransactionData?.totalPendingTransaction}',
                             status: 'Pending',
                           ),
                           StatusWidget(
                             isSuccess: false,
-                            number: '${countTransactionData?.dataResult}',
+                            number:
+                                '${countTransactionData?.totalUncompletedTransaction}',
                             status: 'Failed',
                           ),
                         ],

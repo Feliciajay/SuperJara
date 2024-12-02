@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:superjara/config/app_constants.dart';
 
 import 'package:superjara/home/count_transaction/model/count_transaction_request.dart';
 import 'package:superjara/home/count_transaction/notifier/count_transaction_state.dart';
@@ -27,22 +26,21 @@ class CountTransactionNotifier
 
       // }
       ) async {
-    state = state.copyWith(countTransactionsState: LoadState.loading);
-    const apiKey = ApiKey.apiKey;
+    state = state.copyWith(countTransactionState: LoadState.loading);
+
     const data = CountTransactionRequest(
       action: 'counttransaction',
       process: 'autobiz_members',
-      apiKey: apiKey,
     );
     try {
       final value = await _countTransactionRepository.countTransaction(data);
       if (!value.status == true) throw Exception(value.serverMessage);
 
-      state = state.copyWith(countTransactionsState: LoadState.idle);
+      state = state.copyWith(countTransactionState: LoadState.idle);
       // onSuccess!();
     } catch (e) {
       // onError(e.toString());
-      state = state.copyWith(countTransactionsState: LoadState.idle);
+      state = state.copyWith(countTransactionState: LoadState.idle);
     }
   }
 }

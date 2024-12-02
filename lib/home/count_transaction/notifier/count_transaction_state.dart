@@ -1,6 +1,5 @@
-import 'package:superjara/core/network_utils/async_response.dart';
-
 import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
+
 import 'package:superjara/utils/enums.dart';
 
 class CountTransactionState {
@@ -10,21 +9,22 @@ class CountTransactionState {
   });
 
   final LoadState countTransactionState;
-  final AsyncResponse<CountTransactionResponse> getCountTransaction;
+  final CountTransactionResponse? getCountTransaction;
 
   factory CountTransactionState.initial() {
     return CountTransactionState(
       countTransactionState: LoadState.idle,
-      getCountTransaction: AsyncResponse.loading(),
+      getCountTransaction: null,
     );
   }
+
   CountTransactionState copyWith({
-    LoadState? countTransactionsState,
-    final AsyncResponse<CountTransactionResponse>? getCountTransaction,
+    LoadState? countTransactionState,
+    CountTransactionResponse? getCountTransaction,
   }) {
     return CountTransactionState(
-      countTransactionState: countTransactionsState ?? countTransactionState,
-      getCountTransaction: getCountTransaction ?? this.getCountTransaction,
-    );
+        countTransactionState:
+            countTransactionState ?? this.countTransactionState,
+        getCountTransaction: getCountTransaction ?? this.getCountTransaction);
   }
 }

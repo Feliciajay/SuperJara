@@ -36,7 +36,7 @@ class _HomeContainerState extends State<HomeContainer> {
             children: [
               Text(
                 widget.title,
-                style: AppTextStyles.font14,
+                style: AppTextStyles.font12,
               ),
               Text(
                 widget.value,

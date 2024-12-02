@@ -11,5 +11,4 @@ Map<String, dynamic> _$CountTransactionRequestToJson(
     <String, dynamic>{
       'process': instance.process,
       'action': instance.action,
-      'apiKey': instance.apiKey,
     };
