@@ -34,6 +34,11 @@ class _MTNShareTransactionState extends ConsumerState<MTNShareTransaction> {
     final mtnShareTransactionData =
         mtnShareTransactionState.mtnShareTransactionResponse?.data.data;
 
+    // if (mtnShareTransactionData == null) {
+    //   // Handle the case where data is null, e.g., show a loading indicator or error message
+    //   return const Center(child: CircularProgressIndicator());
+    // }
+
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(

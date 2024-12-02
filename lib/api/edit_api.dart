@@ -15,7 +15,7 @@ class _EditApiState extends State<EditApi> {
     '400GB',
     '1 TB',
   ];
-  String? selectedItem = '100GB';
+  String? selectedItem;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,6 +100,12 @@ class _EditApiState extends State<EditApi> {
                           Border.all(width: 1, color: const Color(0xffCBD5E1))),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
+                      isExpanded: true,
+                      hint: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child:
+                            Text('Select option', style: AppTextStyles.font12),
+                      ),
                       value: selectedItem,
                       items: items
                           .map((item) => DropdownMenuItem<String>(
@@ -149,7 +155,7 @@ class _EditApiState extends State<EditApi> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: '  09038177869',
+                        hintText: '',
                         helperStyle: AppTextStyles.font14),
                   ),
                 ),

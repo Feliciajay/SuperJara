@@ -16,79 +16,29 @@ class API extends ConsumerStatefulWidget {
 }
 
 class _APIState extends ConsumerState<API> {
+  Map<String, bool> visibilityToggles = {};
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(apiNotifierProvider.notifier).api();
+    });
+
+    super.initState();
+  }
+
+  void toggleVisibility(String key) {
+    setState(() {
+      visibilityToggles[key] = !(visibilityToggles[key] ?? false);
+    });
+  }
+
   ApiData? apiData;
-  bool iyiinstant = false;
-  iyiinstantVisibility() {
-    setState(() {
-      iyiinstant = !iyiinstant;
-    });
-  }
-
-  bool airtimeNigeria = false;
-  airtimeNigeriaVisibility() {
-    setState(() {
-      airtimeNigeria = !iyiinstant;
-    });
-  }
-
-  bool payvessel = false;
-  payvesselVisibility() {
-    setState(() {
-      payvessel = !payvessel;
-    });
-  }
-
-  bool vTPass = false;
-  vTPassVisibility() {
-    setState(() {
-      vTPass = !vTPass;
-    });
-  }
-
-  bool yafunyafun = false;
-  yafunyafunVisibility() {
-    setState(() {
-      yafunyafun = !yafunyafun;
-    });
-  }
-
-  bool simservers = false;
-  simserversVisibility() {
-    setState(() {
-      simservers = !simservers;
-    });
-  }
-
-  bool simserver = false;
-  simserverVisibility() {
-    setState(() {
-      simserver = !simserver;
-    });
-
-    @override
-    void initState() {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await ref.watch(apiNotifierProvider.notifier).api();
-      });
-      super.initState();
-    }
-
-    @override
-    void dispose() {
-      super.dispose();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final apiState = ref.watch(apiNotifierProvider);
-    // final apidata = apiState.apiResponse?.data;
-    //  final apidata = apiState.getApi?.data ?? [];
-    final apiData = apiState.getApi?.data ??
-        ApiData(
-            data: [],
-            pagination: Pagination(
-                totalRecords: 0, totalPages: 0, currentPage: 0, limit: 10));
+    final apiData = apiState.getApi?.data?.data;
 
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
@@ -182,68 +132,40 @@ class _APIState extends ConsumerState<API> {
                         const SizedBox(
                           height: 19,
                         ),
-                        ApiWidget(
-                          title: "",
-                          subtitle: 'Iyiinstant',
-                          obscure: iyiinstant,
-                          iconData: iyiinstant
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => iyiinstantVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'Airtime Nigeria',
-                          subtitle: 'Airtime Nigeria',
-                          obscure: airtimeNigeria,
-                          iconData: airtimeNigeria
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => airtimeNigeriaVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'Payvessel',
-                          subtitle: 'Payvessel',
-                          iconData: payvessel
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => payvesselVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'VTPass',
-                          subtitle: 'VTPass',
-                          iconData:
-                              vTPass ? Icons.visibility_off : Icons.visibility,
-                          toggleObscure: () => vTPassVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'Yafunyafun',
-                          subtitle: 'Autobizapp',
-                          iconData: yafunyafun
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => yafunyafunVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'Simservers',
-                          subtitle: 'Simservers',
-                          iconData: simservers
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => simserversVisibility(),
-                        ),
-                        ApiWidget(
-                          title: 'Simservers',
-                          subtitle: 'Simservers',
-                          iconData: simserver
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          toggleObscure: () => simserverVisibility(),
+                        const SizedBox(height: 26),
+                        SizedBox(
+                          height: 350,
+                          width: 400,
+                          child: ListView.builder(
+                            itemCount: apiData?.length,
+                            itemBuilder: (context, index) {
+                              final api = apiData?[index];
+                              return ApiWidget(
+                                title: '${api?.apiName}',
+                                subtitle: '${api?.apiSystemCode}',
+                                obscure:
+                                    visibilityToggles[api?.apiName] ?? false,
+                                toggleObscure: () =>
+                                    toggleVisibility(api?.apiName ?? ''),
+                                onEdit: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => const ApiDetails()),
+                                  );
+                                },
+                                onDelete: () {
+                                  // Handle delete logic
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -255,16 +177,20 @@ class _APIState extends ConsumerState<API> {
 class ApiWidget extends StatelessWidget {
   final String title;
   final String subtitle;
-  final bool? obscure;
-  final IconData iconData;
-  final Function()? toggleObscure;
+  final bool obscure;
+
+  final VoidCallback toggleObscure;
+  final VoidCallback onEdit;
+  final VoidCallback onDelete;
+
   const ApiWidget({
     super.key,
     required this.title,
     required this.subtitle,
-    this.obscure,
-    required this.iconData,
-    this.toggleObscure,
+    required this.obscure,
+    required this.onEdit,
+    required this.onDelete,
+    required this.toggleObscure,
   });
 
   @override
@@ -283,7 +209,7 @@ class ApiWidget extends StatelessWidget {
                 SizedBox(
                   width: 150,
                   child: TextField(
-                    obscureText: obscure ?? false,
+                    obscureText: obscure,
                     decoration: InputDecoration(
                         hintText: subtitle,
                         hintStyle: AppTextStyles.font14
@@ -295,33 +221,18 @@ class ApiWidget extends StatelessWidget {
             ),
             Row(
               children: [
-                InkWell(
-                  onTap: toggleObscure,
-                  child: Icon(
-                    iconData,
-                    size: 20,
-                  ),
+                IconButton(
+                  icon: Icon(obscure ? Icons.visibility_off : Icons.visibility,
+                      size: 20),
+                  onPressed: toggleObscure,
                 ),
-                const SizedBox(
-                  width: 16,
+                IconButton(
+                  icon: const Icon(Icons.edit, size: 20),
+                  onPressed: onEdit,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return const ApiDetails();
-                    }));
-                  },
-                  child: const Icon(
-                    Icons.edit,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                const Icon(
-                  Icons.delete,
-                  size: 20,
+                IconButton(
+                  icon: const Icon(Icons.delete, size: 20),
+                  onPressed: onDelete,
                 ),
               ],
             ),

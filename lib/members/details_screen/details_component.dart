@@ -114,7 +114,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w300)),
                 Row(
                   children: [
-                    Text("data",
+                    Text(data.first.street,
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),
@@ -145,7 +145,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text('data.city',
+                    Text(data.first.city,
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),
@@ -179,7 +179,7 @@ class DetailsComponent extends StatelessWidget {
                         fontWeight: FontWeight.w400)),
                 Row(
                   children: [
-                    Text('data.state',
+                    Text(data.first.state,
                         style: AppTextStyles.font14.copyWith(
                             color: const Color.fromARGB(255, 194, 192, 192),
                             fontWeight: FontWeight.w500)),

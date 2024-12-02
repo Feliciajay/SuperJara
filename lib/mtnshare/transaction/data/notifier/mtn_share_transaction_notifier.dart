@@ -89,7 +89,7 @@ class MtnShareTransactionNotifier
       ) async {
     state = state.copyWith(mtnShareTransactionState: LoadState.loading);
 
-    const todaysalesdata = MtnShareTransactionRequest(
+    const mtnShareTransactionData = MtnShareTransactionRequest(
       action: 'fetchallmtnsimtransactionhistory',
       process: 'autobiz_sims',
       page: 1,
@@ -99,8 +99,8 @@ class MtnShareTransactionNotifier
     );
     try {
       final value = await _mtnShareTransactionRepository
-          .mtnShareTransaction(todaysalesdata);
-      if (!value.status == true) throw Exception(value.data!.serverMessage);
+          .mtnShareTransaction(mtnShareTransactionData);
+      if (!value.status == true) throw Exception(value.data?.serverMessage);
 
       state = state.copyWith(
         mtnShareTransactionState: LoadState.idle,
@@ -108,7 +108,7 @@ class MtnShareTransactionNotifier
       );
       // onSuccess!();
     } catch (e) {
-      // onError(e.toString());
+      //   onError(e.toString());
       state = state.copyWith(mtnShareTransactionState: LoadState.idle);
     }
   }

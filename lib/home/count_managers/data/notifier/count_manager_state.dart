@@ -17,6 +17,7 @@ class CountManagerState {
       getCountManager: null,
     );
   }
+
   CountManagerState copyWith({
     LoadState? countManagerState,
     CountManagerResponse? getCountManager,

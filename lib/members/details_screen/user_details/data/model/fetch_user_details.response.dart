@@ -48,9 +48,9 @@ class UserDetailsData {
   final dynamic sex;
   final String phone;
   final dynamic street;
-  final int city;
-  final int state;
-  final int country;
+  final String city;
+  final String state;
+  final String country;
   final String dob;
   final String userType;
   final int rId;

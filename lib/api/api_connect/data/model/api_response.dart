@@ -1,28 +1,32 @@
 class ApiResponse {
-  final String serverMessage;
+  final String? serverMessage;
   final bool status;
-  final ApiData data;
-  final List<dynamic> dataResult;
-  final List<dynamic> errorData;
-  final String textStatus;
+  final ApiData? data;
+  final List<dynamic>? dataResult;
+  final List<dynamic>? errorData;
+  final String? textStatus;
   final dynamic error;
 
   ApiResponse({
-    required this.serverMessage,
+    this.serverMessage,
     required this.status,
-    required this.data,
-    required this.dataResult,
-    required this.errorData,
-    required this.textStatus,
-    required this.error,
+    this.data,
+    this.dataResult,
+    this.errorData,
+    this.textStatus,
+    this.error,
   });
 
   factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
         serverMessage: json["server_message"],
         status: json["status"],
-        data: ApiData.fromJson(json["data"]),
-        dataResult: List<dynamic>.from(json["data_result"].map((x) => x)),
-        errorData: List<dynamic>.from(json["error_data"].map((x) => x)),
+        data: json["data"] == null ? null : ApiData.fromJson(json["data"]),
+        dataResult: json["data_result"] == null
+            ? []
+            : List<dynamic>.from(json["data_result"]!.map((x) => x)),
+        errorData: json["error_data"] == null
+            ? []
+            : List<dynamic>.from(json["error_data"]!.map((x) => x)),
         textStatus: json["text_status"],
         error: json["error"],
       );
@@ -30,51 +34,60 @@ class ApiResponse {
   Map<String, dynamic> toJson() => {
         "server_message": serverMessage,
         "status": status,
-        "data": data.toJson(),
-        "data_result": List<dynamic>.from(dataResult.map((x) => x)),
-        "error_data": List<dynamic>.from(errorData.map((x) => x)),
+        "data": data?.toJson(),
+        "data_result": dataResult == null
+            ? []
+            : List<dynamic>.from(dataResult!.map((x) => x)),
+        "error_data": errorData == null
+            ? []
+            : List<dynamic>.from(errorData!.map((x) => x)),
         "text_status": textStatus,
         "error": error,
       };
 }
 
 class ApiData {
-  final List<ApiDatum> data;
-  final Pagination pagination;
+  final List<Datum>? data;
+  final Pagination? pagination;
 
   ApiData({
-    required this.data,
-    required this.pagination,
+    this.data,
+    this.pagination,
   });
 
   factory ApiData.fromJson(Map<String, dynamic> json) => ApiData(
-        data:
-            List<ApiDatum>.from(json["data"].map((x) => ApiDatum.fromJson(x))),
-        pagination: Pagination.fromJson(json["pagination"]),
+        data: json["data"] == null
+            ? []
+            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        pagination: json["pagination"] == null
+            ? null
+            : Pagination.fromJson(json["pagination"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
-        "pagination": pagination.toJson(),
+        "data": data == null
+            ? []
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "pagination": pagination?.toJson(),
       };
 }
 
-class ApiDatum {
-  final String apiName;
-  final String apiSystemCode;
-  final int apiId;
+class Datum {
+  final String? apiName;
+  final String? apiSystemCode;
+  final int? apiId;
   final int? userId;
-  final int apiVendorId;
+  final int? apiVendorId;
 
-  ApiDatum({
-    required this.apiName,
-    required this.apiSystemCode,
-    required this.apiId,
-    required this.userId,
-    required this.apiVendorId,
+  Datum({
+    this.apiName,
+    this.apiSystemCode,
+    this.apiId,
+    this.userId,
+    this.apiVendorId,
   });
 
-  factory ApiDatum.fromJson(Map<String, dynamic> json) => ApiDatum(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         apiName: json["api_name"],
         apiSystemCode: json["api_system_code"],
         apiId: json["api_id"],
@@ -92,16 +105,16 @@ class ApiDatum {
 }
 
 class Pagination {
-  final int totalRecords;
-  final int totalPages;
-  final int currentPage;
-  final int limit;
+  final int? totalRecords;
+  final int? totalPages;
+  final int? currentPage;
+  final int? limit;
 
   Pagination({
-    required this.totalRecords,
-    required this.totalPages,
-    required this.currentPage,
-    required this.limit,
+    this.totalRecords,
+    this.totalPages,
+    this.currentPage,
+    this.limit,
   });
 
   factory Pagination.fromJson(Map<String, dynamic> json) => Pagination(

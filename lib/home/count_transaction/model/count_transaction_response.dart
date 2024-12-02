@@ -1,49 +1,79 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'count_transaction_response.g.dart';
-
-@JsonSerializable()
 class CountTransactionResponse {
-  final String serverMessage;
-  final bool status;
-  final CountTransactionData data;
-  final List<dynamic> dataResult;
-  final List<dynamic> errorData;
-  final String textStatus;
+  final String? serverMessage;
+  final bool? status;
+  final countTransactionData? data;
+  final List<dynamic>? dataResult;
+  final List<dynamic>? errorData;
+  final String? textStatus;
   final dynamic error;
 
   CountTransactionResponse({
-    required this.serverMessage,
-    required this.status,
-    required this.data,
-    required this.dataResult,
-    required this.errorData,
-    required this.textStatus,
-    required this.error,
+    this.serverMessage,
+    this.status,
+    this.data,
+    this.dataResult,
+    this.errorData,
+    this.textStatus,
+    this.error,
   });
 
   factory CountTransactionResponse.fromJson(Map<String, dynamic> json) =>
-      _$CountTransactionResponseFromJson(json);
+      CountTransactionResponse(
+        serverMessage: json["server_message"],
+        status: json["status"],
+        data: json["data"] == null
+            ? null
+            : countTransactionData.fromJson(json["data"]),
+        dataResult: json["data_result"] == null
+            ? []
+            : List<dynamic>.from(json["data_result"]!.map((x) => x)),
+        errorData: json["error_data"] == null
+            ? []
+            : List<dynamic>.from(json["error_data"]!.map((x) => x)),
+        textStatus: json["text_status"],
+        error: json["error"],
+      );
 
-  Map<String, dynamic> toJson() => _$CountTransactionResponseToJson(this);
+  Map<String, dynamic> toJson() => {
+        "server_message": serverMessage,
+        "status": status,
+        "data": data?.toJson(),
+        "data_result": dataResult == null
+            ? []
+            : List<dynamic>.from(dataResult!.map((x) => x)),
+        "error_data": errorData == null
+            ? []
+            : List<dynamic>.from(errorData!.map((x) => x)),
+        "text_status": textStatus,
+        "error": error,
+      };
 }
 
-@JsonSerializable()
-class CountTransactionData {
-  final int totalTransactions;
-  final int totalCompletedTransaction;
-  final int totalUncompletedTransaction;
-  final int totalPendingTransaction;
+class countTransactionData {
+  final int? totalTransactions;
+  final int? totalCompletedTransaction;
+  final int? totalUncompletedTransaction;
+  final int? totalPendingTransaction;
 
-  CountTransactionData({
-    required this.totalTransactions,
-    required this.totalCompletedTransaction,
-    required this.totalUncompletedTransaction,
-    required this.totalPendingTransaction,
+  countTransactionData({
+    this.totalTransactions,
+    this.totalCompletedTransaction,
+    this.totalUncompletedTransaction,
+    this.totalPendingTransaction,
   });
 
-  factory CountTransactionData.fromJson(Map<String, dynamic> json) =>
-      _$CountTransactionDataFromJson(json);
+  factory countTransactionData.fromJson(Map<String, dynamic> json) =>
+      countTransactionData(
+        totalTransactions: json["total_transactions"],
+        totalCompletedTransaction: json["total_completed_transaction"],
+        totalUncompletedTransaction: json["total_uncompleted_transaction"],
+        totalPendingTransaction: json["total_pending_transaction"],
+      );
 
-  Map<String, dynamic> toJson() => _$CountTransactionDataToJson(this);
+  Map<String, dynamic> toJson() => {
+        "total_transactions": totalTransactions,
+        "total_completed_transaction": totalCompletedTransaction,
+        "total_uncompleted_transaction": totalUncompletedTransaction,
+        "total_pending_transaction": totalPendingTransaction,
+      };
 }

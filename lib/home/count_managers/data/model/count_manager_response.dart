@@ -1,7 +1,7 @@
 class CountManagerResponse {
   final String serverMessage;
   final bool status;
-  final Data data;
+  final CountManagerData data;
   final List<dynamic> dataResult;
   final List<dynamic> errorData;
   final String textStatus;
@@ -21,7 +21,7 @@ class CountManagerResponse {
       CountManagerResponse(
         serverMessage: json["server_message"],
         status: json["status"],
-        data: Data.fromJson(json["data"]),
+        data: CountManagerData.fromJson(json["data"]),
         dataResult: List<dynamic>.from(json["data_result"].map((x) => x)),
         errorData: List<dynamic>.from(json["error_data"].map((x) => x)),
         textStatus: json["text_status"],
@@ -39,18 +39,19 @@ class CountManagerResponse {
       };
 }
 
-class Data {
+class CountManagerData {
   final int totalManagers;
   final int totalActive;
   final int totalInactive;
 
-  Data({
+  CountManagerData({
     required this.totalManagers,
     required this.totalActive,
     required this.totalInactive,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory CountManagerData.fromJson(Map<String, dynamic> json) =>
+      CountManagerData(
         totalManagers: json["total_managers"],
         totalActive: json["total_active"],
         totalInactive: json["total_inactive"],

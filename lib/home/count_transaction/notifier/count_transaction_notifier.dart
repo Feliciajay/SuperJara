@@ -19,7 +19,7 @@ class CountTransactionNotifier
     return CountTransactionState.initial();
   }
 
-  Future<void> countManager(
+  Future<void> countTransaction(
       //{
       // required CountMemberRequest data,
       // void Function(String error) onError,

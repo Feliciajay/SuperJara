@@ -10,6 +10,12 @@ import 'package:superjara/members/change_user_plan/change_plan.dart';
 import 'package:superjara/members/settings/data/model/set_manager_role_request.dart';
 import 'package:superjara/members/settings/data/notifier/get_manager_role_notifier.dart';
 import 'package:superjara/members/settings/data/notifier/set_manager_role_notifier.dart';
+import 'package:superjara/members/settings/set_atm_role/model/set_atm_role_request.dart';
+import 'package:superjara/members/settings/set_atm_role/notifier/get_atm_role_notifier.dart';
+import 'package:superjara/members/settings/set_atm_role/notifier/set_atm_role_notifier.dart';
+import 'package:superjara/members/settings/set_user_access_status/model/set_user_access_status_request.dart';
+import 'package:superjara/members/settings/set_user_access_status/notifier/get_user_access_status.notifier.dart';
+import 'package:superjara/members/settings/set_user_access_status/notifier/set_user_access_status.notifier.dart';
 import 'package:superjara/utils/enums.dart';
 import 'switch_items.dart';
 
@@ -36,6 +42,12 @@ class _SettingsState extends ConsumerState<Settings> {
       await ref
           .watch(getManagerRoleNotifierProvider.notifier)
           .getManagerRole(userId: widget.userId.toString());
+
+      //  .watch(getAtmRoleNotifierProvider.notifier)
+      // .getAtmRole(userId: widget.userId.toString());
+
+      //   .watch(getUserAccessStatusNotifierProvider.notifier)
+      //.getUserAccessStatus(userId: widget.userId.toString());
     });
     super.initState();
   }
@@ -46,6 +58,18 @@ class _SettingsState extends ConsumerState<Settings> {
     final getManagerRoleState = ref.watch(getManagerRoleNotifierProvider);
     final isLoading = ref.watch(setManagerRoleNotifierProvider
         .select((value) => value.setManagerRoleState.isLoading));
+
+    final getAtmRoleState = ref.watch(getAtmRoleNotifierProvider);
+    final isLoadingAtm = ref.watch(setAtmRoleNotifierProvider
+        .select((value) => value.setAtmRoleState.isLoading));
+    final getAtmRoleData = getAtmRoleState.getAtmRoleResponse;
+
+    final getUserAccessStatusState =
+        ref.watch(getUserAccessStatusNotifierProvider);
+    final isLoadingStatus = ref.watch(setUserAccessStatusNotifierProvider
+        .select((value) => value.setUserAccessStatusState.isLoading));
+    final getUserAccessStatusData =
+        getUserAccessStatusState.getUserAccessStatusResponse;
 
     // setManagerRoleState.setManagerRoleState;
     // final setManagerRoleData = setManagerRoleState.setManagerRoleResponse?.data;
@@ -240,12 +264,10 @@ class _SettingsState extends ConsumerState<Settings> {
                           ),
                           SwitchItems(
                             text: 'Revoke ATM Access',
-                            val: isRevokeATMAccess,
+                            val: getAtmRoleData?.data?.response == 'no'
+                                ? isRevokeATMAccess = false
+                                : isRevokeATMAccess = true,
                             onChangeMethod1: (_) {
-                              setState(() {
-                                isRevokeATMAccess = !isRevokeATMAccess;
-                              });
-
                               isRevokeATMAccess == true
                                   ? showDialog(
                                       context: context,
@@ -290,50 +312,72 @@ class _SettingsState extends ConsumerState<Settings> {
                                                           left: 20),
                                                   child: Row(
                                                     children: [
-                                                      Container(
-                                                        height: 48,
-                                                        width: 128,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                          color: const Color(
-                                                              0xffEEEFEF),
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: AppTextStyles
-                                                                .font16
-                                                                .copyWith(
-                                                                    color: const Color(
-                                                                        0xff000078)),
+                                                      GestureDetector(
+                                                        onTap: () =>
+                                                            Navigator.pop,
+                                                        child: Container(
+                                                          height: 48,
+                                                          width: 128,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                            color: const Color(
+                                                                0xffEEEFEF),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'Cancel',
+                                                              style: AppTextStyles
+                                                                  .font16
+                                                                  .copyWith(
+                                                                      color: const Color(
+                                                                          0xff000078)),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                       const SizedBox(
                                                         width: 18,
                                                       ),
-                                                      Container(
-                                                        height: 48,
-                                                        width: 128,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                          color: const Color(
-                                                              0xff000078),
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(
-                                                            'Confirm',
-                                                            style: AppTextStyles
-                                                                .font16
-                                                                .copyWith(
-                                                                    color: const Color(
-                                                                        0xffEEEFEF)),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          setAtmRole(
+                                                              userRole:
+                                                                  isRevokeATMAccess ==
+                                                                          false
+                                                                      ? 'yes'
+                                                                      : 'no'
+
+                                                              // '${getManagerRoleData?.data?.response}'
+
+                                                              );
+                                                        },
+                                                        child: Container(
+                                                          height: 48,
+                                                          width: 128,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                            color: const Color(
+                                                                0xff000078),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'Confirm',
+                                                              style: AppTextStyles
+                                                                  .font16
+                                                                  .copyWith(
+                                                                      color: const Color(
+                                                                          0xffEEEFEF)),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -360,12 +404,10 @@ class _SettingsState extends ConsumerState<Settings> {
                           ),
                           SwitchItems(
                             text: 'Revoke Platform Access',
-                            val: isRevokePlatformAccess,
+                            val: getUserAccessStatusData?.data == 'no'
+                                ? isRevokePlatformAccess = false
+                                : isRevokePlatformAccess = true,
                             onChangeMethod1: (_) {
-                              setState(() {
-                                isRevokePlatformAccess =
-                                    !isRevokePlatformAccess;
-                              });
                               isRevokePlatformAccess == true
                                   ? showDialog(
                                       context: context,
@@ -410,51 +452,73 @@ class _SettingsState extends ConsumerState<Settings> {
                                                           left: 20),
                                                   child: Row(
                                                     children: [
-                                                      Container(
-                                                        height: 48,
-                                                        width: 128,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                          color: const Color(
-                                                              0xffEEEFEF),
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: AppTextStyles
-                                                                .font16
-                                                                .copyWith(
-                                                                    color: const Color(
-                                                                        0xff000078)),
+                                                      GestureDetector(
+                                                        onTap: () =>
+                                                            Navigator.pop,
+                                                        child: Container(
+                                                          height: 48,
+                                                          width: 128,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                            color: const Color(
+                                                                0xffEEEFEF),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'Cancel',
+                                                              style: AppTextStyles
+                                                                  .font16
+                                                                  .copyWith(
+                                                                      color: const Color(
+                                                                          0xff000078)),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                       const SizedBox(
                                                         width: 18,
                                                       ),
-                                                      Container(
-                                                        height: 48,
-                                                        width: 128,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                          color: const Color(
-                                                              0xff000078),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          setUserAccessStatus(
+                                                              userRole:
+                                                                  isRevokePlatformAccess ==
+                                                                          false
+                                                                      ? 'yes'
+                                                                      : 'no'
+
+                                                              // '${getManagerRoleData?.data?.response}'
+
+                                                              );
+                                                        },
+                                                        child: Container(
+                                                          height: 48,
+                                                          width: 128,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                            color: const Color(
+                                                                0xff000078),
+                                                          ),
+                                                          child: Center(
+                                                              child: Text(
+                                                            'Confirm',
+                                                            style: AppTextStyles
+                                                                .font16
+                                                                .copyWith(
+                                                                    color: const Color(
+                                                                        0xffEEEFEF)),
+                                                          )),
                                                         ),
-                                                        child: Center(
-                                                            child: Text(
-                                                          'Confirm',
-                                                          style: AppTextStyles
-                                                              .font16
-                                                              .copyWith(
-                                                                  color: const Color(
-                                                                      0xffEEEFEF)),
-                                                        )),
                                                       ),
                                                     ],
                                                   ),
@@ -703,6 +767,24 @@ class _SettingsState extends ConsumerState<Settings> {
                         BoxDecoration(color: Colors.black.withOpacity(0.5)),
                     // child: const CircularProgressIndicator(),
                   )
+                : const SizedBox.shrink(),
+            isLoadingAtm
+                ? Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    decoration:
+                        BoxDecoration(color: Colors.black.withOpacity(0.5)),
+                    // child: const CircularProgressIndicator(),
+                  )
+                : const SizedBox.shrink(),
+            isLoadingStatus
+                ? Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    decoration:
+                        BoxDecoration(color: Colors.black.withOpacity(0.5)),
+                    // child: const CircularProgressIndicator(),
+                  )
                 : const SizedBox.shrink()
           ],
         ),
@@ -729,6 +811,58 @@ class _SettingsState extends ConsumerState<Settings> {
           onSuccess: (message) {
             setState(() {
               isGrantManagerSwitched = !isGrantManagerSwitched;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(message)));
+          },
+        );
+  }
+
+  setAtmRole({required String userRole}) {
+    final data = SetAtmRoleRequest(
+      process: 'autobiz_members',
+      action: 'setatmstatus',
+      userId: widget.userId.toString(),
+      roleStatus: userRole,
+    );
+    ref.read(setAtmRoleNotifierProvider.notifier).setAtmRole(
+          data: data,
+          onError: (error) {
+            setState(() {
+              isRevokeATMAccess = false;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(error)));
+          },
+          onSuccess: (message) {
+            setState(() {
+              isRevokeATMAccess = !isRevokeATMAccess;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(message)));
+          },
+        );
+  }
+
+  setUserAccessStatus({required String userRole}) {
+    final data = SetUserAccessStatusRequest(
+      process: 'autobiz_members',
+      action: 'setaccessstatus',
+      userId: widget.userId.toString(),
+      roleStatus: userRole,
+    );
+    ref.read(setUserAccessStatusNotifierProvider.notifier).setUserAccessStatus(
+          data: data,
+          onError: (error) {
+            setState(() {
+              isRevokePlatformAccess = false;
+            });
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(error)));
+          },
+          onSuccess: (message) {
+            setState(() {
+              isRevokePlatformAccess = !isRevokePlatformAccess;
             });
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(message)));

@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/const/app_colors.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
-
-import 'package:superjara/members/member_section/active_section.dart';
-import 'package:superjara/members/member_section/all_section.dart';
-import 'package:superjara/members/member_section/inactive_section.dart';
+import 'package:superjara/home/count_managers/data/notifier/count_manager_notifier.dart';
+import 'package:superjara/members/managers_section/manager_active_section.dart';
+import 'package:superjara/members/managers_section/manager_all_active_section.dart';
+import 'package:superjara/members/managers_section/manager_inactive_section.dart';
 
 class ManagersSection extends ConsumerStatefulWidget {
   const ManagersSection({super.key});
@@ -23,10 +23,13 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // Future.wait([
+      //  Future.wait([
       //   ref.read(getUserDetailsNotifierProvider.notifier).getAllUserDetails(),
       // ]);
-      //   await ref.read(countManagerNotifierProvider.notifier).countManager();
+      await ref.read(countManagerNotifierProvider.notifier).countManager();
+
+      await ref.watch(countManagerNotifierProvider.notifier).countManager();
+      //  await ref.watch(fetchUserNotifierProvider.notifier).countManager();
     });
     super.initState();
   }
@@ -39,8 +42,16 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
 
   @override
   Widget build(BuildContext context) {
-    // final data = ref.watch(countManagerNotifierProvider
-    //   .select((v) => v.getCountManager.data?.data));
+    //  final CountManagerdata = ref.watch(countManagerNotifierProvider
+    //     .select((v) => v.getCountManager));
+
+    // final fetchUserState = ref.watch(fetchUserNotifierProvider);
+    // final fetchUserData = fetchUserState.fetchUserResponse?.data;
+    // final fetchUserDataDetail = fetchUserState.fetchUserResponse?.data;
+
+    final countManagerState = ref.watch(countManagerNotifierProvider);
+    final countManagerData = countManagerState.getCountManager?.data;
+    final countManagerList = countManagerState.getCountManager;
 
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
@@ -129,7 +140,7 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    'hhbjfj',
+                                    "${countManagerData?.totalManagers}",
                                     //  "${data?.totalManagers ?? ''}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
@@ -163,7 +174,7 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    'jhdkjgk',
+                                    "${countManagerData?.totalActive}",
                                     //    "${data?.totalActive ?? ''}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
@@ -197,7 +208,7 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
                                       color: AppColors.grey),
                                   child: Text(
                                     textAlign: TextAlign.center,
-                                    'dkdgjgvd',
+                                    "${countManagerData?.totalInactive}",
                                     //  "${data?.totalInactive}",
                                     style: AppTextStyles.font10
                                         .copyWith(color: AppColors.white),
@@ -213,16 +224,21 @@ class _ManagersSectionState extends ConsumerState<ManagersSection>
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 17),
-                        child: TabBarView(
-                            controller: _tabController,
-                            children: const [
-                              AllSection(),
-                              ActiveSection(
-                                length: 5,
-                                email: '',
-                              ),
-                              InactiveSection(),
-                            ]),
+                        child:
+                            TabBarView(controller: _tabController, children: [
+                          //const AllSection(),
+                          ManagerAllSection(
+                            status: 'true',
+                            isSuccess: false,
+                            managerData: countManagerList?.dataResult ?? [],
+                          ),
+                          ManagerActiveSection(
+                            managerData: countManagerList?.dataResult ?? [],
+                          ),
+                          ManagerInactiveSection(
+                            managerData: countManagerList?.dataResult ?? [],
+                          ),
+                        ]),
                       ),
                     ),
                   ],
