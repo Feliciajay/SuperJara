@@ -36,7 +36,9 @@ class CountTransactionNotifier
       final value = await _countTransactionRepository.countTransaction(data);
       if (!value.status == true) throw Exception(value.serverMessage);
 
-      state = state.copyWith(countTransactionState: LoadState.idle);
+      state = state.copyWith(
+          countTransactionState: LoadState.idle,
+          getCountTransaction: value.data);
       // onSuccess!();
     } catch (e) {
       // onError(e.toString());

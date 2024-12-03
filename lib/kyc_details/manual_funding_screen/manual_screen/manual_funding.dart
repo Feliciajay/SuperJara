@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/confirmed_section.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/denied_section.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_screen/notifier/manual_funding_notifier.dart';
 import 'package:superjara/kyc_details/manual_funding_screen/pending_section.dart';
 import 'package:superjara/kyc_details/more/more_profile.dart';
 
-class ManualFundingScreen extends StatefulWidget {
+class ManualFundingScreen extends ConsumerStatefulWidget {
   const ManualFundingScreen({super.key});
 
   @override
-  State<ManualFundingScreen> createState() => _ManualFundingScreenState();
+  ConsumerState<ManualFundingScreen> createState() =>
+      _ManualFundingScreenState();
 }
 
-class _ManualFundingScreenState extends State<ManualFundingScreen>
+class _ManualFundingScreenState extends ConsumerState<ManualFundingScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     _tabController = TabController(length: 3, vsync: this);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref.watch(manualFundingNotifierProvider.notifier).manualFunding();
+    });
+
     super.initState();
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final manualFundingState = ref.watch(manualFundingNotifierProvider);
+    final manualFundingData = manualFundingState.manualFundingResponse?.data;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -172,13 +187,18 @@ class _ManualFundingScreenState extends State<ManualFundingScreen>
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 12, vertical: 17),
-                          child: TabBarView(
-                              controller: _tabController,
-                              children: const [
-                                PendingSection(),
-                                ConfirmedSection(),
-                                DeniedSection(),
-                              ]),
+                          child:
+                              TabBarView(controller: _tabController, children: [
+                            PendingSection(
+                                manualFundingData:
+                                    manualFundingData?.pending?.data ?? []),
+                            ConfirmedSection(
+                                manualFundingData:
+                                    manualFundingData?.confirmed?.data ?? []),
+                            DeniedSection(
+                                manualFundingData:
+                                    manualFundingData?.declined?.data ?? []),
+                          ]),
                         ),
                       ),
                     ],

@@ -4,7 +4,7 @@ import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/generate_voucher/uploads.dart';
 import 'package:superjara/kyc_details/kyc.dart';
-import 'package:superjara/kyc_details/manual_funding_screen/manual_funding.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_screen/manual_funding.dart';
 import 'package:superjara/messaging/create_email/create_email.dart';
 import 'package:superjara/messaging/send_email/send_email.dart';
 import 'package:superjara/messaging/send_sms/send_sms.dart';

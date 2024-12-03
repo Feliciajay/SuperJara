@@ -14,7 +14,7 @@ class CountTransactionState {
   factory CountTransactionState.initial() {
     return CountTransactionState(
       countTransactionState: LoadState.idle,
-      getCountTransaction: null,
+      getCountTransaction: CountTransactionResponse(),
     );
   }
 

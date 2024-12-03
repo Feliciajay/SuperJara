@@ -14,6 +14,10 @@ import 'package:superjara/home/count_transaction/model/count_transaction_request
 import 'package:superjara/home/count_transaction/model/count_transaction_response.dart';
 import 'package:superjara/home/data/model/count_member_request.dart';
 import 'package:superjara/home/data/model/count_member_response.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_funding_details/model/manual_funding_details_reponse.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_funding_details/model/manual_funding_details_request.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_screen/model/manual_funding_request.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_screen/model/manual_funding_response.dart';
 import 'package:superjara/members/change_plan_users/change_user_password/model/change_user_password_request.dart';
 import 'package:superjara/members/change_plan_users/change_user_password/model/change_user_password_response.dart';
 import 'package:superjara/members/change_plan_users/payment_gateway/model/payment_gateway_request.dart';
@@ -151,6 +155,16 @@ abstract class RestClient {
   @POST('autobiz_admin.php')
   Future<GetUserAccessStatusResponse> getUserAccessStatusRequest(
     @Body() GetUserAccessStatusRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<ManualFundingResponse> manualFundingRequest(
+    @Body() ManualFundingRequest request,
+  );
+
+  @POST('autobiz_admin.php')
+  Future<ManualFundingDetailsResponse> manualFundingDetailsRequest(
+    @Body() ManualFundingDetailsRequest request,
   );
 }
 

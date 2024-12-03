@@ -1,18 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:superjara/const/app_textsyle.dart';
-import 'package:superjara/kyc_details/manual_funding_screen/pending_section.dart';
+import 'package:superjara/kyc_details/manual_funding_screen/manual_funding_details/notifier/manual_funding_details_notifier.dart';
 
-class ManualPendingDetails extends StatefulWidget {
-  const ManualPendingDetails({super.key});
+class ManualPendingDetails extends ConsumerStatefulWidget {
+  const ManualPendingDetails({
+    required this.userId,
+    //  required this.status,
+    super.key,
+  });
+  final int userId;
+  // final int status;
 
   @override
-  State<ManualPendingDetails> createState() => _ManualPendingDetailsState();
+  ConsumerState<ManualPendingDetails> createState() =>
+      _ManualPendingDetailsState();
 }
 
-class _ManualPendingDetailsState extends State<ManualPendingDetails> {
+class _ManualPendingDetailsState extends ConsumerState<ManualPendingDetails> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await ref
+          .watch(manualFundingDetailsNotifierProvider.notifier)
+          .manualFundingDetails(userId: widget.userId);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final manualFundingDetailsState =
+        ref.watch(manualFundingDetailsNotifierProvider);
+    // final manualData =
+    //     manualFundingDetailsState.manualFundingDetailsResponse?.data.map((e) => e);
+    final manualData =
+        manualFundingDetailsState.manualFundingDetailsResponse?.data;
     return Scaffold(
       backgroundColor: const Color(0xfff7f7f7),
       body: SafeArea(
@@ -28,9 +57,7 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.pop(context, (_) {
-                            return const PendingSection();
-                          });
+                          Navigator.pop(context, (_) {});
                         },
                         child: const Icon(Icons.arrow_back)),
                     const SizedBox(
@@ -56,11 +83,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 171,
+                      width: 220,
                     ),
                     Text(
-                      "Love Oladotun",
-                      style: AppTextStyles.font14,
+                      "${manualData?.username}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -81,11 +108,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 143,
+                      width: 40,
                     ),
                     Text(
-                      "Love Oladotun",
-                      style: AppTextStyles.font14,
+                      "${manualData?.accountName}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -106,11 +133,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 190,
+                      width: 130,
                     ),
                     Text(
-                      "7038253684",
-                      style: AppTextStyles.font14,
+                      "${manualData?.dateUpdated}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -131,11 +158,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 220,
+                      width: 130,
                     ),
                     Text(
-                      "Opay",
-                      style: AppTextStyles.font14,
+                      "${manualData?.bankName}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -156,11 +183,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 221,
+                      width: 240,
                     ),
                     Text(
-                      "NGN1000",
-                      style: AppTextStyles.font14,
+                      "${manualData?.amountSent}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -185,7 +212,7 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                     ),
                     Container(
                       height: 24,
-                      width: 70,
+                      width: 80,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: const Color.fromARGB(255, 239, 212, 157)),
@@ -200,10 +227,10 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                                 color: Color(0XFFAE8027)),
                           ),
                           const SizedBox(
-                            width: 5,
+                            width: 2,
                           ),
                           Text(
-                            "Pending",
+                            "${manualData?.status}",
                             style: AppTextStyles.font12
                                 .copyWith(color: const Color(0XFFAE8027)),
                           ),
@@ -229,11 +256,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 115,
+                      width: 100,
                     ),
                     Text(
-                      "Apr 18th,2024  20:59",
-                      style: AppTextStyles.font14,
+                      "${manualData?.dateCreated}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -254,11 +281,11 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                           .copyWith(color: const Color(0xff333333)),
                     ),
                     const SizedBox(
-                      width: 112,
+                      width: 100,
                     ),
                     Text(
-                      "Apr 18th,2024  20:59",
-                      style: AppTextStyles.font14,
+                      "${manualData?.dateUpdated}",
+                      style: AppTextStyles.fonts12,
                     ),
                   ],
                 ),
@@ -319,21 +346,24 @@ class _ManualPendingDetailsState extends State<ManualPendingDetails> {
                                       ),
                                       Row(
                                         children: [
-                                          Container(
-                                            height: 48,
-                                            width: 123,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              color: const Color(0xffEEEFEF),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Cancel',
-                                                style: AppTextStyles.font16
-                                                    .copyWith(
-                                                        color: const Color(
-                                                            0xff000078)),
+                                          InkWell(
+                                            onTap: () => Navigator.pop(context),
+                                            child: Container(
+                                              height: 48,
+                                              width: 123,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: const Color(0xffEEEFEF),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  'Cancel',
+                                                  style: AppTextStyles.font16
+                                                      .copyWith(
+                                                          color: const Color(
+                                                              0xff000078)),
+                                                ),
                                               ),
                                             ),
                                           ),

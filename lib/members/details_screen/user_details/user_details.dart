@@ -5,7 +5,6 @@ import 'package:superjara/const/app_images.dart';
 import 'package:superjara/const/app_textsyle.dart';
 import 'package:superjara/members/details_screen/details_component.dart';
 import 'package:superjara/members/details_screen/transactions_component.dart';
-import 'package:superjara/members/details_screen/user_details/data/model/fetch_user_details.response.dart';
 import 'package:superjara/members/details_screen/user_details/data/notifier/fetch_user_details_notifier.dart';
 import 'package:superjara/members/details_screen/wallet_component.dart';
 import 'package:superjara/members/settings/settings.dart';

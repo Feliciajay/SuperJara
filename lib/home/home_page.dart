@@ -20,6 +20,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   CountMemberData? countMemberData;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -86,7 +87,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     const SizedBox(height: 28),
                     HomeContainer(
                       title: 'Transactions',
-                      value: '${countTransactionData?.totalTransactions}',
+                      value: '${countTransactionData?.totalTransactions ?? ''}',
                       // value: '${data?.totalMembers}',
                       catergoryValues: Row(
                         children: [

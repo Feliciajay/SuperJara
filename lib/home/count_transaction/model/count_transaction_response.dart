@@ -1,7 +1,7 @@
 class CountTransactionResponse {
   final String? serverMessage;
   final bool? status;
-  final countTransactionData? data;
+  final CountTransactionData? data;
   final List<dynamic>? dataResult;
   final List<dynamic>? errorData;
   final String? textStatus;
@@ -10,7 +10,7 @@ class CountTransactionResponse {
   CountTransactionResponse({
     this.serverMessage,
     this.status,
-    required this.data,
+    this.data,
     this.dataResult,
     this.errorData,
     this.textStatus,
@@ -21,7 +21,7 @@ class CountTransactionResponse {
       CountTransactionResponse(
         serverMessage: json["server_message"],
         status: json["status"],
-        data: countTransactionData.fromJson(json["data"]),
+        data: CountTransactionData.fromJson(json["data"]),
         dataResult: List<dynamic>.from(json["data_result"].map((x) => x)),
         errorData: List<dynamic>.from(json["error_data"].map((x) => x)),
         textStatus: json["text_status"],
@@ -43,21 +43,21 @@ class CountTransactionResponse {
       };
 }
 
-class countTransactionData {
+class CountTransactionData {
   final int? totalTransactions;
   final int? totalCompletedTransaction;
   final int? totalUncompletedTransaction;
   final int? totalPendingTransaction;
 
-  countTransactionData({
+  CountTransactionData({
     this.totalTransactions,
     this.totalCompletedTransaction,
     this.totalUncompletedTransaction,
     this.totalPendingTransaction,
   });
 
-  factory countTransactionData.fromJson(Map<String, dynamic> json) =>
-      countTransactionData(
+  factory CountTransactionData.fromJson(Map<String, dynamic> json) =>
+      CountTransactionData(
         totalTransactions: json["total_transactions"],
         totalCompletedTransaction: json["total_completed_transaction"],
         totalUncompletedTransaction: json["total_uncompleted_transaction"],

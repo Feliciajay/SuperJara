@@ -45,7 +45,7 @@ class _HomeContainerState extends State<HomeContainer> {
               widget.catergoryValues
             ],
           ),
-          Spacer(),
+          const Spacer(),
           PopupMenuButton<String>(
             onSelected: (String result) {
               setState(() {
